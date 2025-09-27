@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - staging     # auto deploy staging
-      - main        # allow manual promotion of main
-  workflow_dispatch:   # manual trigger if needed
+      - main        # deploy production
+  workflow_dispatch:   # allow manual trigger if needed
 
 jobs:
   deploy-staging:
@@ -27,7 +27,7 @@ jobs:
 
       - name: Deploy to Staging
         run: |
-          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "~/ci-cd/deploy.sh staging"
+          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "/home/cloudcarehost/ci-cd/deploy.sh staging"
 
   deploy-production:
     if: github.ref == 'refs/heads/main'
@@ -48,4 +48,4 @@ jobs:
 
       - name: Deploy to Production
         run: |
-          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "~/ci-cd/deploy.sh production"
+          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "/home/cloudcarehost/ci-cd/deploy.sh production"
