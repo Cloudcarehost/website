@@ -21,7 +21,7 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY_B64 }}" | base64 -d > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
@@ -30,11 +30,10 @@ jobs:
           ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "/home/cloudcarehost/ci-cd/deploy.sh staging"
 
   deploy-production:
-    # only manual trigger (workflow_dispatch), not automatic on push
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     environment:
-      name: production
+      name: production   # requires manual approval if set in repo settings
       url: https://cloudcarehost.com
     steps:
       - name: Checkout code
@@ -44,7 +43,7 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY_B64 }}" | base64 -d > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
