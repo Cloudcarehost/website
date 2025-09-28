@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - staging     # auto deploy to staging
-  workflow_dispatch:   # allow manual trigger for production
+  workflow_dispatch:   # manual trigger for production
 
 jobs:
   deploy-staging:
@@ -13,6 +13,7 @@ jobs:
     environment:
       name: staging
       url: https://staging.cloudcarehost.com
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -21,7 +22,7 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
@@ -37,11 +38,12 @@ jobs:
             "/home/cloudcarehost/ci-cd/deploy.sh staging"
 
   deploy-production:
-    if: github.event_name == 'workflow_dispatch'   # manual only
+    if: github.event_name == 'workflow_dispatch'   # only manual trigger
     runs-on: ubuntu-latest
     environment:
       name: production
       url: https://cloudcarehost.com
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -50,7 +52,7 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
