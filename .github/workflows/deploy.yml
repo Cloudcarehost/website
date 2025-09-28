@@ -3,54 +3,51 @@ name: CI/CD Deploy
 on:
   push:
     branches:
-      - staging   # auto deploy staging only
+      - staging     # auto deploy staging
   workflow_dispatch:   # allow manual trigger for production
 
 jobs:
-  # --- STAGING DEPLOY ---
   deploy-staging:
+    if: github.ref == 'refs/heads/staging'
     runs-on: ubuntu-latest
     environment:
       name: staging
       url: https://staging.cloudcarehost.com
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup SSH
         run: |
+          set -euxo pipefail
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
       - name: Deploy to Staging
         run: |
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "/home/cloudcarehost/ci-cd/deploy.sh staging"
+          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "/home/cloudcarehost/ci-cd/deploy.sh staging"
 
-  # --- PRODUCTION DEPLOY ---
   deploy-production:
+    # only manual trigger (workflow_dispatch), not automatic on push
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    needs: deploy-staging
     environment:
       name: production
       url: https://cloudcarehost.com
-
-    # production job only runs when manually dispatched
-    if: github.event_name == 'workflow_dispatch'
-
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup SSH
         run: |
+          set -euxo pipefail
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
       - name: Deploy to Production
         run: |
-          ssh -i ~/.ssh/id_ed25519 ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "/home/cloudcarehost/ci-cd/deploy.sh production"
+          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "/home/cloudcarehost/ci-cd/deploy.sh production"
