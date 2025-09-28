@@ -17,23 +17,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Use the ssh-agent action for reliable key handling
       - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: Add known host
         run: |
-          set -euxo pipefail
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
+          # The agent handles the key, so we only need to add the known_host
           ssh-keyscan -p 19422 -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
-
-      - name: Test SSH connection
-        run: |
-          ssh -p 19422 -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "echo '✅ SSH works'"
 
       - name: Deploy to Staging
         run: |
-          ssh -p 19422 -i ~/.ssh/id_ed25519 \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
+          ssh -p 19422 ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
             "/home/cloudcarehost/ci-cd/deploy.sh staging"
 
   deploy-production:
@@ -46,21 +43,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      # Use the ssh-agent action for reliable key handling
       - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          
+      - name: Add known host
         run: |
-          set -euxo pipefail
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
+          # The agent handles the key, so we only need to add the known_host
           ssh-keyscan -p 19422 -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
-
-      - name: Test SSH connection
-        run: |
-          ssh -p 19422 -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "echo '✅ SSH works'"
 
       - name: Deploy to Production
         run: |
-          ssh -p 19422 -i ~/.ssh/id_ed25519 \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
+          ssh -p 19422 ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
             "/home/cloudcarehost/ci-cd/deploy.sh production"
