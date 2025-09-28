@@ -3,7 +3,7 @@ name: CI/CD Deploy
 on:
   push:
     branches:
-      - staging     # auto deploy staging
+      - staging     # auto deploy to staging
   workflow_dispatch:   # allow manual trigger for production
 
 jobs:
@@ -25,15 +25,20 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
+      - name: Debug SSH connection
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "echo '✅ SSH to server works'"
+
       - name: Deploy to Staging
         run: |
-          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "/home/cloudcarehost/ci-cd/deploy.sh staging"
+          ssh -i ~/.ssh/id_ed25519 ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "/home/cloudcarehost/ci-cd/deploy.sh staging"
 
   deploy-production:
+    # Run only when triggered manually
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     environment:
-      name: production   # requires manual approval if set in repo settings
+      name: production
       url: https://cloudcarehost.com
     steps:
       - name: Checkout code
@@ -47,6 +52,10 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
+      - name: Debug SSH connection
+        run: |
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "echo '✅ SSH to server works'"
+
       - name: Deploy to Production
         run: |
-          ssh ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "/home/cloudcarehost/ci-cd/deploy.sh production"
+          ssh -i ~/.ssh/id_ed25519 ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "/home/cloudcarehost/ci-cd/deploy.sh production"
