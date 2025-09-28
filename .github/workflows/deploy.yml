@@ -13,7 +13,6 @@ jobs:
     environment:
       name: staging
       url: https://staging.cloudcarehost.com
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -22,28 +21,33 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
+      - name: Debug SSH key
+        run: |
+          echo "=== SSH key fingerprint ==="
+          ssh-keygen -lf ~/.ssh/id_ed25519 || true
+          echo "=== Known hosts ==="
+          cat ~/.ssh/known_hosts || true
+
       - name: Test SSH connection
         run: |
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "echo '✅ SSH works'"
+          ssh -vvv -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
+            cloudcarehost@${{ secrets.DEPLOY_HOST }} "echo '✅ SSH works as cloudcarehost'"
 
       - name: Deploy to Staging
         run: |
-          ssh -i ~/.ssh/id_ed25519 \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
+          ssh -i ~/.ssh/id_ed25519 cloudcarehost@${{ secrets.DEPLOY_HOST }} \
             "/home/cloudcarehost/ci-cd/deploy.sh staging"
 
   deploy-production:
-    if: github.event_name == 'workflow_dispatch'   # only manual trigger
+    if: github.event_name == 'workflow_dispatch'   # manual only
     runs-on: ubuntu-latest
     environment:
       name: production
       url: https://cloudcarehost.com
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -52,17 +56,23 @@ jobs:
         run: |
           set -euxo pipefail
           mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" | tr -d '\r' > ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts
 
+      - name: Debug SSH key
+        run: |
+          echo "=== SSH key fingerprint ==="
+          ssh-keygen -lf ~/.ssh/id_ed25519 || true
+          echo "=== Known hosts ==="
+          cat ~/.ssh/known_hosts || true
+
       - name: Test SSH connection
         run: |
-          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} "echo '✅ SSH works'"
+          ssh -vvv -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=no \
+            cloudcarehost@${{ secrets.DEPLOY_HOST }} "echo '✅ SSH works as cloudcarehost'"
 
       - name: Deploy to Production
         run: |
-          ssh -i ~/.ssh/id_ed25519 \
-            ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
+          ssh -i ~/.ssh/id_ed25519 cloudcarehost@${{ secrets.DEPLOY_HOST }} \
             "/home/cloudcarehost/ci-cd/deploy.sh production"
