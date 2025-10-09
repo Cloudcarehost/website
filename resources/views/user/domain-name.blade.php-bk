@@ -1,0 +1,306 @@
+<x-user-layout>
+    <section class="relative h-screen bg-cover bg-center flex items-center justify-center"
+    style="background-image: url('{{ asset('images/domain-bg.png') }}')">
+    <!-- Overlay for readability -->
+    <div class="absolute inset-0 bg-opacity-40"></div>
+
+    <!-- Centered Content (shifted 40px up) -->
+    <div class="relative z-10 text-center px-6 max-w-2xl animate__animated animate__fadeInDown transform -translate-y-35">
+        <h1 class="text-4xl md:text-5xl font-bold text-black mb-4">
+            <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
+                Find
+            </span> Your
+            <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
+                Perfect
+            </span>
+            Domain
+        </h1>
+        <p class="text-lg md:text-xl text-gray-700 mb-8">
+            Our pricing structure is transparent from the outset, with no hidden charges.
+        </p>
+
+        <!-- Search box -->
+        <form
+            class="flex flex-col sm:flex-row gap-0 shadow-lg border border-gray-300 rounded-lg overflow-hidden max-w-lg mx-auto bg-white/90 backdrop-blur">
+            <input type="text" placeholder="Find your new domain"
+                class="flex-grow px-5 py-4 focus:outline-none text-gray-700 border-none">
+            <button type="submit"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-4 font-medium transition-colors">
+                Search
+            </button>
+        </form>
+
+        <!-- Transfer Link -->
+        <div class="mt-4">
+            <a href="#"
+                class="text-indigo-600 hover:text-indigo-100 text-sm font-medium transition-colors underline">
+                Transfer domain from another registrar
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+
+    <section class="bg-white py-16">
+    <div class="container max-w-screen-xl mx-auto px-4 mt-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold font-montserrat mb-4">
+                Why You Need the Perfect Domain Name
+            </h2>
+            <p class="text-gray-500 text-lg max-w-3xl mx-auto mb-12">
+                Your domain name is more than just a web address.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-2xl border hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold mb-3">Build Trust & Credibility</h3>
+                    <p class="text-gray-500">
+                       It is the foundation of your online identity and the first impression people have of your brand.
+                       Choosing the perfect domain name is essential because it builds trust and credibility, making your website
+                        appear professional and reliable in the eyes of visitors. A clean, memorable domain not only enhances your brand
+                        image but also helps improve your search engine visibility, giving you an advantage when people look for products or services online.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-2xl border hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold mb-3">Strengthen Brand Identity</h3>
+                    <p class="text-gray-500">
+                        A strong domain name also strengthens your brand identity by making it easy for customers to remember,
+                        share, and return to your site. When your domain is simple and relevant, it improves the user experience,
+                        reduces typing errors, and ensures that your audience can find you without hassle. Beyond this, your domain
+                         is a long-term digital asset that grows in value as your business expands, making it an investment in your brand’s future success.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-2xl border hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold mb-3">Secure Your Digital Future</h3>
+                    <p class="text-gray-500">
+                        At CloudCareHost, we understand the importance of securing the right domain before someone else does.
+                        That’s why we provide fast, affordable, and hassle-free domain registration so you can establish a powerful
+                        online presence and focus on growing your business with confidence.
+                    </p>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section class="relative flex items-center justify-center bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 py-6">
+    <!-- Overlay for readability -->
+    <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-opacity-30"></div>
+
+    <!-- Centered Content -->
+    <div class="relative z-10 text-center px-6 max-w-4xl animate__animated animate__fadeInDown">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-snug">
+            Why Choose CloudCareHost Instant Domain Name Registration?
+        </h1>
+        <p class="text-xl md:text-2xl text-indigo-100 leading-relaxed">
+            Quick, easy, and affordable domain registration with one-click setup, free DNS, privacy protection,
+            and seamless hosting integration — all backed by 24/7 expert support.
+        </p>
+    </div>
+
+
+</section>
+
+<section class="bg-gray-50 py-20">
+    <div class="container max-w-screen-xl mx-auto px-4">
+     <!-- Quick Setup Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Secure Your Perfect Domain Instantly with CloudCareHost.</h2>
+                    <p class="text-gray-600 mb-6">
+                        Your online journey starts with the right name—and at CloudCareHost, finding it is easier than ever.
+                        Simply search, choose, and register your perfect domain in seconds. With instant setup, affordable pricing,
+                         and powerful management tools, you can secure your digital identity without any delays. Start today and make your
+                         mark online instantly with CloudCareHost.
+
+                    </p>
+
+                </div>
+                <div class="flex justify-center">
+                    <img src="{{ asset('images/home-001.png') }}" alt="Setup Illustration" class="max-w-full">
+                </div>
+            </div>
+
+            <!-- Faster Website Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+                <div class="flex justify-center order-1 md:order-none">
+                    <img src="{{ asset('images/home-001.png') }}" alt="Speed Illustration" class="max-w-full">
+                </div>
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Easy & Secure Domain Transfer to CloudCareHost</h2>
+                    <p class="text-gray-600 mb-6">
+                        Moving your domain has never been easier. At CloudCareHost, we make the transfer process simple, secure, and hassle-free.
+                        With just a few clicks, you can bring your domain to us and enjoy affordable renewals, free DNS management, and 24/7 expert support.
+                         Plus, every transfer comes with privacy protection and seamless integration with our hosting plans.
+                        Switch today and experience a smoother, faster, and more reliable way to manage your domain—all under one roof with CloudCareHost.
+
+                    </p>
+
+                </div>
+            </div>
+
+            <!-- Quick Setup Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Seamless Domain Management with CloudCareHost</h2>
+                    <p class="text-gray-600 mb-6">
+                       Managing your domain should be simple—and with CloudCareHost, it is. Our intuitive control panel gives you full
+                       access to DNS settings, domain forwarding, renewals, and privacy tools in just a few clicks. No technical skills
+                        required—everything is designed for ease, speed, and security.
+                        With advanced features, affordable pricing, and 24/7 expert support, CloudCareHost makes domain management effortless, so you can focus
+                        on growing your online presence while we handle the rest.
+
+                    </p>
+
+                </div>
+                <div class="flex justify-center">
+                    <img src="{{ asset('images/home-001.png') }}" alt="Setup Illustration" class="max-w-full">
+                </div>
+            </div>
+    </div>
+</section>
+
+
+    <section class="container bg-white p-20 py-20">
+    <div class="bg-white rounded-xl shadow-md p-8 py-12">
+        <h2 class="text-3xl font-bold font-montserrat mb-8 text-center">Frequently Asked Questions</h2>
+
+        <div class="space-y-4">
+
+            <!-- Q2 -->
+            <div class="border-b border-gray-200 pb-4">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>How do I choose the best domain name for my website?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        Pick a short, memorable name that reflects your brand and is easy to spell. Prefer a
+                        relevant keyword if possible and choose a familiar extension (like <code>.com</code>) unless a niche TLD fits your audience.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="border-b border-gray-200 pb-4">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>What are domain extensions, and which one should I choose?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        Extensions (TLDs) like <code>.com</code>, <code>.net</code>, or <code>.org</code> tell users what your site is about.
+                        For businesses and e-commerce, <code>.com</code> is usually best; choose niche TLDs only when they match your brand or audience.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="border-b border-gray-200 pb-4">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>How do I register a domain with you?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        Search for your desired name with our tool, pick an available result, and complete checkout.
+                        We handle the technical setup , your domain can be live in minutes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="border-b border-gray-200 pb-4">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>Can I transfer my existing domain to your platform?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        Yes. Unlock the domain at your current registrar, get the auth code, then start the transfer here.
+                        We’ll guide you through the steps and move DNS and management to our platform.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="border-b border-gray-200 pb-4">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>What is WHOIS privacy, and why should I enable it?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        WHOIS privacy hides your personal contact details from the public domain lookup, reducing spam
+                        and protecting your privacy , we recommend enabling it for most registrations.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Q11 -->
+            <div class="border-b border-gray-200 pb-4">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>What happens if my domain expires?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        Your site and email go offline, but you usually keep the name during a 30-day grace period.
+                        Renew before the grace period ends to avoid extra recovery fees or losing the domain.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Q12 -->
+            <div class="border-b border-gray-200 pb-4">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>Can I change my domain name after registration?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        Technically yes, but changing domains can hurt SEO and traffic. If you must change, use redirects
+                        and forwards so visitors and search engines are sent to the new address.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Q15 -->
+            <div class="border-gray-200">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>What payment options do you accept for domain registration?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        We accept major credit cards and PayPal, and offer flexible billing cycles (monthly, annual, multi-year)
+                        so you can choose what fits your budget.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</x-user-layout>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // FAQ toggle functionality
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', function () {
+                const content = this.parentElement.querySelector('.faq-content');
+                const icon = this.querySelector('i');
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+    });
+</script>

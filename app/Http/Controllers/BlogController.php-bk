@@ -1,0 +1,203 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Blog;
+use App\Models\Category;
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+
+class BlogController extends Controller
+{
+    public function index()
+{
+    $baseQuery = Blog::when(request('search'), function ($query) {
+            $query->where('title', 'like', '%' . request('search') . '%');
+        })
+        ->when(request('category'), function ($query) {
+            $query->where('category_id', request('category'));
+        });
+
+    // paginate separately (change per page as needed)
+    $blogs = (clone $baseQuery)->where('type', 'blog')->latest()->paginate(10, ['*'], 'blogs_page');
+    $kbs   = (clone $baseQuery)->where('type', 'kb')->latest()->paginate(10, ['*'], 'kbs_page');
+
+    $categories = Category::all();
+
+    return view('dashboard', compact('blogs', 'kbs', 'categories'));
+}
+
+
+    public function create()
+    {
+        $categories = Category::all();
+        $type = request('type', 'blog');
+    return view('blogs.create', compact('categories', 'type'));
+}
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'data' => 'required|string',
+            'thumbnail' => 'nullable',
+            'published_at' => 'nullable|date',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string|max:255',
+             'type' => 'nullable|in:blog,kb',
+        ]);
+
+        $blog = new Blog();
+        $blog->title = $request->title;
+        $blog->slug = Str::slug($request->title);
+        $blog->category_id = $request->category_id;
+        $blog->content = $request->data;
+        $blog->user_id = auth()->id();
+        $blog->published_at = $request->published_at;
+        $blog->meta_title = $request->meta_title;
+        $blog->meta_description = $request->meta_description;
+        $blog->type = $request->input('type', 'blog');
+
+        $blog->save(); // Save first to get the ID
+
+        if ($request->hasFile('thumbnail')) {
+            $image = $request->file('thumbnail');
+            $filename = $blog->id . '.jpg';
+            $path = public_path('images/blog');
+
+            // Create directory if it doesn't exist
+            if (!file_exists($path)) {
+                mkdir($path, 0755, true);
+            }
+
+            // Save the image
+            $image->move($path, $filename);
+            $blog->thumbnail = 'images/blog/' . $filename;
+            $blog->save();
+        }
+
+        return redirect()->route('dashboard')->with('success', 'Blog post created successfully!');
+    }
+
+    public function update(Request $request, Blog $blog)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'category_id' => 'required|exists:categories,id',
+            'data' => 'required|string',
+            'thumbnail' => 'nullable',
+            'published_at' => 'nullable|date',
+            'meta_title' => 'nullable|string|max:255',
+            'meta_description' => 'nullable|string|max:255',
+             'type' => 'nullable|in:blog,kb',
+        ]);
+
+        $blog->title = $request->title;
+        $blog->slug = Str::slug($request->title);
+        $blog->category_id = $request->category_id;
+        $blog->content = $request->data;
+        $blog->published_at = $request->published_at;
+        $blog->meta_title = $request->meta_title;
+        $blog->meta_description = $request->meta_description;
+        $blog->type = $request->input('type', 'blog');
+
+        if ($request->hasFile('thumbnail')) {
+            $image = $request->file('thumbnail');
+            $filename = $blog->id . '.jpg';
+            $path = public_path('images/blog');
+
+            // Create directory if it doesn't exist
+            if (!file_exists($path)) {
+                mkdir($path, 0755, true);
+            }
+
+            // Delete old thumbnail if exists
+            if ($blog->thumbnail && file_exists(public_path($blog->thumbnail))) {
+                unlink(public_path($blog->thumbnail));
+            }
+
+            // Save the new image
+            $image->move($path, $filename);
+            $blog->thumbnail = 'images/blog/' . $filename;
+        }
+
+        $blog->save();
+
+        return redirect()->route('dashboard')->with('success', 'Blog post updated successfully!');
+    }
+
+    public function show($slug)
+    {
+        $blog = Blog::where('slug', $slug)->firstOrFail();
+        return view('blogs.show', compact('blog'));
+    }
+
+    public function edit(Blog $blog)
+    {
+        $categories = Category::all();
+        return view('blogs.edit', compact('blog', 'categories'));
+    }
+
+
+
+    public function destroy(Blog $blog)
+    {
+        if ($blog->thumbnail && file_exists(public_path($blog->thumbnail))) {
+            unlink(public_path($blog->thumbnail));
+        }
+
+        $blog->delete();
+
+        return redirect()->route('dashboard')->with('success', 'Blog post deleted successfully!');
+    }
+
+    public function publicIndex()
+    {
+        $searchTerm = request('search');
+
+        $blogs = Blog::whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->with('category')
+            ->when($searchTerm, function ($query) use ($searchTerm) {
+                $query->where('title', 'like', '%' . $searchTerm . '%');
+            })
+            ->when(request('category'), function ($query) {
+                $query->where('category_id', request('category'));
+            })
+            ->latest('published_at')
+            ->paginate(5)
+            ->withQueryString(); // This preserves all query parameters in pagination links
+
+        $categories = Category::withCount([
+            'blogs' => function ($query) use ($searchTerm) {
+                $query->whereNotNull('published_at')
+                    ->where('published_at', '<=', now());
+                if ($searchTerm) {
+                    $query->where('title', 'like', '%' . $searchTerm . '%');
+                }
+            }
+        ])->get();
+
+        return view('user.articles', compact('blogs', 'categories'));
+    }
+    public function publicShow($slug)
+    {
+        $blog = Blog::where('slug', $slug)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->where('type', 'blog')
+            ->firstOrFail();
+
+        $relatedBlogs = Blog::where('category_id', $blog->category_id)
+            ->where('id', '!=', $blog->id)
+            ->whereNotNull('published_at')
+            ->where('published_at', '<=', now())
+            ->where('type', 'blog')
+            ->limit(3)
+            ->get();
+
+        return view('user.single-blog', compact('blog', 'relatedBlogs'));
+    }
+}
