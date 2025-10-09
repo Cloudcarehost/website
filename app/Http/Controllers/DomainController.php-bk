@@ -1,0 +1,228 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cache;
+
+
+class DomainController extends Controller
+{
+  public function getDomainName(Request $request)
+{
+    $url = 'https://clients.cloudcarehost.com/includes/api.php';
+    $payload = [
+        'identifier'   => env('DOMAIN_API_ID'),
+        'secret'       => env('DOMAIN_API_SECRET'),
+        'responsetype' => 'json',
+        'action'       => 'GetTLDPricing',
+    ];
+
+    try {
+        $response = Http::asForm()->timeout(30)->post($url, $payload);
+
+        if (! $response->successful()) {
+            return back()->withErrors(['api' => 'Failed to fetch TLD pricing.']);
+        }
+
+        $data = $response->json();
+
+        if (! isset($data['pricing']) || ! is_array($data['pricing'])) {
+            return back()->withErrors(['api' => 'Unexpected API response.']);
+        }
+        // Build simplified array for Blade
+        $tldPricing = [];
+        foreach ($data['pricing'] as $tld => $meta) {
+            $price = null;
+
+            if (isset($meta['register']) && is_array($meta['register'])) {
+                if (isset($meta['register']['1'])) {
+                    $price = $meta['register']['1']; // 1-year price
+                } else {
+                    foreach ($meta['register'] as $val) {
+                        $price = $val;
+                        break;
+                    }
+                }
+            }
+
+            $tldPricing[] = (object)[
+                'tld'   => $tld,
+                'price' => $price,
+            ];
+
+        }
+
+        return view('user.domain-name', compact('tldPricing'));
+
+    } catch (\Throwable $e) {
+        return back()->withErrors(['api' => 'Error calling TLD API: ' . $e->getMessage()]);
+    }
+}
+
+    public function searchDomain(Request $request)
+    {
+        $request->validate([
+            'domain' => 'required|string',
+        ]);
+
+        $domainInput = trim($request->input('domain'));
+
+        // Extract domain name and TLD from input
+        $domainParts = explode('.', $domainInput);
+        $domainName = $domainParts[0];
+
+        // If no TLD provided, default to .com
+        if (count($domainParts) === 1) {
+            $tld = 'com';
+            $fullDomain = $domainName . '.com';
+        } else {
+            $tld = end($domainParts);
+            $fullDomain = $domainInput;
+        }
+
+        // Get TLD pricing data
+        $tldPricing = $this->getTldPricingData();
+
+        // Check the searched domain
+        $searchedDomain = $this->checkDomainAvailability($fullDomain);
+        dd($searchedDomain);
+        if ($searchedDomain) {
+            // Add price to searched domain
+            $searchedDomain['price'] = $this->getTldPrice($tld, $tldPricing);
+
+            // Generate suggestions (other TLDs)
+            $suggestions = [];
+            $suggestionTlds = array_slice(array_column($tldPricing, 'tld'), 0, 5); // Limit to 5 suggestions
+
+            foreach ($suggestionTlds as $suggestionTld) {
+                if ($suggestionTld !== $tld) {
+                    $suggestionDomain = $domainName . '.' . $suggestionTld;
+                    $suggestionData = $this->checkDomainAvailability($suggestionDomain);
+
+                    if ($suggestionData) {
+                        $suggestionData['price'] = $this->getTldPrice($suggestionTld, $tldPricing);
+                        $suggestions[] = $suggestionData;
+                    }
+                }
+            }
+
+            return response()->json([
+                'searched' => $searchedDomain,
+                'suggestions' => $suggestions
+            ]);
+        }
+
+        return response()->json(['error' => 'Failed to check domain availability'], 500);
+    }
+
+    /**
+     * Get TLD pricing data from API or cache
+     */
+    private function getTldPricingData()
+    {
+        // Cache TLD pricing for 24 hours to reduce API calls
+        return Cache::remember('tld_pricing', 60 * 24, function () {
+            $url = 'https://clients.cloudcarehost.com/includes/api.php';
+            $payload = [
+                'identifier'   => env('DOMAIN_API_ID'),
+                'secret'       => env('DOMAIN_API_SECRET'),
+                'responsetype' => 'json',
+                'action'       => 'GetTLDPricing',
+            ];
+
+            try {
+                $response = Http::asForm()->timeout(30)->post($url, $payload);
+
+                if (!$response->successful()) {
+                    return [];
+                }
+
+                $data = $response->json();
+
+                if (!isset($data['pricing']) || !is_array($data['pricing'])) {
+                    return [];
+                }
+
+                $tldPricing = [];
+                foreach ($data['pricing'] as $tld => $meta) {
+                    $price = null;
+
+                    if (isset($meta['register']) && is_array($meta['register'])) {
+                        if (isset($meta['register']['1'])) {
+                            $price = $meta['register']['1']; // 1-year price
+                        } else {
+                            foreach ($meta['register'] as $val) {
+                                $price = $val;
+                                break;
+                            }
+                        }
+                    }
+
+                    $tldPricing[] = [
+                        'tld'   => $tld,
+                        'price' => $price,
+                    ];
+                }
+
+                return $tldPricing;
+            } catch (\Throwable $e) {
+                Log::error('Error fetching TLD pricing: ' . $e->getMessage());
+                return [];
+            }
+        });
+    }
+
+    /**
+     * Check domain availability via API
+     */
+    private function checkDomainAvailability($domain)
+    {
+        $url = 'https://clients.cloudcarehost.com/includes/api.php';
+        $payload = [
+            'identifier'   => env('DOMAIN_API_ID'),
+            'secret'       => env('DOMAIN_API_SECRET'),
+            'responsetype' => 'json',
+            'action'       => 'DomainCheck',
+            'domain'       => $domain,
+        ];
+
+        try {
+            $response = Http::asForm()->timeout(30)->post($url, $payload);
+
+            if (!$response->successful()) {
+                return null;
+            }
+
+            $data = $response->json();
+
+            if ($data['result'] === 'success') {
+                return [
+                    'domainname' => $domain,
+                    'status' => $data['status']
+                ];
+            }
+
+            return null;
+        } catch (\Throwable $e) {
+            Log::error('Error checking domain availability: ' . $e->getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * Get price for a specific TLD
+     */
+    private function getTldPrice($tld, $tldPricing)
+    {
+        foreach ($tldPricing as $pricing) {
+            if ($pricing['tld'] === $tld) {
+                return $pricing['price'];
+            }
+        }
+
+        return null; // Return null if price not found
+    }
+}

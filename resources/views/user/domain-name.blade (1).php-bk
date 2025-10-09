@@ -1,0 +1,602 @@
+<x-user-layout>
+    <section class="relative h-screen bg-cover bg-center flex items-center justify-center"
+    style="background-image: url('{{ asset('images/domain-bg.png') }}')">
+    <!-- Overlay for readability -->
+    <div class="absolute inset-0 bg-opacity-40"></div>
+
+    <!-- Centered Content (shifted 40px up) -->
+    <div class="relative z-10 text-center px-6 max-w-2xl animate__animated animate__fadeInDown transform -translate-y-35">
+        <h1 class="text-4xl md:text-5xl font-bold text-black mb-4">
+            <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
+                Find
+            </span> Your
+            <span class="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent">
+                Perfect
+            </span>
+            Domain
+        </h1>
+        <p class="text-lg md:text-xl text-gray-700 mb-8">
+            Our pricing structure is transparent from the outset, with no hidden charges.
+        </p>
+
+        <!-- Search box -->
+            <form id="domainSearchForm" class="flex flex-col sm:flex-row gap-0 shadow-xl rounded-lg border border-gray-300 rounded-lg overflow-hidden max-w-lg mx-auto bg-white/90 backdrop-blur overflow-hidden max-w-lg mx-auto">
+                <input type="text" id="domainInput" placeholder="Find your new domain (e.g. example.com)"
+                    class="flex-grow px-5 py-4 focus:outline-none text-gray-700 border-none">
+                <button type="submit" id="searchButton" class="bg-indigo-700 hover:bg-indigo-800 text-white px-6 py-4 font-medium transition-colors flex items-center justify-center">
+                    <span id="buttonText">Search</span>
+                    <span id="buttonSpinner" class="hidden ml-2">
+                        <i class="fas fa-circle-notch fa-spin"></i>
+                    </span>
+                </button>
+            </form>
+
+        <!-- Transfer Link -->
+        <div class="mt-4">
+            <a href="#"
+                class="text-indigo-600 hover:text-indigo-100 text-sm font-medium transition-colors underline">
+                Transfer domain from another registrar
+            </a>
+        </div>
+    </div>
+</section>
+<!-- Results Section (initially hidden) -->
+    <section id="resultsSection" class="py-12 bg-white hidden">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-2xl font-bold text-gray-800 mb-8">Domain Search Results</h2>
+
+            <!-- Searched Domain Result -->
+            <div id="searchedResult" class="mb-10">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+
+            <!-- Suggestions Section -->
+            <div id="suggestionsSection" class="mt-12">
+                <h3 class="text-xl font-semibold text-gray-700 mb-6 flex items-center">
+                    <i class="fas fa-lightbulb text-yellow-500 mr-2"></i>
+                    Suggested Alternatives
+                </h3>
+                <div id="suggestionsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Suggestions will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Error Message (initially hidden) -->
+    <div id="errorMessage" class="fixed top-4 right-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded shadow-lg hidden z-50 transition-opacity duration-300">
+        <div class="flex items-center">
+            <i class="fas fa-exclamation-circle mr-2"></i>
+            <span id="errorText"></span>
+            <button id="closeError" class="ml-4 text-red-800 hover:text-red-600">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+<section class="py-20 bg-gradient-to-b from-indigo-50 via-white to-indigo-100">
+    <div class="container mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            @foreach ($tldPricing as $tld)
+            @if (in_array($tld->tld, ['com', 'in', 'org']))
+                <div
+                    class="rounded-2xl shadow-lg overflow-hidden transition-transform transform hover:-translate-y-2 hover:shadow-2xl p-8 text-center
+                           bg-gradient-to-br from-indigo-50 to-blue-100 border border-indigo-100">
+
+                    <div class="w-20 h-20 mx-auto mb-5 flex items-center justify-center rounded-full
+                                bg-gradient-to-br from-indigo-600 to-purple-600 text-white shadow-md">
+                        <span class="text-2xl font-extrabold">.{{ $tld->tld }}</span>
+                    </div>
+                    <div class="text-3xl font-extrabold text-indigo-700">
+                        ${{ $tld->price }}
+                    </div>
+                </div>
+                @endif
+            @endforeach
+        </div>
+    </div>
+</section>
+
+
+
+
+    <section class="bg-white py-16">
+    <div class="container max-w-screen-xl mx-auto px-4 mt-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold font-montserrat mb-4">
+                Why You Need the Perfect Domain Name
+            </h2>
+            <p class="text-gray-500 text-lg max-w-3xl mx-auto mb-12">
+                Your domain name is more than just a web address.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-white p-8 rounded-2xl border hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold mb-3">Build Trust & Credibility</h3>
+                    <p class="text-gray-500">
+                       It is the foundation of your online identity and the first impression people have of your brand.
+                       Choosing the perfect domain name is essential because it builds trust and credibility, making your website
+                        appear professional and reliable in the eyes of visitors. A clean, memorable domain not only enhances your brand
+                        image but also helps improve your search engine visibility, giving you an advantage when people look for products or services online.
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="bg-white p-8 rounded-2xl border hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold mb-3">Strengthen Brand Identity</h3>
+                    <p class="text-gray-500">
+                        A strong domain name also strengthens your brand identity by making it easy for customers to remember,
+                        share, and return to your site. When your domain is simple and relevant, it improves the user experience,
+                        reduces typing errors, and ensures that your audience can find you without hassle. Beyond this, your domain
+                         is a long-term digital asset that grows in value as your business expands, making it an investment in your brand’s future success.
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-white p-8 rounded-2xl border hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold mb-3">Secure Your Digital Future</h3>
+                    <p class="text-gray-500">
+                        At CloudCareHost, we understand the importance of securing the right domain before someone else does.
+                        That’s why we provide fast, affordable, and hassle-free domain registration so you can establish a powerful
+                        online presence and focus on growing your business with confidence.
+                    </p>
+                </div>
+            </div>
+        </div>
+</section>
+
+<section class="relative flex items-center justify-center bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 py-6">
+    <!-- Overlay for readability -->
+    <div class="absolute inset-0 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 bg-opacity-30"></div>
+
+    <!-- Centered Content -->
+    <div class="relative z-10 text-center px-6 max-w-4xl animate__animated animate__fadeInDown">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-snug">
+            Why Choose CloudCareHost Instant Domain Name Registration?
+        </h1>
+        <p class="text-xl md:text-2xl text-indigo-100 leading-relaxed">
+            Quick, easy, and affordable domain registration with one-click setup, free DNS, privacy protection,
+            and seamless hosting integration — all backed by 24/7 expert support.
+        </p>
+    </div>
+
+
+</section>
+
+<section class="bg-gray-50 py-20">
+    <div class="container max-w-screen-xl mx-auto px-4">
+     <!-- Quick Setup Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Secure Your Perfect Domain Instantly with CloudCareHost.</h2>
+                    <p class="text-gray-600 mb-6">
+                        Your online journey starts with the right name—and at CloudCareHost, finding it is easier than ever.
+                        Simply search, choose, and register your perfect domain in seconds. With instant setup, affordable pricing,
+                         and powerful management tools, you can secure your digital identity without any delays. Start today and make your
+                         mark online instantly with CloudCareHost.
+
+                    </p>
+
+                </div>
+                <div class="flex justify-center">
+                    <img src="{{ asset('images/home-001.png') }}" alt="Setup Illustration" class="max-w-full">
+                </div>
+            </div>
+
+            <!-- Faster Website Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
+                <div class="flex justify-center order-1 md:order-none">
+                    <img src="{{ asset('images/home-001.png') }}" alt="Speed Illustration" class="max-w-full">
+                </div>
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Easy & Secure Domain Transfer to CloudCareHost</h2>
+                    <p class="text-gray-600 mb-6">
+                        Moving your domain has never been easier. At CloudCareHost, we make the transfer process simple, secure, and hassle-free.
+                        With just a few clicks, you can bring your domain to us and enjoy affordable renewals, free DNS management, and 24/7 expert support.
+                         Plus, every transfer comes with privacy protection and seamless integration with our hosting plans.
+                        Switch today and experience a smoother, faster, and more reliable way to manage your domain—all under one roof with CloudCareHost.
+
+                    </p>
+
+                </div>
+            </div>
+
+            <!-- Quick Setup Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-bold mb-4">Seamless Domain Management with CloudCareHost</h2>
+                    <p class="text-gray-600 mb-6">
+                       Managing your domain should be simple—and with CloudCareHost, it is. Our intuitive control panel gives you full
+                       access to DNS settings, domain forwarding, renewals, and privacy tools in just a few clicks. No technical skills
+                        required—everything is designed for ease, speed, and security.
+                        With advanced features, affordable pricing, and 24/7 expert support, CloudCareHost makes domain management effortless, so you can focus
+                        on growing your online presence while we handle the rest.
+
+                    </p>
+
+                </div>
+                <div class="flex justify-center">
+                    <img src="{{ asset('images/home-001.png') }}" alt="Setup Illustration" class="max-w-full">
+                </div>
+            </div>
+    </div>
+</section>
+
+
+    <section class="container bg-white p-20 py-20">
+    <div class="bg-white rounded-xl shadow-md p-8 py-12">
+        <h2 class="text-3xl font-bold font-montserrat mb-8 text-center">Frequently Asked Questions</h2>
+
+        <div class="space-y-4">
+
+            <!-- Q2 -->
+            <div class="border-b border-gray-200 pb-4">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>How do I choose the best domain name for my website?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        Pick a short, memorable name that reflects your brand and is easy to spell. Prefer a
+                        relevant keyword if possible and choose a familiar extension (like <code>.com</code>) unless a niche TLD fits your audience.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="border-b border-gray-200 pb-4">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>What are domain extensions, and which one should I choose?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        Extensions (TLDs) like <code>.com</code>, <code>.net</code>, or <code>.org</code> tell users what your site is about.
+                        For businesses and e-commerce, <code>.com</code> is usually best; choose niche TLDs only when they match your brand or audience.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="border-b border-gray-200 pb-4">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>How do I register a domain with you?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        Search for your desired name with our tool, pick an available result, and complete checkout.
+                        We handle the technical setup , your domain can be live in minutes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="border-b border-gray-200 pb-4">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>Can I transfer my existing domain to your platform?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        Yes. Unlock the domain at your current registrar, get the auth code, then start the transfer here.
+                        We’ll guide you through the steps and move DNS and management to our platform.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="border-b border-gray-200 pb-4">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>What is WHOIS privacy, and why should I enable it?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        WHOIS privacy hides your personal contact details from the public domain lookup, reducing spam
+                        and protecting your privacy , we recommend enabling it for most registrations.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Q11 -->
+            <div class="border-b border-gray-200 pb-4">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>What happens if my domain expires?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        Your site and email go offline, but you usually keep the name during a 30-day grace period.
+                        Renew before the grace period ends to avoid extra recovery fees or losing the domain.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Q12 -->
+            <div class="border-b border-gray-200 pb-4">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>Can I change my domain name after registration?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        Technically yes, but changing domains can hurt SEO and traffic. If you must change, use redirects
+                        and forwards so visitors and search engines are sent to the new address.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Q15 -->
+            <div class="border-gray-200">
+                <button class="flex justify-between items-center w-full text-left font-medium faq-toggle" aria-expanded="false">
+                    <span>What payment options do you accept for domain registration?</span>
+                    <i class="fas fa-chevron-down transition-transform"></i>
+                </button>
+                <div class="mt-2 text-gray-600 hidden faq-content">
+                    <p>
+                        We accept major credit cards and PayPal, and offer flexible billing cycles (monthly, annual, multi-year)
+                        so you can choose what fits your budget.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+</x-user-layout>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // FAQ toggle functionality
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+
+        faqToggles.forEach(toggle => {
+            toggle.addEventListener('click', function () {
+                const content = this.parentElement.querySelector('.faq-content');
+                const icon = this.querySelector('i');
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+    });
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchForm = document.getElementById('domainSearchForm');
+            const domainInput = document.getElementById('domainInput');
+            const resultsSection = document.getElementById('resultsSection');
+            const searchedResult = document.getElementById('searchedResult');
+            const suggestionsContainer = document.getElementById('suggestionsContainer');
+            const searchButton = document.getElementById('searchButton');
+            const buttonText = document.getElementById('buttonText');
+            const buttonSpinner = document.getElementById('buttonSpinner');
+            const errorMessage = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            const closeError = document.getElementById('closeError');
+
+            // Close error message
+            closeError.addEventListener('click', function() {
+                errorMessage.classList.add('hidden');
+            });
+
+            // Handle form submission
+            searchForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const domain = domainInput.value.trim();
+                if (!domain) return;
+
+                // Show loading state on button
+                searchButton.disabled = true;
+                buttonText.classList.add('hidden');
+                buttonSpinner.classList.remove('hidden');
+
+                try {
+                    // For demonstration, we'll simulate both success and error responses
+                    // In a real implementation, you would call your actual API
+
+                    // Simulate API call delay
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+
+                    // Randomly simulate success or error for demonstration
+                    const isSuccess = Math.random() > 0.3; // 70% success rate for demo
+
+                    if (isSuccess) {
+                        // Simulate successful API response
+                        const mockData = {
+                            searched: {
+                                domainname: domain.includes('.') ? domain : domain + '.com',
+                                status: Math.random() > 0.5 ? 'available' : 'unavailable',
+                                price: (10 + Math.random() * 20).toFixed(2)
+                            },
+                            suggestions: [
+                                {
+                                    domainname: domain.split('.')[0] + '.net',
+                                    status: Math.random() > 0.5 ? 'available' : 'unavailable',
+                                    price: (12 + Math.random() * 15).toFixed(2)
+                                },
+                                {
+                                    domainname: domain.split('.')[0] + '.org',
+                                    status: Math.random() > 0.5 ? 'available' : 'unavailable',
+                                    price: (8 + Math.random() * 10).toFixed(2)
+                                },
+                                {
+                                    domainname: domain.split('.')[0] + '.io',
+                                    status: Math.random() > 0.5 ? 'available' : 'unavailable',
+                                    price: (25 + Math.random() * 20).toFixed(2)
+                                }
+                            ]
+                        };
+
+                        // Display results
+                        displayResults(mockData);
+                    } else {
+                        // Simulate API error
+                        throw new Error('Failed to check domain availability. Please try again later.');
+                    }
+
+                } catch (error) {
+                    console.error('Error:', error);
+                    // Show error message
+                    errorText.textContent = error.message;
+                    errorMessage.classList.remove('hidden');
+
+                    // Hide error after 5 seconds
+                    setTimeout(() => {
+                        errorMessage.classList.add('hidden');
+                    }, 5000);
+                } finally {
+                    // Reset button state
+                    searchButton.disabled = false;
+                    buttonText.classList.remove('hidden');
+                    buttonSpinner.classList.add('hidden');
+                }
+            });
+
+            // Function to display results
+            function displayResults(data) {
+                // Show results section
+                resultsSection.classList.remove('hidden');
+
+                // Display searched domain
+                displayDomainCard(data.searched, 'searchedResult', true);
+
+                // Display suggestions
+                suggestionsContainer.innerHTML = '';
+                if (data.suggestions && data.suggestions.length > 0) {
+                    data.suggestions.forEach(suggestion => {
+                        displayDomainCard(suggestion, 'suggestionsContainer', false);
+                    });
+                } else {
+                    suggestionsContainer.innerHTML = `
+                        <div class="col-span-full text-center py-8 text-gray-500">
+                            <i class="fas fa-info-circle text-3xl mb-3"></i>
+                            <p>No suggestions available at this time.</p>
+                        </div>
+                    `;
+                }
+
+                // Scroll to results
+                resultsSection.scrollIntoView({ behavior: 'smooth' });
+            }
+
+            // Function to display a domain card
+            function displayDomainCard(domainData, containerId, isSearched) {
+                const container = document.getElementById(containerId);
+
+                const statusClass = domainData.status === 'available' ? 'available' : 'unavailable';
+                const statusText = domainData.status === 'available' ? 'Available' : 'Unavailable';
+                const price = domainData.price ? `$${domainData.price}/yr` : 'Price not available';
+
+                const card = document.createElement('div');
+                card.className = isSearched ?
+                    'domain-card bg-white rounded-xl shadow-md p-6 border-t-4 border-indigo-600' :
+                    'domain-card suggestion-card bg-white rounded-lg shadow p-5';
+
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-gray-800 break-all">${domainData.domainname}</h3>
+                        <span class="status-badge px-3 py-1 rounded-full text-sm font-semibold ${statusClass}">
+                            ${statusText}
+                        </span>
+                    </div>
+
+                    <div class="mb-4">
+                        <p class="text-gray-600 mb-1">Registration</p>
+                        <p class="text-2xl font-bold text-gray-800">${price}</p>
+                    </div>
+
+                    ${isSearched ? `
+                        <div class="mb-4 p-3 bg-indigo-50 rounded-lg">
+                            <p class="text-indigo-700 text-sm">
+                                <i class="fas fa-info-circle mr-1"></i>
+                                This domain is ${domainData.status === 'available' ? 'available for registration' : 'already registered'}.
+                            </p>
+                        </div>
+                    ` : ''}
+
+                    <div class="mt-4">
+                        ${domainData.status === 'available' ? `
+                            <button class="add-to-cart-btn w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2 px-4 rounded-lg font-medium transition-colors">
+                                <i class="fas fa-cart-plus mr-2"></i> Add to Cart
+                            </button>
+                        ` : `
+                            <div class="flex flex-col sm:flex-row gap-2">
+                                <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded-lg font-medium transition-colors">
+                                    <i class="fas fa-sync-alt mr-2"></i> Transfer
+                                </button>
+                                <button class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 py-2 px-4 rounded-lg font-medium transition-colors">
+                                    <i class="fas fa-heart mr-2"></i> Wishlist
+                                </button>
+                            </div>
+                        `}
+                    </div>
+                `;
+
+                // If it's the searched result, replace the content
+                // Otherwise, append to the container
+                if (isSearched) {
+                    container.innerHTML = '';
+                    container.appendChild(card);
+                } else {
+                    container.appendChild(card);
+                }
+            }
+        });
+</script>
+ <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4f46e5',
+                        secondary: '#7c3aed',
+                        accent: '#ec4899',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .domain-card {
+            transition: all 0.3s ease;
+        }
+        .domain-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .available {
+            color: #10b981;
+        }
+        .unavailable {
+            color: #ef4444;
+        }
+        .suggestion-card {
+            border-left: 4px solid #7c3aed;
+        }
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .btn-loading {
+            position: relative;
+            color: transparent !important;
+        }
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin: -10px 0 0 -10px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
