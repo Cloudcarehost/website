@@ -152,6 +152,15 @@
             s0.parentNode.insertBefore(s1, s0);
         })();
     </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KNXQTHM01H"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-KNXQTHM01H');
+    </script>
 </body>
 
 </html>

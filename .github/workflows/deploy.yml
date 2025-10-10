@@ -23,7 +23,7 @@ jobs:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}
           password: ${{ secrets.DEPLOY_PASSWORD }}
-          port: 19422
+          port: 22
           script: /home/cloudcarehost/ci-cd/deploy.sh staging
 
   deploy-production:

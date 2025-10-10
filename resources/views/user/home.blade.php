@@ -9,7 +9,7 @@
             <div class="lg:w-1/2 mb-12 lg:mb-0 text-center lg:text-left animate__animated animate__fadeInDown">
                 <h1 class="text-2xl md:text-3xl font-montserrat leading-tight">
                     <span
-                        class="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">owerful</span>
+                        class="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Powerful</span>
                     +
                     <span
                         class="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Secure</span>
