@@ -24,7 +24,7 @@ jobs:
           username: ${{ secrets.DEPLOY_USER }}
           password: ${{ secrets.DEPLOY_PASSWORD }}
           port: 19422
-          script: sh /home/cloudcarehost/ci-cd/deploy.sh staging
+          script: /home/cloudcarehost/ci-cd/deploy.sh staging
 
   deploy-production:
     if: github.event_name == 'workflow_dispatch'   # manual only
