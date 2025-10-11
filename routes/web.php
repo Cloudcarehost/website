@@ -146,9 +146,7 @@ Route::get('/about-us', function () {
     return view('user.about-us');
 })->name('about-us');
 
-Route::get('/development', function () {
-    return view('user.development');
-})->name('development');
+Route::get('/development', [BlogController::class, 'showDevelopment'])->name('development');
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact');
 
