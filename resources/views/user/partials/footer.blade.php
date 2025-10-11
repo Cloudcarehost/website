@@ -3,12 +3,12 @@
     <div class="container max-w-screen-xl mx-auto px-4 py-12 md:py-16">
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-16 gap-8 md:gap-8">
             <!-- Hosting Solutions Column -->
-                        <div class="col-span-2 md:col-span-5">
+            <div class="col-span-2 md:col-span-5">
                 <h3 class="text-lg font-bold font-montserrat text-white mb-4 pb-2 border-b border-gray-700">Hosting
                     Solutions</h3>
                 <div class="grid grid-cols-2 gap-4">
                     <ul class="space-y-3">
-                        <li><a href="{{ route('hosting.shared') }}"
+                        <li><a href="#" onclick="hostingSharedRedirectWithCurrency()"
                                 class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
@@ -61,12 +61,13 @@
                 <h3 class="text-lg font-bold font-montserrat text-white mb-4 pb-2 border-b border-gray-700">Services
                 </h3>
                 <ul class="space-y-3">
-                    <li><a href="{{route ('domain-name')}}" class="hover:text-white transition-colors flex items-center group">
+                    <li><a href="{{route('domain-name')}}"
+                            class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                             Domain Names
                         </a></li>
-                    <li><a href="{{route ('ssl')}}" class="hover:text-white transition-colors flex items-center group">
+                    <li><a href="{{route('ssl')}}" class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                             SSL Certificates
@@ -88,7 +89,8 @@
             <div class="col-span-2 md:col-span-2">
                 <h3 class="text-lg font-bold font-montserrat text-white mb-4 pb-2 border-b border-gray-700">Company</h3>
                 <ul class="space-y-3">
-                    <li><a href="{{route('about-us')}}" class="hover:text-white transition-colors flex items-center group">
+                    <li><a href="{{route('about-us')}}"
+                            class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                             About CloudCareHost
@@ -197,7 +199,8 @@
                         class="text-gray-400 hover:text-white text-sm transition-colors">Sitemap</a>
                     <!--<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Acceptable Use
                         Policy</a>-->
-                    <a href="{{route('refund-policy')}}" class="text-gray-400 hover:text-white text-sm transition-colors">Refund Policy</a>
+                    <a href="{{route('refund-policy')}}"
+                        class="text-gray-400 hover:text-white text-sm transition-colors">Refund Policy</a>
                 </div>
 
                 <!-- Payment Methods -->
@@ -211,4 +214,10 @@
             </div>
         </div>
     </div>
+    <script>
+        function hostingSharedRedirectWithCurrency() {
+            const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            window.location.href = `{{ route('hosting.shared') }}?currency=${selectedCurrency}`;
+        }
+    </script>
 </footer>
