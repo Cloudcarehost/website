@@ -32,6 +32,46 @@ Route::get('/contact', function () {
     return view('user.contact');
 })->name('contact');
 
+// Currency API Routes
+Route::get('/api/currencies', function () {
+    return response()->json([
+        ['code' => 'USD', 'symbol' => '$', 'name' => 'US Dollar'],
+        ['code' => 'EUR', 'symbol' => '€', 'name' => 'Euro'],
+        // ['code' => 'GBP', 'symbol' => '£', 'name' => 'British Pound'],
+        // ['code' => 'CAD', 'symbol' => 'C$', 'name' => 'Canadian Dollar'],
+        ['code' => 'AUD', 'symbol' => 'A$', 'name' => 'Australian Dollar'],
+        ['code' => 'INR', 'symbol' => '₹', 'name' => 'Indian Rupee'],
+        ['code' => 'AED', 'symbol' => 'AED', 'name' => 'UAE Dirham'],
+    ]);
+})->name('api.currencies');
+
+Route::get('/api/currency/current', function () {
+    $currency = session('currency', 'USD');
+    $currencies = [
+        'USD' => ['code' => 'USD', 'symbol' => '$', 'name' => 'US Dollar'],
+        'EUR' => ['code' => 'EUR', 'symbol' => '€', 'name' => 'Euro'],
+        // 'GBP' => ['code' => 'GBP', 'symbol' => '£', 'name' => 'British Pound'],
+        // 'CAD' => ['code' => 'CAD', 'symbol' => 'C$', 'name' => 'Canadian Dollar'],
+        'AUD' => ['code' => 'AUD', 'symbol' => 'A$', 'name' => 'Australian Dollar'],
+        'INR' => ['code' => 'INR', 'symbol' => '₹', 'name' => 'Indian Rupee'],
+        'AED' => ['code' => 'AED', 'symbol' => 'AED', 'name' => 'UAE Dirham'],
+    ];
+
+    return response()->json($currencies[$currency] ?? $currencies['USD']);
+})->name('api.currency.current');
+
+Route::post('/api/currency/set', function (Illuminate\Http\Request $request) {
+    $request->validate(['code' => 'required|string|in:USD,EUR,GBP,CAD,AUD,INR,AED']);
+
+    session(['currency' => $request->code]);
+
+    return response()->json([
+        'success' => true,
+        'message' => 'Currency updated successfully',
+        'currency' => $request->code
+    ]);
+})->name('api.currency.set');
+
 // Hosting Routes
 Route::prefix('hosting')->group(function () {
     Route::get('/', [HostingController::class, 'index'])->name('hosting.index');
@@ -69,7 +109,7 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [BlogController::class, 'index'])->name('dashboard');
     Route::get('/get-plans-data', [PlanController::class, 'getPlansData'])->name('plans.getPlansData');
-    
+
     // Blog Routes
     Route::prefix('blogs')->group(function () {
         Route::get('/create', [BlogController::class, 'create'])->name('blogs.create');
