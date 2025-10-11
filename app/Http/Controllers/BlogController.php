@@ -226,4 +226,24 @@ class BlogController extends Controller
 
         return view('user.single-blog', compact('blog', 'relatedBlogs'));
     }
+
+     public function showDevelopment()
+    {
+        $categorySlug = 'development';
+
+        $category = Category::where('slug', $categorySlug)->first();
+        
+        if (! $category) {
+            $blogs = collect();
+            return view('user.development', compact('blogs'));
+        }
+
+        $blogs = Blog::where('type', 'blog')
+            ->where('category_id', $category->id)
+            ->whereNotNull('published_at')
+            ->limit(3)
+            ->get();
+
+        return view('user.development', compact('blogs'));
+    }
 }
