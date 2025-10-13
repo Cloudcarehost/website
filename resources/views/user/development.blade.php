@@ -748,44 +748,146 @@
 
     <!-- Pricing Snapshot -->
     <section id="pricing" class="py-20 bg-white">
-        <div class="container max-w-4xl mx-auto px-4 text-center">
+        <div class="container max-w-6xl mx-auto px-4 text-center">
             <h2 class="text-3xl md:text-4xl font-bold font-montserrat mb-4">Pricing (Starting Ranges)</h2>
-            <p class="text-gray-500 text-lg max-w-2xl mx-auto mb-12">Transparent starting ranges to help you estimate budget — custom quotes available for every project.</p>
+            <p class="text-gray-500 text-lg max-w-2xl mx-auto mb-8">Transparent starting ranges to help you estimate budget, custom quotes available for every project. (Final price depends on scope & integrations.)</p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- Website -->
                 <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-6 transition-all hover:shadow-xl">
                     <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-laptop-code text-indigo-600 text-2xl"></i>
                     </div>
                     <h3 class="font-bold text-xl mb-2">Website</h3>
-                    <p class="text-gray-600 mb-4">From <strong class="text-2xl text-indigo-600">$500</strong></p>
-                    <p class="text-sm text-gray-500">Perfect for small businesses and startups</p>
+                    <p class="text-gray-600 mb-4">Starting from <strong class="text-2xl text-indigo-600">$60</strong></p>
+
+                    <ul class="text-sm text-gray-600 text-left space-y-2 mb-4">
+                        <li><strong>Single static page</strong> —> <span class="font-semibold">$60</span> (simple brochure / promo page)</li>
+                        <li><strong>Landing + up to 5 pages</strong> —> <span class="font-semibold">$150</span> (includes basic responsive design and simple contact form)</li>
+                        <li><strong>Additional pages</strong> —> <span class="font-semibold">$15</span> / page (content-ready)</li>
+                        <li><strong>Functionalities / API or backend</strong> —> depends on complexity. (Examples: user auth, payments, CMS, integrations)</li>
+                    </ul>
+
+                    <p class="text-xs text-gray-400 mb-4">Note: listed numbers are starting prices for straightforward projects. Complex design, integrations, eCommerce, or custom backend raise the scope and price.</p>
+
+                    <div class="flex gap-3 justify-center sticky-bottom">
+                        <button class="quote-btn btn-website text-white px-6 py-2 rounded-lg font-semibold" data-type="website">Get a Quote</button>
+                    </div>
                 </div>
+
+                <!-- Mobile App -->
                 <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-6 transition-all hover:shadow-xl">
                     <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-mobile-alt text-purple-600 text-2xl"></i>
                     </div>
                     <h3 class="font-bold text-xl mb-2">Mobile App</h3>
-                    <p class="text-gray-600 mb-4">From <strong class="text-2xl text-purple-600">$2,000</strong></p>
-                    <p class="text-sm text-gray-500">Native and cross-platform solutions</p>
+                    <p class="text-gray-600 mb-4">Example starting ranges</p>
+
+                    <ul class="text-sm text-gray-600 text-left space-y-2 mb-4 mt-8">
+                        <li><strong>Starter / PWA / Basic MVP</strong> —> <span class="font-semibold">$1,800 – $6,000</span><br><span class="text-xs text-gray-400">(Simple UI, static content, minimal backend or none)</span></li>
+                        <li><strong>Standard App</strong> —> <span class="font-semibold">$6,000 – $40,000</span><br><span class="text-xs text-gray-400">(Native or cross-platform, basic backend, auth, payments)</span></li>
+                        <li><strong>Complex / Feature-rich</strong> —> <span class="font-semibold">From $40,000+</span><br><span class="text-xs text-gray-400">(Integrations, real-time features, custom infrastructure)</span></li>
+                    </ul>
+
+                    <p class="text-xs text-gray-400 mt-14 mb-4">We recommend defining core features first, we can then provide a scoped quote. Maintenance and app store publishing are priced separately.</p>
+
+                    <div class="flex gap-3 justify-center sticky-bottom">
+                        <button class="quote-btn btn-website text-white px-6 py-2 rounded-lg font-semibold" data-type="mobile-app">Get a Quote</button>
+                    </div>
                 </div>
+
+                <!-- Enterprise -->
                 <div class="bg-white rounded-xl shadow-lg border border-gray-200 p-6 transition-all hover:shadow-xl">
                     <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-building text-blue-600 text-2xl"></i>
                     </div>
                     <h3 class="font-bold text-xl mb-2">Enterprise Software</h3>
-                    <p class="text-gray-600 mb-4">Custom pricing — starts at <strong class="text-2xl text-blue-600">$10,000</strong></p>
-                    <p class="text-sm text-gray-500">Scalable solutions for growing businesses</p>
+                    <p class="text-gray-600 mb-4">Custom pricing —> Request a tailored quote</p>
+
+                    <ul class="text-sm text-gray-600 text-left space-y-2 mt-2 ">
+                        <li><strong>Discovery Phase</strong> —> structured pre-project consultation to define scope, architecture, and budget accurately.</li>
+                        <li><strong>Why quotes only?</strong> Enterprise projects vary widely (integrations, compliance, scale, security, etc.).</li>
+                        <li><strong>Typical range</strong> —> projects can start from tens of thousands and scale with complexity.</li>
+                        <li class="text-xs mt-16 text-gray-400">Learn more about global software pricing trends <a href="https://decode.agency/article/software-development-costs/" target="_blank" class="text-blue-600 underline">here</a>.</li>
+                    </ul>
+
+                    <div class="flex gap-3 justify-center sticky-bottom mt-4">
+                        <button class="quote-btn btn-website text-white px-6 py-2 rounded-lg font-semibold" data-type="enterprise">Get a Quote</button>
+                    </div>
                 </div>
             </div>
 
             <div class="mt-12">
-                <a href="#contact" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold shadow-lg transition-colors">
+                <button class="quote-btn btn-custom text-white px-8 py-4 rounded-lg font-semibold shadow-lg transition-colors" data-type="custom">
                     Request a Custom Estimate
-                </a>
+                </button>
             </div>
         </div>
     </section>
+
+    <!-- Quote Request Modal (replace existing modal markup) -->
+    <div id="quoteModal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-content bg-white rounded-2xl shadow-xl max-w-md w-full mx-4 border border-gray-200">
+        <div class="p-6">
+        <div class="flex justify-between items-center mb-4">
+            <h3 id="modalTitle" class="text-xl font-bold text-gray-800">Get a Quote</h3>
+            <button id="closeModal" type="button" class="text-gray-500 hover:text-gray-700 transition-colors" aria-label="Close modal">
+            <i class="fas fa-times text-lg"></i>
+            </button>
+        </div>
+        <div class="mb-6">
+            <p class="text-gray-600 mb-4">Click the button below to open your default email client and send us your requirements:</p>
+            <div class="bg-indigo-50 rounded-lg p-4 mb-4 border border-indigo-100">
+            <p class="text-indigo-800 font-medium text-center">info@cloudcarehost.com</p>
+            </div>
+            <p class="text-sm text-gray-500 mb-4">If your email client doesn't open automatically, you can copy the email address above and send us a message manually.</p>
+        </div>
+        <div class="flex space-x-3">
+            <button id="openEmailBtn" class="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center">
+            <i class="fas fa-envelope mr-2"></i> Open Email
+            </button>
+            <button id="copyEmailBtn" class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-4 rounded-lg transition-colors flex items-center justify-center">
+            <i class="fas fa-copy mr-2"></i> Copy
+            </button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+    <style>
+    /* Modal hidden by default */
+    .modal-overlay {
+        display: none;              
+        position: fixed;
+        inset: 0;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+        background-color: rgba(0,0,0,0.35); 
+        transition: opacity 0.25s ease;
+    }
+
+    /* Visible state */
+    .modal-overlay.show {
+        display: flex;
+        opacity: 1;
+    }
+
+    /* Modal content animation */
+    .modal-content {
+        transform: scale(0.95);
+        transition: transform 0.25s ease, opacity 0.25s ease;
+        opacity: 0;
+    }
+    .modal-overlay.show .modal-content {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    /* Optional: keep your custom shadows & rounded corners */
+    .modal-content { box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
+    </style>
 
      <!-- Blog Section -->
         <section class="bg-gray-50 py-20">
@@ -834,481 +936,6 @@
                 @endif
             </div>
         </section>
-    <!-- Development Solutions Section -->
-<section class="py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
-    <div class="container max-w-6xl mx-auto px-6">
-        <!-- Section Header -->
-        <div class="text-center mb-12">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                Full-Stack <span class="text-indigo-600">Development Solutions</span>
-            </h2>
-            <p class="text-gray-600 max-w-3xl mx-auto text-lg">
-                From stunning websites to powerful enterprise software, our development team builds digital solutions
-                that drive growth, efficiency, and customer engagement. Whether you’re a startup or an enterprise,
-                we turn your ideas into scalable reality.
-            </p>
-        </div>
-
-        <!-- Highlights Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Web Development -->
-            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-transform duration-300 hover:-translate-y-1">
-                <div class="w-12 h-12 bg-indigo-100 text-indigo-600 flex items-center justify-center rounded-lg mb-4">
-                    <i class="fas fa-globe text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">Web Development</h3>
-                <p class="text-gray-600 mb-4">Custom websites, WordPress, and e-commerce platforms designed for speed, SEO, and scalability.</p>
-                <a href="{{ route('development') }}" class="text-indigo-600 font-semibold hover:underline">
-                    Learn More →
-                </a>
-            </div>
-
-            <!-- Mobile App Development -->
-            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-transform duration-300 hover:-translate-y-1">
-                <div class="w-12 h-12 bg-purple-100 text-purple-600 flex items-center justify-center rounded-lg mb-4">
-                    <i class="fas fa-mobile-alt text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">Mobile App Development</h3>
-                <p class="text-gray-600 mb-4">Native Android, iOS, and cross-platform apps that offer seamless user experiences and performance.</p>
-                <a href="{{ route('development') }}" class="text-indigo-600 font-semibold hover:underline">
-                    Learn More →
-                </a>
-            </div>
-
-            <!-- Enterprise Solutions -->
-            <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-transform duration-300 hover:-translate-y-1">
-                <div class="w-12 h-12 bg-pink-100 text-pink-600 flex items-center justify-center rounded-lg mb-4">
-                    <i class="fas fa-building text-2xl"></i>
-                </div>
-                <h3 class="text-xl font-semibold mb-2">Enterprise Solutions</h3>
-                <p class="text-gray-600 mb-4">ERP, CRM, and custom business applications tailored to streamline your operations and data flow.</p>
-                <a href="{{ route('development') }}" class="text-indigo-600 font-semibold hover:underline">
-                    Learn More →
-                </a>
-            </div>
-        </div>
-        <!-- Development Process -->
-        <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8 md:p-12 mb-12 mt-10">
-            <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Our Development Process</h3>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-                <div class="text-center">
-                    <div class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-3">
-                        1
-                    </div>
-                    <h4 class="font-semibold text-gray-800 mb-2">Discovery & Planning</h4>
-                    <p class="text-gray-600 text-sm">Understanding your requirements and creating a detailed project roadmap</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-3">
-                        2
-                    </div>
-                    <h4 class="font-semibold text-gray-800 mb-2">Design & Prototyping</h4>
-                    <p class="text-gray-600 text-sm">Creating wireframes, mockups, and interactive prototypes</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-3">
-                        3
-                    </div>
-                    <h4 class="font-semibold text-gray-800 mb-2">Development & Testing</h4>
-                    <p class="text-gray-600 text-sm">Building with clean code and rigorous quality assurance</p>
-                </div>
-                <div class="text-center">
-                    <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-3">
-                        4
-                    </div>
-                    <h4 class="font-semibold text-gray-800 mb-2">Deployment & Support</h4>
-                    <p class="text-gray-600 text-sm">Launching on our optimized hosting with ongoing maintenance</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Technology Stack with Horizontal Scrolling -->
-          <!-- Technology Stack with Horizontal Scrolling -->
-<div class="mb-16">
-    <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Our Technology Stack</h3>
-    
-    <!-- Scrolling Container -->
-    <div class="tech-scroll-container">
-        <div class="tech-scroll">
-            <!-- Laravel -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-laravel text-red-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">Laravel</span>
-            </div>
-            <!-- React -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-react text-blue-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">React</span>
-            </div>
-            <!-- Vue.js -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-vuejs text-green-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">Vue.js</span>
-            </div>
-            <!-- Node.js -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-node-js text-green-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">Node.js</span>
-            </div>
-            <!-- Python -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-python text-yellow-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">Python</span>
-            </div>
-            <!-- WordPress -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-wordpress text-blue-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">WordPress</span>
-            </div>
-            <!-- Angular -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-angular text-red-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">Angular</span>
-            </div>
-            <!-- Flutter -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-mobile text-blue-400 text-2xl"></i>
-                </div>
-                <span class="tech-name">Flutter</span>
-            </div>
-            <!-- Swift -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-swift text-orange-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">Swift</span>
-            </div>
-            <!-- Kotlin -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-code text-purple-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">Kotlin</span>
-            </div>
-            <!-- Docker -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-docker text-blue-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">Docker</span>
-            </div>
-            <!-- AWS -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-aws text-orange-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">AWS</span>
-            </div>
-            <!-- MongoDB -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-database text-green-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">MongoDB</span>
-            </div>
-            <!-- MySQL -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-database text-blue-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">MySQL</span>
-            </div>
-            <!-- TypeScript -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-code text-blue-700 text-2xl"></i>
-                </div>
-                <span class="tech-name">TypeScript</span>
-            </div>
-            <!-- GraphQL -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-project-diagram text-pink-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">GraphQL</span>
-            </div>
-            <!-- Redis -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-bolt text-red-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">Redis</span>
-            </div>
-            <!-- Git -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-git-alt text-orange-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">Git</span>
-            </div>
-            <!-- JavaScript -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-js-square text-yellow-400 text-2xl"></i>
-                </div>
-                <span class="tech-name">JavaScript</span>
-            </div>
-            <!-- PHP -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-php text-purple-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">PHP</span>
-            </div>
-            <!-- HTML5 -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-html5 text-orange-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">HTML5</span>
-            </div>
-            <!-- CSS3 -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-css3-alt text-blue-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">CSS3</span>
-            </div>
-            <!-- Tailwind CSS -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-wind text-teal-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">Tailwind</span>
-            </div>
-            <!-- Bootstrap -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-bootstrap text-purple-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">Bootstrap</span>
-            </div>
-            <!-- Google Cloud -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-google text-blue-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">GCP</span>
-            </div>
-            <!-- Azure -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-microsoft text-blue-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">Azure</span>
-            </div>
-            
-            <!-- Duplicate set for seamless looping -->
-            <!-- Laravel -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-laravel text-red-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">Laravel</span>
-            </div>
-            <!-- React -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-react text-blue-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">React</span>
-            </div>
-            <!-- Vue.js -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-vuejs text-green-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">Vue.js</span>
-            </div>
-            <!-- Node.js -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-node-js text-green-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">Node.js</span>
-            </div>
-            <!-- Python -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-python text-yellow-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">Python</span>
-            </div>
-            <!-- WordPress -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-wordpress text-blue-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">WordPress</span>
-            </div>
-            <!-- Angular -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-angular text-red-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">Angular</span>
-            </div>
-            <!-- Flutter -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-mobile text-blue-400 text-2xl"></i>
-                </div>
-                <span class="tech-name">Flutter</span>
-            </div>
-            <!-- Swift -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-swift text-orange-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">Swift</span>
-            </div>
-            <!-- Kotlin -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-code text-purple-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">Kotlin</span>
-            </div>
-            <!-- Docker -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-docker text-blue-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">Docker</span>
-            </div>
-            <!-- AWS -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-aws text-orange-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">AWS</span>
-            </div>
-            <!-- MongoDB -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-database text-green-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">MongoDB</span>
-            </div>
-            <!-- MySQL -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-database text-blue-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">MySQL</span>
-            </div>
-            <!-- TypeScript -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-code text-blue-700 text-2xl"></i>
-                </div>
-                <span class="tech-name">TypeScript</span>
-            </div>
-            <!-- GraphQL -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-project-diagram text-pink-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">GraphQL</span>
-            </div>
-            <!-- Redis -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-bolt text-red-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">Redis</span>
-            </div>
-            <!-- Git -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-git-alt text-orange-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">Git</span>
-            </div>
-            <!-- JavaScript -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-js-square text-yellow-400 text-2xl"></i>
-                </div>
-                <span class="tech-name">JavaScript</span>
-            </div>
-            <!-- PHP -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-php text-purple-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">PHP</span>
-            </div>
-            <!-- HTML5 -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-html5 text-orange-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">HTML5</span>
-            </div>
-            <!-- CSS3 -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-css3-alt text-blue-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">CSS3</span>
-            </div>
-            <!-- Tailwind CSS -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fas fa-wind text-teal-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">Tailwind</span>
-            </div>
-            <!-- Bootstrap -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-bootstrap text-purple-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">Bootstrap</span>
-            </div>
-            <!-- Google Cloud -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-google text-blue-500 text-2xl"></i>
-                </div>
-                <span class="tech-name">GCP</span>
-            </div>
-            <!-- Azure -->
-            <div class="tech-item">
-                <div class="tech-icon">
-                    <i class="fab fa-microsoft text-blue-600 text-2xl"></i>
-                </div>
-                <span class="tech-name">Azure</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-        <!-- CTA -->
-        <div class="text-center mt-16">
-            <a href="{{ route('development') }}"
-               class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-colors">
-                Explore All Development Solutions
-            </a>
-        </div>
-    </div>
-</section>
     <!-- Final CTA Section -->
     <section id="contact" class="relative flex items-center justify-center bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 py-20">
         
@@ -1363,23 +990,6 @@
         .service-title:hover {
             color: #4f46e5;
         }
-       .tech-scroll-container {
-            overflow: hidden;
-            position: relative;
-            width: 100%;
-            margin: 2rem 0;
-        }
-
-        .tech-scroll {
-            display: flex;
-            width: max-content;
-            animation: scroll 40s linear infinite;
-        }
-
-        .tech-scroll:hover {
-            animation-play-state: paused;
-        }
-
         @keyframes scroll {
             0% {
                 transform: translateX(0);
@@ -1388,69 +998,137 @@
                 transform: translateX(-50%);
             }
         }
-
-        .tech-item {
-            text-align: center;
-            flex-shrink: 0;
-            width: 100px;
-            margin: 0 1.5rem;
+        
+        /* Custom button colors */
+        .btn-website {
+            background-color: #4f46e5;
         }
-
-        .tech-icon {
-            width: 70px;
-            height: 70px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 0.5rem;
-            transition: all 0.3s ease;
+        
+        .btn-website:hover {
+            background-color: #4338ca;
         }
-
-        .tech-item:hover .tech-icon {
-            transform: scale(1.1);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-        }
-
-        .tech-name {
-            font-size: 0.875rem;
-            color: #6b7280;
-            font-weight: 500;
-        }
+        
     </style>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add click functionality to dropdown toggles
-            const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
-            const serviceTitles = document.querySelectorAll('.service-title');
-            
-            // Function to toggle dropdown
-            function toggleDropdown(item) {
-                const dropdownContent = item.querySelector('.dropdown-content');
-                if (dropdownContent) {
-                    dropdownContent.classList.toggle('open');
-                }
-            }
-            
-            // Add click event to dropdown icons
-            dropdownToggles.forEach(toggle => {
-                toggle.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const parentItem = this.closest('.service-item');
-                    toggleDropdown(parentItem);
-                });
-            });
-            
-            // Add click event to service titles
-            serviceTitles.forEach(title => {
-                title.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    const parentItem = this.closest('.service-item');
-                    toggleDropdown(parentItem);
-                });
+    document.addEventListener('DOMContentLoaded', function() {
+
+        /* ========== DROPDOWN TOGGLE (Services Section) ========== */
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        const serviceTitles = document.querySelectorAll('.service-title');
+
+        function toggleDropdown(item) {
+            const content = item.querySelector('.dropdown-content');
+            if (content) content.classList.toggle('open');
+        }
+
+        dropdownToggles.forEach(toggle => {
+            toggle.addEventListener('click', e => {
+                e.stopPropagation();
+                toggleDropdown(toggle.closest('.service-item'));
             });
         });
+
+        serviceTitles.forEach(title => {
+            title.addEventListener('click', e => {
+                e.stopPropagation();
+                toggleDropdown(title.closest('.service-item'));
+            });
+        });
+
+
+        /* ========== QUOTE MODAL (Simplified) ========== */
+        const emailAddress = "info@cloudcarehost.com";
+        const quoteModal = document.getElementById('quoteModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const closeModal = document.getElementById('closeModal');
+        const openEmailBtn = document.getElementById('openEmailBtn');
+        const copyEmailBtn = document.getElementById('copyEmailBtn');
+        const quoteButtons = document.querySelectorAll('.quote-btn');
+
+        const modalTitles = {
+            'website': 'Website Quote Request',
+            'mobile-app': 'Mobile App Quote Request',
+            'enterprise': 'Enterprise Software Quote Request',
+            'custom': 'Custom Project Quote'
+        };
+
+        // Generic, short email template for all
+        const genericTemplate = {
+            subject: 'Project Quote Request',
+            body: `Hi CloudCareHost,
+
+            I’d like to get a quote for my project.
+
+            Project Type: [Website / Mobile App / Enterprise / Custom]
+            Brief Description: [Add a short summary here]
+            Contact Info: [Your email / phone]
+
+            Thanks,
+            [Your Name]`
+                };
+
+        function showModal() {
+            quoteModal.classList.add('show');
+            document.documentElement.style.overflow = 'hidden';
+        }
+
+        function hideModal() {
+            quoteModal.classList.remove('show');
+            document.documentElement.style.overflow = '';
+        }
+
+        // Open modal for all quote buttons
+        quoteButtons.forEach(button => {
+            button.addEventListener('click', e => {
+                e.preventDefault();
+                const type = button.dataset.type || 'custom';
+                modalTitle.textContent = modalTitles[type] || 'Project Quote';
+                openEmailBtn.onclick = function() {
+                    const subject = encodeURIComponent(genericTemplate.subject);
+                    const body = encodeURIComponent(genericTemplate.body);
+                    window.location.href = `mailto:${emailAddress}?subject=${subject}&body=${body}`;
+                    setTimeout(hideModal, 400);
+                };
+                showModal();
+            });
+        });
+
+        // Close button
+        closeModal.addEventListener('click', e => {
+            e.preventDefault();
+            hideModal();
+        });
+
+        // Close on outside click
+        quoteModal.addEventListener('click', e => {
+            if (e.target === quoteModal) hideModal();
+        });
+
+        // ESC key close
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && quoteModal.classList.contains('show')) hideModal();
+        });
+
+        // Copy email button
+        copyEmailBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(emailAddress).then(() => {
+                const original = copyEmailBtn.innerHTML;
+                copyEmailBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Copied!';
+                copyEmailBtn.classList.remove('bg-gray-200');
+                copyEmailBtn.classList.add('bg-green-500', 'text-white');
+                setTimeout(() => {
+                    copyEmailBtn.innerHTML = original;
+                    copyEmailBtn.classList.add('bg-gray-200');
+                    copyEmailBtn.classList.remove('bg-green-500', 'text-white');
+                }, 1500);
+            });
+        });
+
+        // Prevent modal inner clicks from closing
+        const modalContent = quoteModal.querySelector('.modal-content');
+        modalContent.addEventListener('click', e => e.stopPropagation());
+    });
     </script>
+
+
 </x-user-layout>
