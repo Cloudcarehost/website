@@ -146,30 +146,48 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-phone-alt text-indigo-400 mt-1 mr-3 w-4"></i>
-                            <span>+91 8788217891</span>
+                            <span id="phone" class="hover:underline cursor-pointer text-white">+91 8788217891</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-indigo-400 mt-1 mr-3 w-4"></i>
-                            <span>support@cloudcarehost.com</span>
+                            <span id="email"
+                                class="hover:underline cursor-pointer text-white">support@cloudcarehost.com</span>
                         </li>
                     </ul>
+
+                    <script>
+                        // Select elements by ID for better reliability
+                        const phoneElement = document.getElementById('phone');
+                        const emailElement = document.getElementById('email');
+
+                        // Phone click → open dialer
+                        phoneElement.addEventListener('click', () => {
+                            window.location.href = 'tel:+918788217891';
+                        });
+
+                        // Email click → open default mail client
+                        emailElement.addEventListener('click', () => {
+                            window.location.href = 'mailto:support@cloudcarehost.com';
+                        });
+                    </script>
+
 
                     <div class="mt-4">
                         <h4 class="text-md font-semibold text-white mb-2">Follow Us</h4>
                         <div class="flex gap-3">
-                            <a href="#"
+                            <a href="https://www.facebook.com/share/1AztuATB6S/"
                                 class="w-9 h-9 bg-gray-800 hover:bg-indigo-600 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a href="#"
+                            <!-- <a href="#"
                                 class="w-9 h-9 bg-gray-800 hover:bg-indigo-600 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1">
                                 <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#"
+                            </a> -->
+                            <a href="https://www.instagram.com/cloudcarehost?igsh=bDNxdXEzaWlrMTc1&utm_source=qr"
                                 class="w-9 h-9 bg-gray-800 hover:bg-indigo-600 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="#"
+                            <a href="https://www.linkedin.com/company/cloud-care-host/"
                                 class="w-9 h-9 bg-gray-800 hover:bg-indigo-600 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
