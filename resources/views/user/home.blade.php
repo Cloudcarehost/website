@@ -1,6 +1,6 @@
 <x-user-layout>
     @section('title', 'Web Hosting & Domain Services | Fast, Secure & Reliable - CloudCareHost')
-    @section('meta_description', 'CloudCareHost offers fast and secure web hosting, VPS, dedicated servers, domain registration, and SSL certificates — all with 24/7 expert support. Get everything you need to launch and grow your website today.')
+    @section('meta_description', 'Fast and secure hosting from CloudCareHost. Get shared, VPS, and dedicated servers, domain registration, SSL certificates, and 24/7 support.')
     @section('meta_keywords', 'web hosting, cloud hosting, vps hosting, high availability vps, dedicated server hosting, reseller hosting, wordpress hosting, buy domain name, secure ssl certificates, best hosting provider')
     @section('meta_author', 'Cloud Care Host')
     <!-- Hero Section -->

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SSLController;
 use App\Http\Controllers\DomainController;
 use App\Http\Controllers\ContactController;
-
+use App\Http\Controllers\CategoryController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -149,5 +149,8 @@ Route::get('/about-us', function () {
 Route::get('/development', [BlogController::class, 'showDevelopment'])->name('development');
 
 Route::post('/contact', [ContactController::class, 'store'])->name('contact');
+
+// Category Routes
+Route::resource('categories', CategoryController::class)->except(['show']);
 
 require __DIR__ . '/auth.php';

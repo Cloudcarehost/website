@@ -26,8 +26,9 @@ class BlogController extends Controller
         $kbs   = (clone $baseQuery)->where('type', 'kb')->latest()->paginate(10, ['*'], 'kbs_page');
 
         $categories = Category::all();
+        $allCategories = Category::withCount('blogs')->latest()->paginate(10, ['*'], 'categories_page'); // This is paginated
 
-        return view('dashboard', compact('blogs', 'kbs', 'categories'));
+    return view('dashboard', compact('blogs', 'kbs', 'categories','allCategories'));
     }
 
     /**
