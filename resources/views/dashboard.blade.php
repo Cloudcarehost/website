@@ -328,6 +328,178 @@
                         </div>
                     </div>
 
+                    <!-- Categories Management Section -->
+                    <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg mt-6">
+                        <div class="p-6 text-gray-900 dark:text-gray-100">
+                            <div class="flex justify-between items-center mb-6">
+                                <h2 class="text-2xl font-semibold">Categories Management</h2>
+                                <button onclick="openCreateModal()"
+                                        class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md">
+                                    Create Category
+                                </button>
+                            </div>
+
+                            <!-- Categories Table -->
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                                    <thead class="bg-gray-50 dark:bg-gray-700">
+                                        <tr>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Name</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Slug</th>
+                                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Posts Count</th>
+                                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700" id="categoriesTableBody">
+                                        @forelse($allCategories as $category)
+                                            <tr id="category-{{ $category->id }}" data-category='@json($category)'>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm font-medium text-gray-900 dark:text-gray-100 category-name">
+                                                        {{ $category->name }}
+                                                    </div>
+                                                    <input type="text" 
+                                                        class="hidden w-full text-sm border rounded px-2 py-1 edit-input" 
+                                                        value="{{ $category->name }}"
+                                                        data-field="name">
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap">
+                                                    <div class="text-sm text-gray-500 dark:text-gray-400 category-slug">
+                                                        {{ $category->slug }}
+                                                    </div>
+                                                    <input type="text" 
+                                                        class="hidden w-full text-sm border rounded px-2 py-1 edit-input" 
+                                                        value="{{ $category->slug }}"
+                                                        data-field="slug">
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
+                                                    {{ $category->blogs_count }}
+                                                </td>
+                                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                                    <div class="flex justify-end space-x-2">
+                                                        <!-- Edit Button -->
+                                                        <button onclick="enableEdit({{ $category->id }})" 
+                                                                class="text-indigo-600 hover:text-indigo-900 dark:text-indigo-400 dark:hover:text-indigo-300 edit-btn">
+                                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                                                            </svg>
+                                                        </button>
+                                                        
+                                                        <!-- Save Button (Hidden by default) -->
+                                                        <button onclick="saveCategory({{ $category->id }})" 
+                                                                class="hidden text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-300 save-btn">
+                                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                            </svg>
+                                                        </button>
+                                                        
+                                                        <!-- Cancel Button (Hidden by default) -->
+                                                        <button onclick="cancelEdit({{ $category->id }})" 
+                                                                class="hidden text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 cancel-btn">
+                                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                                            </svg>
+                                                        </button>
+
+                                                        <!-- Delete Button -->
+                                                        <button onclick="openDeleteModal({{ $category->id }}, '{{ $category->name }}')" 
+                                                                class="text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-300">
+                                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td colspan="4" class="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400">
+                                                    No categories found.
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="mt-6">
+                                {{ $allCategories->links() }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Create Category Modal -->
+                    <div id="createCategoryModal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
+                        <div class="absolute inset-0 bg-black opacity-50"></div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full z-10 p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Create New Category</h3>
+                                <button onclick="closeCreateModal()" class="text-gray-500 hover:text-gray-700 dark:text-gray-400">&times;</button>
+                            </div>
+                            <form id="createCategoryForm" action="{{ route('categories.store') }}" method="POST">
+                                @csrf
+                                <div class="space-y-4">
+                                    <div>
+                                        <label for="categoryName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                            Category Name *
+                                        </label>
+                                        <input type="text" name="name" id="categoryName" required
+                                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">
+                                    </div>
+                                    <div>
+                                        <label for="categorySlug" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                                            Slug *
+                                        </label>
+                                        <input type="text" name="slug" id="categorySlug" required
+                                            class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-300">
+                                    </div>
+                                    
+                                </div>
+                                <div class="mt-6 flex justify-end space-x-3">
+                                    <button type="button" onclick="closeCreateModal()"
+                                            class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded-md">
+                                        Cancel
+                                    </button>
+                                    <button type="submit"
+                                            class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md">
+                                        Create Category
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Delete Confirmation Modal -->
+                    <div id="deleteCategoryModal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
+                        <div class="absolute inset-0 bg-black opacity-50"></div>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-md w-full z-10 p-6">
+                            <div class="flex items-start justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Delete Category</h3>
+                                <button onclick="closeDeleteModal()" class="text-gray-500 hover:text-gray-700 dark:text-gray-400">&times;</button>
+                            </div>
+                            <div class="mb-4">
+                                <p class="text-gray-700 dark:text-gray-300">
+                                    Are you sure you want to delete category "<span id="deleteCategoryName" class="font-semibold"></span>"?
+                                </p>
+                                <p class="text-sm text-red-600 dark:text-red-400 mt-2">
+                                    This action cannot be undone.
+                                </p>
+                            </div>
+                            <form id="deleteCategoryForm" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <div class="flex justify-end space-x-3">
+                                    <button type="button" onclick="closeDeleteModal()"
+                                            class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2 px-4 rounded-md">
+                                        Cancel
+                                    </button>
+                                    <button type="submit"
+                                            class="bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-md">
+                                        Delete Category
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -452,5 +624,230 @@ document.addEventListener('DOMContentLoaded', function () {
             setCollapsed('dash_kbs_collapsed', !collapsed, kbsContent, toggleKbsIcon, toggleKbsBtn);
         });
     }
+});
+</script>
+<script>
+// Modal functions
+function openCreateModal() {
+    document.getElementById('createCategoryModal').classList.remove('hidden');
+    document.getElementById('createCategoryModal').classList.add('flex');
+}
+
+function closeCreateModal() {
+    document.getElementById('createCategoryModal').classList.remove('flex');
+    document.getElementById('createCategoryModal').classList.add('hidden');
+    document.getElementById('createCategoryForm').reset();
+}
+
+let currentDeleteId = null;
+
+function openDeleteModal(categoryId, categoryName) {
+    currentDeleteId = categoryId;
+    document.getElementById('deleteCategoryName').textContent = categoryName;
+    document.getElementById('deleteCategoryForm').action = `/categories/${categoryId}`;
+    document.getElementById('deleteCategoryModal').classList.remove('hidden');
+    document.getElementById('deleteCategoryModal').classList.add('flex');
+}
+
+function closeDeleteModal() {
+    document.getElementById('deleteCategoryModal').classList.remove('flex');
+    document.getElementById('deleteCategoryModal').classList.add('hidden');
+    currentDeleteId = null;
+}
+
+// Inline edit functions
+let originalData = {};
+
+function enableEdit(categoryId) {
+    const row = document.getElementById(`category-${categoryId}`);
+    const categoryData = JSON.parse(row.getAttribute('data-category'));
+    
+    // Store original data
+    originalData[categoryId] = { ...categoryData };
+    
+    // Hide display elements, show input elements
+    row.querySelectorAll('.category-name, .category-slug').forEach(el => {
+        el.classList.add('hidden');
+    });
+    
+    row.querySelectorAll('.edit-input').forEach(el => {
+        el.classList.remove('hidden');
+    });
+    
+    // Toggle buttons
+    row.querySelector('.edit-btn').classList.add('hidden');
+    row.querySelector('.save-btn').classList.remove('hidden');
+    row.querySelector('.cancel-btn').classList.remove('hidden');
+}
+
+function cancelEdit(categoryId) {
+    const row = document.getElementById(`category-${categoryId}`);
+    
+    // Restore original values
+    if (originalData[categoryId]) {
+        row.querySelectorAll('.edit-input').forEach(input => {
+            const field = input.getAttribute('data-field');
+            input.value = originalData[categoryId][field];
+        });
+    }
+    
+    // Hide input elements, show display elements
+    row.querySelectorAll('.edit-input').forEach(el => {
+        el.classList.add('hidden');
+    });
+    
+    row.querySelectorAll('.category-name, .category-slug').forEach(el => {
+        el.classList.remove('hidden');
+    });
+    
+    // Toggle buttons
+    row.querySelector('.edit-btn').classList.remove('hidden');
+    row.querySelector('.save-btn').classList.add('hidden');
+    row.querySelector('.cancel-btn').classList.add('hidden');
+    
+    delete originalData[categoryId];
+}
+
+async function saveCategory(categoryId) {
+    const row = document.getElementById(`category-${categoryId}`);
+    const inputs = row.querySelectorAll('.edit-input');
+    const formData = new FormData();
+    
+    // Add CSRF token
+    formData.append('_token', '{{ csrf_token() }}');
+    formData.append('_method', 'PUT');
+    
+    // Collect data from inputs
+    inputs.forEach(input => {
+        const field = input.getAttribute('data-field');
+        formData.append(field, input.value);
+    });
+    
+    try {
+        const response = await fetch(`/categories/${categoryId}`, {
+            method: 'POST', // Use POST method with _method=PUT for Laravel
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+        });
+        
+        // Check if response is ok
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            // Update display values
+            row.querySelector('.category-name').textContent = formData.get('name');
+            row.querySelector('.category-slug').textContent = formData.get('slug');
+            
+            // Update data attribute
+            const currentData = JSON.parse(row.getAttribute('data-category'));
+            currentData.name = formData.get('name');
+            currentData.slug = formData.get('slug');
+            row.setAttribute('data-category', JSON.stringify(currentData));
+            
+            // Exit edit mode
+            cancelEdit(categoryId);
+            
+            // Show success message
+            showFlashMessage(result.message || 'Category updated successfully!', 'success');
+        } else {
+            throw new Error(result.message || 'Failed to update category');
+        }
+    } catch (error) {
+        console.error('Error updating category:', error);
+        showFlashMessage('Error updating category: ' + error.message, 'error');
+        cancelEdit(categoryId);
+    }
+}
+
+// Handle delete form submission with AJAX
+document.getElementById('deleteCategoryForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    
+    const form = this;
+    const formData = new FormData(form);
+    
+    try {
+        const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok && result.success) {
+            // Remove the row from table
+            const row = document.getElementById(`category-${currentDeleteId}`);
+            if (row) {
+                row.remove();
+            }
+            
+            closeDeleteModal();
+            showFlashMessage(result.message || 'Category deleted successfully!', 'success');
+            
+            // Reload page if no categories left
+            const tableBody = document.getElementById('categoriesTableBody');
+            if (tableBody && tableBody.children.length === 0) {
+                location.reload();
+            }
+        } else {
+            throw new Error(result.message || 'Failed to delete category');
+        }
+    } catch (error) {
+        console.error('Error deleting category:', error);
+        showFlashMessage('Error deleting category: ' + error.message, 'error');
+        closeDeleteModal();
+    }
+});
+
+function showFlashMessage(message, type = 'success') {
+    // Create flash message element
+    const flashDiv = document.createElement('div');
+    flashDiv.className = `fixed top-4 right-4 z-50 p-4 rounded-md shadow-lg ${
+        type === 'success' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
+    }`;
+    flashDiv.textContent = message;
+    
+    document.body.appendChild(flashDiv);
+    
+    // Remove after 3 seconds
+    setTimeout(() => {
+        flashDiv.remove();
+    }, 3000);
+}
+
+// Close modals when clicking outside
+document.addEventListener('click', function(event) {
+    const createModal = document.getElementById('createCategoryModal');
+    const deleteModal = document.getElementById('deleteCategoryModal');
+    
+    if (event.target === createModal) {
+        closeCreateModal();
+    }
+    if (event.target === deleteModal) {
+        closeDeleteModal();
+    }
+});
+
+// Auto-generate slug from name in create modal
+document.getElementById('categoryName').addEventListener('input', function(e) {
+    const slugInput = document.getElementById('categorySlug');
+    const slug = e.target.value
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/[\s_-]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+    slugInput.value = slug;
 });
 </script>
