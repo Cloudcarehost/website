@@ -89,12 +89,14 @@
                             <article
                                 class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow">
                                 <div class="md:flex">
-                                    @if($kb->thumbnail)
-                                        <div class="md:w-1/3">
+                                 @if($kb->thumbnail)
+                                    <div class="md:w-1/3">
+                                        <div class="relative aspect-[4/3] bg-gray-50 overflow-hidden">
                                             <img src="{{ asset($kb->thumbnail) }}" alt="{{ $kb->title }}"
-                                                class="w-full h-full object-cover">
+                                                class="absolute inset-0 w-full h-full object-contain p-4">
                                         </div>
-                                    @endif
+                                    </div>
+                                @endif
                                     <div class="p-6 {{ $kb->thumbnail ? 'md:w-2/3' : 'w-full' }}">
                                         <div class="flex items-center mb-2">
                                             <span

@@ -1,6 +1,6 @@
 <x-user-layout>
     @section('title', 'Buy SSL Certificate | Secure Your Website with HTTPS - CloudCareHost')
-    @section('meta_description', 'Protect your site with SSL certificates from CloudCareHost. Enable HTTPS, boost SEO, and build trust with 256-bit encryption and a visible padlock for your domain.')
+    @section('meta_description', 'Protect your website with SSL certificates. Enable HTTPS, boost SEO rankings, and earn visitor trust with 256-bit encryption and a secure padlock.')
     @section('meta_keywords', 'buy ssl certificate, website ssl security, ssl for website, https ssl certificate, affordable ssl certificates, wildcard ssl, trusted ssl provider')
     @section('meta_author', 'Cloud Care Host')
     <!-- Hero Section with anchor link -->

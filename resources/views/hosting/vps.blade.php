@@ -1,7 +1,7 @@
 <x-hosting-layout title="High Availability Cloud Provider"
     description="Step into the online world with hosting optimized for performance and user-friendliness.">
-        @section('title', ' High Availability VPS Hosting | Fast, Secure & Scalable - CloudCareHost')
-    @section('meta_description', 'Experience High Availability VPS hosting with full root access, SSD storage, free DDoS protection, automated backups, and 24/7 expert support. Scalable plans built for developers, startups, and growing businesses.')
+        @section('title', 'High Availability VPS Hosting | Fast & Secure - CloudCareHost')
+    @section('meta_description', 'Boost performance with High Availability VPS hosting. SSDs, root access, DDoS protection, backups, and 24/7 expert support included.')
     @section('meta_keywords', 'vps hosting, high availability vps, best vps hosting, affordable vps server, managed vps hosting, vps with root access, vps hosting for developers, secure vps hosting, scalable vps hosting, web hosting company, hosting services, secure hosting, hosting in India')
     @section('meta_author', 'Cloud Care Host')
     

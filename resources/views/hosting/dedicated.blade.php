@@ -1,7 +1,7 @@
 <x-hosting-layout title="Powerful Dedicated Servers Made Simple"
     description="Step into the online world with hosting optimized for performance and user-friendliness.">
-        @section('title', 'Dedicated Server Hosting | Powerful & Customizable Servers - CloudCareHost')
-    @section('meta_description', 'Run demanding apps with our high-performance dedicated servers. Enjoy full root access, SSD storage, free DDoS protection, and 24/7 support. Customizable plans for business needs.')
+        @section('title', 'Dedicated Server Hosting | Powerful & Customizable - CloudCareHost')
+    @section('meta_description', 'Power your business with dedicated servers. Enjoy SSD storage, root access, DDoS protection, and 24/7 support with flexible, scalable plans.')
     @section('meta_keywords', 'dedicated server hosting, dedicated servers for business, best dedicated hosting, affordable dedicated servers, secure dedicated hosting, managed dedicated servers')
     @section('meta_author', 'Cloud Care Host')
     

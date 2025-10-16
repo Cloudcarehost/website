@@ -85,7 +85,10 @@
                                 <div class="md:flex">
                                     @if($blog->thumbnail)
                                         <div class="md:w-1/3">
-                                            <img src="{{ asset($blog->thumbnail) }}" alt="{{ $blog->title }}" class="w-full h-full object-cover">
+                                            <div class="relative aspect-[4/3] bg-gray-50 overflow-hidden">
+                                                <img src="{{ asset($blog->thumbnail) }}" alt="{{ $blog->title }}"
+                                                    class="absolute inset-0 w-full h-full object-contain p-4">
+                                            </div>
                                         </div>
                                     @endif
 
