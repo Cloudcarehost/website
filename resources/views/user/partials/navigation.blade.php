@@ -61,7 +61,7 @@
 
 
                             <!-- WordPress Hosting -->
-                            <a href="{{ route('hosting.wordpress') }}"
+                            <a href="#" onclick="hostingWordpressRedirectWithCurrency()"
                                 class="flex items-start px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors group">
                                 <div class="mr-3 mt-0.5 text-indigo-500">
                                     <i class="fab fa-wordpress text-lg"></i>
@@ -73,7 +73,7 @@
                             </a>
 
                             <!-- VPS Hosting -->
-                            <a href="{{ route('hosting.vps') }}"
+                            <a href="#" onclick="hostingVPSRedirectWithCurrency()"
                                 class="flex items-start px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors group">
                                 <div class="mr-3 mt-0.5 text-indigo-500">
                                     <i class="fas fa-cloud text-lg"></i>
@@ -85,7 +85,7 @@
                             </a>
 
                             <!-- Dedicated Hosting -->
-                            <a href="{{ route('hosting.dedicated') }}"
+                            <a href="#" onclick="hostingDedicatedRedirectWithCurrency()"
                                 class="flex items-start px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors group">
                                 <div class="mr-3 mt-0.5 text-indigo-500">
                                     <i class="fas fa-tachometer-alt text-lg"></i>
@@ -97,7 +97,7 @@
                             </a>
 
                             <!-- NodeJS Hosting -->
-                            <a href="{{ route('hosting.nodejs') }}"
+                            <a href="#" onclick="hostingNodejsRedirectWithCurrency()"
                                 class="flex items-start px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors group">
                                 <div class="mr-3 mt-0.5 text-indigo-500">
                                     <i class="fas fa-tachometer-alt text-lg"></i>
@@ -122,7 +122,7 @@
                         class="absolute left-0 mt-2 w-72 bg-white rounded-lg shadow-xl z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
                         <div class="py-2">
                             <!-- WooCommerce Hosting -->
-                            <a href="{{ route('hosting.woocommerce') }}"
+                            <a href="#" onclick="hostingWoocommerceRedirectWithCurrency()"
                                 class="flex items-start px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors group">
                                 <div class="mr-3 mt-0.5 text-indigo-500">
                                     <i class="fab fa-wordpress-simple text-lg"></i>
@@ -134,7 +134,7 @@
                             </a>
 
                             <!-- Reseller Hosting -->
-                            <a href="{{ route('hosting.reseller') }}"
+                            <a href="#" onclick="hostingResellerRedirectWithCurrency()"
                                 class="flex items-start px-4 py-3 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition-colors group">
                                 <div class="mr-3 mt-0.5 text-indigo-500">
                                     <i class="fas fa-users text-lg"></i>
@@ -286,7 +286,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('hosting.wordpress') }}"
+                            <a href="#" onclick="hostingWordpressRedirectWithCurrency()"
                                 class="flex items-start py-2 text-gray-600 hover:text-indigo-600">
                                 <i class="fab fa-wordpress text-indigo-500 mt-1 mr-3 w-4"></i>
                                 <div>
@@ -296,7 +296,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('hosting.vps') }}"
+                            <a href="#" onclick="hostingVPSRedirectWithCurrency()"
                                 class="flex items-start py-2 text-gray-600 hover:text-indigo-600">
                                 <i class="fas fa-cloud text-indigo-500 mt-1 mr-3 w-4"></i>
                                 <div>
@@ -306,7 +306,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('hosting.dedicated') }}"
+                            <a href="#" onclick="hostingDedicatedRedirectWithCurrency()"
                                 class="flex items-start py-2 text-gray-600 hover:text-indigo-600">
                                 <i class="fas fa-tachometer-alt text-indigo-500 mt-1 mr-3 w-4"></i>
                                 <div>
@@ -316,7 +316,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('hosting.nodejs') }}"
+                            <a href="#" onclick="hostingNodejsRedirectWithCurrency()"
                                 class="flex items-start py-2 text-gray-600 hover:text-indigo-600">
                                 <i class="fas fa-tachometer-alt text-indigo-500 mt-1 mr-3 w-4"></i>
                                 <div>
@@ -337,7 +337,7 @@
                     </button>
                     <ul class="pl-4 hidden" id="business-dropdown">
                         <li>
-                            <a href="{{ route('hosting.woocommerce') }}"
+                            <a href="#" onclick="hostingWoocommerceRedirectWithCurrency()"
                                 class="flex items-start py-2 text-gray-600 hover:text-indigo-600">
                                 <i class="fab fa-wordpress-simple text-indigo-500 mt-1 mr-3 w-4"></i>
                                 <div>
@@ -347,7 +347,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('hosting.reseller') }}"
+                            <a href="#" onclick="hostingResellerRedirectWithCurrency()"
                                 class="flex items-start py-2 text-gray-600 hover:text-indigo-600">
                                 <i class="fas fa-users text-indigo-500 mt-1 mr-3 w-4"></i>
                                 <div>
@@ -585,16 +585,41 @@
         }, 3000);
     }
 
-    // Optional: Function to update prices on the page
-    // function updatePrices(currencyCode) {
-    //     // This would be your logic to update prices based on the selected currency
-    //     // You might need to make another API call or have the prices in JavaScript
-    //     console.log('Updating prices for currency:', currencyCode);
-    // }
 </script>
 <script>
     function hostingSharedRedirectWithCurrency() {
         const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
         window.location.href = `{{ route('hosting.shared') }}?currency=${selectedCurrency}`;
     }
+
+    function hostingWordpressRedirectWithCurrency() {
+        const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+        window.location.href = `{{ route('hosting.wordpress') }}?currency=${selectedCurrency}`;
+    }
+
+    function hostingWoocommerceRedirectWithCurrency() {
+        const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+        window.location.href = `{{ route('hosting.woocommerce') }}?currency=${selectedCurrency}`;
+    }
+
+    function hostingVPSRedirectWithCurrency() {
+        const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+        window.location.href = `{{ route('hosting.vps') }}?currency=${selectedCurrency}`;
+    }
+
+    function hostingDedicatedRedirectWithCurrency() {
+        const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+        window.location.href = `{{ route('hosting.dedicated') }}?currency=${selectedCurrency}`;
+    }
+
+    function hostingNodejsRedirectWithCurrency() {
+        const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+        window.location.href = `{{ route('hosting.nodejs') }}?currency=${selectedCurrency}`;
+    }
+
+    function hostingResellerRedirectWithCurrency() {
+        const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+        window.location.href = `{{ route('hosting.reseller') }}?currency=${selectedCurrency}`;
+    }
+
 </script>

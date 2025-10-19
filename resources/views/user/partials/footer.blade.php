@@ -14,7 +14,7 @@
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 Shared Hosting
                             </a></li>
-                        <li><a href="{{ route('hosting.wordpress') }}"
+                        <li><a href="#" onclick="hostingWordpressRedirectWithCurrency()"
                                 class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
@@ -26,27 +26,33 @@
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 Cloud Hosting
                             </a></li> -->
-                        <li><a href="{{ route('hosting.vps') }}"
+                        <li><a href="#" onclick="hostingVPSRedirectWithCurrency()"
                                 class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 VPS Hosting
                             </a></li>
+                        <li><a href="#" onclick="hostingNodejsRedirectWithCurrency()"
+                                class="hover:text-white transition-colors flex items-center group">
+                                <span
+                                    class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
+                                Nodejs Hosting
+                            </a></li>
                     </ul>
                     <ul class="space-y-3">
-                        <li><a href="{{ route('hosting.dedicated') }}"
+                        <li><a href="#" onclick="hostingDedicatedRedirectWithCurrency()"
                                 class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 Dedicated Server
                             </a></li>
-                        <li><a href="{{ route('hosting.reseller') }}"
+                        <li><a href="#" onclick="hostingResellerRedirectWithCurrency()"
                                 class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 Reseller Hosting
                             </a></li>
-                        <a href="{{ route('hosting.woocommerce') }}"
+                        <a href="#" onclick="hostingWoocommerceRedirectWithCurrency()"
                             class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
@@ -237,5 +243,30 @@
             const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
             window.location.href = `{{ route('hosting.shared') }}?currency=${selectedCurrency}`;
         }
+        function hostingWordpressRedirectWithCurrency() {
+            const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            window.location.href = `{{ route('hosting.wordpress') }}?currency=${selectedCurrency}`;
+        }
+        function hostingVPSRedirectWithCurrency() {
+            const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            window.location.href = `{{ route('hosting.vps') }}?currency=${selectedCurrency}`;
+        }
+        function hostingDedicatedRedirectWithCurrency() {
+            const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            window.location.href = `{{ route('hosting.dedicated') }}?currency=${selectedCurrency}`;
+        }
+        function hostingResellerRedirectWithCurrency() {
+            const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            window.location.href = `{{ route('hosting.reseller') }}?currency=${selectedCurrency}`;
+        }
+        function hostingWoocommerceRedirectWithCurrency() {
+            const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            window.location.href = `{{ route('hosting.woocommerce') }}?currency=${selectedCurrency}`;
+        }
+        function hostingNodejsRedirectWithCurrency() {
+            const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            window.location.href = `{{ route('hosting.nodejs') }}?currency=${selectedCurrency}`;
+        }
+
     </script>
 </footer>
