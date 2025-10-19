@@ -107,19 +107,20 @@
                                             <span class="plan-price" data-monthly="{{ $plan->usd_monthly }}"
                                                 data-annually="{{ $plan->usd_annually }}"
                                                 data-biennially="{{ $plan->usd_biennially }}"
-                                                data-triennially="{{ $plan->usd_triennially }}">${{ $plan->usd_monthly }}</span>
+                                                data-triennially="{{ $plan->usd_triennially }}"
+                                                data-curr="{{ $plan->usd_prefix }}">{{ $plan->usd_prefix }}{{ $plan->usd_monthly }}</span>
                                             <span class="text-sm font-normal text-gray-500">/mo</span>
                                         </div>
                                         <p class="text-sm text-gray-500 plan-total" data-monthly="Billed monthly"
-                                            data-annually="${{ $plan->usd_annually }} billed yearly"
-                                            data-biennially="${{ $plan->usd_biennially }} billed every 2 years"
-                                            data-triennially="${{ $plan->usd_triennially }} billed every 3 years">
+                                            data-annually="{{ $plan->usd_prefix }}{{ $plan->usd_annually }} billed yearly"
+                                            data-biennially="{{ $plan->usd_prefix }}{{ $plan->usd_biennially }} billed every 2 years"
+                                            data-triennially="{{ $plan->usd_prefix }}{{ $plan->usd_triennially }} billed every 3 years">
                                             Billed monthly
                                         </p>
                                         <div class="text-xs text-gray-400 line-through mt-1 original-price" data-monthly=""
-                                            data-annually="Originally ${{ number_format($plan->usd_monthly * 12, 2) }}"
-                                            data-biennially="Originally ${{ number_format($plan->usd_monthly * 24, 2) }}"
-                                            data-triennially="Originally ${{ number_format($plan->usd_monthly * 36, 2) }}">
+                                            data-annually="Originally {{ $plan->usd_prefix }}{{ number_format($plan->usd_monthly * 12, 2) }}"
+                                            data-biennially="Originally {{ $plan->usd_prefix }}{{ number_format($plan->usd_monthly * 24, 2) }}"
+                                            data-triennially="Originally {{ $plan->usd_prefix }}{{ number_format($plan->usd_monthly * 36, 2) }}">
                                         </div>
                                     </div>
 
@@ -144,13 +145,13 @@
                                     <div class="mt-4 text-xs text-gray-500">
                                         <div class="flex justify-between py-1 border-b border-gray-100">
                                             <span>2 Years</span>
-                                            <span class="font-medium">${{ $plan->usd_biennially }} <span
+                                            <span class="font-medium">{{ $plan->usd_prefix }}{{ $plan->usd_biennially }} <span
                                                     class="text-red-500">({{ $plan->usd_discounted_biennially }}%
                                                     OFF)</span></span>
                                         </div>
                                         <div class="flex justify-between py-1">
                                             <span>3 Years</span>
-                                            <span class="font-medium">${{ $plan->usd_triennially }} <span
+                                            <span class="font-medium">{{ $plan->usd_prefix }}{{ $plan->usd_triennially }} <span
                                                     class="text-red-500">({{ $plan->usd_discounted_triennially }}%
                                                     OFF)</span></span>
                                         </div>
@@ -209,9 +210,11 @@
                         }
 
                         // Get the price data from data attributes
+                        
+                        const curr = priceElement.dataset.curr;
                         const monthlyPrice = parseFloat(priceElement.dataset.monthly);
                         const periodPrice = parseFloat(priceElement.dataset[period]);
-
+                        console.log("Hitesh",curr);
                         // Validate prices
                         if (isNaN(monthlyPrice) || isNaN(periodPrice)) {
                             console.error('Invalid price data for period:', period);
@@ -227,7 +230,7 @@
                         const equivalentMonthlyPrice = (periodPrice / months).toFixed(2);
 
                         // Update the displayed price
-                        priceElement.textContent = `$${equivalentMonthlyPrice}`;
+                        priceElement.textContent = `${curr}${equivalentMonthlyPrice}`;
 
                         // Update the billing description
                         if (totalElement.dataset[period]) {
@@ -824,11 +827,11 @@
 
                                     <h3 class="text-lg font-semibold mb-2">
                                         @php
-                                            $path = $blog->type === 'blog'
-                                                ? 'single-articles/' . $blog->slug
-                                                : ($blog->type === 'kb'
-                                                    ? 'knowledge-base/' . $blog->slug
-                                                    : '#');
+        $path = $blog->type === 'blog'
+            ? 'single-articles/' . $blog->slug
+            : ($blog->type === 'kb'
+                ? 'knowledge-base/' . $blog->slug
+                : '#');
                                         @endphp
                                         <a href="{{ url($path) }}" class="hover:text-blue-600">
                                             {{ Str::limit($blog->title, 70) }}

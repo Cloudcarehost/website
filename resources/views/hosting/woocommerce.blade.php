@@ -1,10 +1,10 @@
 <x-hosting-layout title="Sell More with Powerful WooCommerce Hosting"
     description="Step into the online world with hosting optimized for performance and user-friendliness.">
-        @section('title', 'WooCommerce Hosting | Fast & Secure Store Hosting - CloudCareHost')
+    @section('title', 'WooCommerce Hosting | Fast & Secure Store Hosting - CloudCareHost')
     @section('meta_description', 'Power your WooCommerce store with hosting designed for speed and security. Includes pre-installed tools, free SSL, daily backups, and 24/7 support.')
     @section('meta_keywords', ' woocommerce hosting, managed woocommerce hosting, best hosting for woocommerce, affordable woocommerce hosting, secure woocommerce hosting, woocommerce optimized hosting')
     @section('meta_author', 'Cloud Care Host')
-    
+
     <div class="mb-12">
 
         <!-- Hero Section -->
@@ -76,84 +76,85 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @foreach($data as $plan)
-                        <div class="plan-card" data-plan="{{ $plan->slug2 }}">
-                            <div
-                                class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden transition-all hover:shadow-lg hover:border-indigo-300">
-                                <div class="p-6">
-                                    <div class="flex justify-between items-start mb-4">
-                                        <h3 class="text-xl font-bold">{{ $plan->name }}</h3>
-                                        @if($loop->first)
-                                            <span
-                                                class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">Popular</span>
-                                        @elseif($loop->index == 1)
-                                            <span
-                                                class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">BEST
-                                                VALUE</span>
-                                        @endif
-                                    </div>
+                                            <div class="plan-card" data-plan="{{ $plan->slug2 }}">
+                                                <div
+                                                    class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden transition-all hover:shadow-lg hover:border-indigo-300">
+                                                    <div class="p-6">
+                                                        <div class="flex justify-between items-start mb-4">
+                                                            <h3 class="text-xl font-bold">{{ $plan->name }}</h3>
+                                                            @if($loop->first)
+                                                                <span
+                                                                    class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">Popular</span>
+                                                            @elseif($loop->index == 1)
+                                                                <span
+                                                                    class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">BEST
+                                                                    VALUE</span>
+                                                            @endif
+                                                        </div>
 
-                                    <!-- Discount Badge - Only show for non-monthly periods -->
-                                    <div
-                                        class="bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-3 discount-badge hidden">
-                                        Save <span class="discount-percent">{{ $plan->usd_discounted_annually }}</span>%
-                                    </div>
+                                                        <!-- Discount Badge - Only show for non-monthly periods -->
+                                                        <div
+                                                            class="bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-3 discount-badge hidden">
+                                                            Save <span class="discount-percent">{{ $plan->usd_discounted_annually }}</span>%
+                                                        </div>
 
-                                    <div class="mb-6">
-                                        <div class="text-3xl font-bold mb-1">
-                                            <span class="plan-price" data-monthly="{{ $plan->usd_monthly }}"
-                                                data-annually="{{ $plan->usd_annually }}"
-                                                data-biennially="{{ $plan->usd_biennially }}"
-                                                data-triennially="{{ $plan->usd_triennially }}">${{ $plan->usd_monthly }}</span>
-                                            <span class="text-sm font-normal text-gray-500">/mo</span>
-                                        </div>
-                                        <p class="text-sm text-gray-500 plan-total" data-monthly="Billed monthly"
-                                            data-annually="${{ $plan->usd_annually }} billed yearly"
-                                            data-biennially="${{ $plan->usd_biennially }} billed every 2 years"
-                                            data-triennially="${{ $plan->usd_triennially }} billed every 3 years">
-                                            Billed monthly
-                                        </p>
-                                        <div class="text-xs text-gray-400 line-through mt-1 original-price" data-monthly=""
-                                            data-annually="Originally ${{ number_format($plan->usd_monthly * 12, 2) }}"
-                                            data-biennially="Originally ${{ number_format($plan->usd_monthly * 24, 2) }}"
-                                            data-triennially="Originally ${{ number_format($plan->usd_monthly * 36, 2) }}">
-                                        </div>
-                                    </div>
+                                                        <div class="mb-6">
+                                                            <div class="text-3xl font-bold mb-1">
+                                                                <span class="plan-price" data-monthly="{{ $plan->usd_monthly }}"
+                                                                    data-annually="{{ $plan->usd_annually }}"
+                                                                    data-biennially="{{ $plan->usd_biennially }}"
+                                                                    data-triennially="{{ $plan->usd_triennially }}"
+                                                                    data-curr="{{ $plan->usd_prefix }}">{{ $plan->usd_prefix }}{{ $plan->usd_monthly }}</span>
+                                                                <span class="text-sm font-normal text-gray-500">/mo</span>
+                                                            </div>
+                                                            <p class="text-sm text-gray-500 plan-total" data-monthly="Billed monthly"
+                                                                data-annually="{{ $plan->usd_prefix }}{{ $plan->usd_annually }} billed yearly"
+                                                                data-biennially="{{ $plan->usd_prefix }}{{ $plan->usd_biennially }} billed every 2 years"
+                                                                data-triennially="{{ $plan->usd_prefix }}{{ $plan->usd_triennially }} billed every 3 years">
+                                                                Billed monthly
+                                                            </p>
+                                                            <div class="text-xs text-gray-400 line-through mt-1 original-price" data-monthly=""
+                                                                data-annually="Originally {{ $plan->usd_prefix }}{{ number_format($plan->usd_monthly * 12, 2) }}"
+                                                                data-biennially="Originally {{ $plan->usd_prefix }}{{ number_format($plan->usd_monthly * 24, 2) }}"
+                                                                data-triennially="Originally {{ $plan->usd_prefix }}{{ number_format($plan->usd_monthly * 36, 2) }}">
+                                                            </div>
+                                                        </div>
 
-                                    <ul class="space-y-2 mb-6">
-                                        @php
-                                            $features = json_decode($plan->features_json);
-                                        @endphp
-                                        @foreach($features as $feature)
-                                            <li class="flex items-start">
-                                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2 text-sm"></i>
-                                                <span>{{ $feature }}</span>
-                                            </li>
-                                        @endforeach
-                                    </ul>
+                                                        <ul class="space-y-2 mb-6">
+                                                            @php
+                                                                $features = json_decode($plan->features_json);
+                                                            @endphp
+                                                            @foreach($features as $feature)
+                                                                <li class="flex items-start">
+                                                                    <i class="fas fa-check-circle text-green-500 mt-1 mr-2 text-sm"></i>
+                                                                    <span>{{ $feature }}</span>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
 
-                                    <a href="{{ $plan->product_url }}"
-                                        class="block w-full bg-indigo-600 hover:bg-indigo-700 text-white text-center py-2 px-4 rounded-lg font-medium transition-colors">
-                                        Get Started
-                                    </a>
+                                                        <a href="{{ $plan->product_url }}"
+                                                            class="block w-full bg-indigo-600 hover:bg-indigo-700 text-white text-center py-2 px-4 rounded-lg font-medium transition-colors">
+                                                            Get Started
+                                                        </a>
 
-                                    <!-- Other Billing Options -->
-                                    <div class="mt-4 text-xs text-gray-500">
-                                        <div class="flex justify-between py-1 border-b border-gray-100">
-                                            <span>2 Years</span>
-                                            <span class="font-medium">${{ $plan->usd_biennially }} <span
-                                                    class="text-red-500">({{ $plan->usd_discounted_biennially }}%
-                                                    OFF)</span></span>
-                                        </div>
-                                        <div class="flex justify-between py-1">
-                                            <span>3 Years</span>
-                                            <span class="font-medium">${{ $plan->usd_triennially }} <span
-                                                    class="text-red-500">({{ $plan->usd_discounted_triennially }}%
-                                                    OFF)</span></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                                        <!-- Other Billing Options -->
+                                                        <div class="mt-4 text-xs text-gray-500">
+                                                            <div class="flex justify-between py-1 border-b border-gray-100">
+                                                                <span>2 Years</span>
+                                                                <span class="font-medium">{{ $plan->usd_prefix }}{{ $plan->usd_biennially }} <span
+                                                                        class="text-red-500">({{ $plan->usd_discounted_biennially }}%
+                                                                        OFF)</span></span>
+                                                            </div>
+                                                            <div class="flex justify-between py-1">
+                                                                <span>3 Years</span>
+                                                                <span class="font-medium">{{ $plan->usd_prefix }}{{ $plan->usd_triennially }} <span
+                                                                        class="text-red-500">({{ $plan->usd_discounted_triennially }}%
+                                                                        OFF)</span></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                     @endforeach
                 </div>
             </div>
@@ -205,9 +206,11 @@
                         }
 
                         // Get the price data from data attributes
+
+                        const curr = priceElement.dataset.curr;
                         const monthlyPrice = parseFloat(priceElement.dataset.monthly);
                         const periodPrice = parseFloat(priceElement.dataset[period]);
-
+                        console.log("Hitesh", curr);
                         // Validate prices
                         if (isNaN(monthlyPrice) || isNaN(periodPrice)) {
                             console.error('Invalid price data for period:', period);
@@ -223,7 +226,7 @@
                         const equivalentMonthlyPrice = (periodPrice / months).toFixed(2);
 
                         // Update the displayed price
-                        priceElement.textContent = `$${equivalentMonthlyPrice}`;
+                        priceElement.textContent = `${curr}${equivalentMonthlyPrice}`;
 
                         // Update the billing description
                         if (totalElement.dataset[period]) {
@@ -895,24 +898,25 @@
                         View all posts
                     </a>
                 </div>
-        
+
                 <!-- Cards Grid -->
                 @if($blogs->isNotEmpty())
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
                         @foreach($blogs as $blog)
                             <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
-                                <img src="{{ asset($blog->thumbnail) }}" alt="{{ $blog->title }}" class="w-full h-40 object-cover">
+                                <img src="{{ asset($blog->thumbnail) }}" alt="{{ $blog->title }}"
+                                    class="w-full h-40 object-cover">
                                 <div class="p-5">
                                     <p class="text-sm text-gray-400 font-semibold">CloudCareHost</p>
 
                                     <h3 class="text-lg font-semibold mb-2">
                                         @php
-                                            $path = $blog->type === 'blog'
-                                                ? 'single-articles/' . $blog->slug
-                                                : ($blog->type === 'kb'
-                                                    ? 'knowledge-base/' . $blog->slug
-                                                    : '#');
+        $path = $blog->type === 'blog'
+            ? 'single-articles/' . $blog->slug
+            : ($blog->type === 'kb'
+                ? 'knowledge-base/' . $blog->slug
+                : '#');
                                         @endphp
                                         <a href="{{ url($path) }}" class="hover:text-blue-600">
                                             {{ Str::limit($blog->title, 70) }}
