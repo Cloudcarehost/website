@@ -47,7 +47,7 @@
             </div>
 
             <div class="lg:w-1/2 animate__animated animate__fadeInRight animate__delay-1s">
-                <img src="{{ asset('images/hero01.png') }}" alt="Cloud Hosting Illustration"
+                <img src="{{ asset('images/hero1.webp') }}" alt="Cloud Hosting Illustration"
                     class="max-w-full animate-float">
             </div>
         </div>
@@ -443,14 +443,14 @@
                     <a href="#" class="text-indigo-600 font-semibold">Learn More</a>
                 </div>
                 <div class="flex justify-center">
-                    <img src="{{ asset('images/home-001.png') }}" alt="Setup Illustration" class="max-w-full">
+                    <img src="{{ asset('images/home-001.webp') }}" alt="Setup Illustration" class="max-w-full">
                 </div>
             </div>
 
             <!-- Faster Website Section -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
                 <div class="flex justify-center order-1 md:order-none">
-                    <img src="{{ asset('images/home-001.png') }}" alt="Speed Illustration" class="max-w-full">
+                    <img src="{{ asset('images/home-001.webp') }}" alt="Speed Illustration" class="max-w-full">
                 </div>
                 <div>
                     <h2 class="text-2xl md:text-3xl font-bold mb-4">Your Website 20x Faster</h2>
@@ -477,7 +477,7 @@
                     <a href="#" class="text-indigo-600 font-semibold">Learn More</a>
                 </div>
                 <div class="flex justify-center">
-                    <img src="{{ asset('images/home-001.png') }}" alt="Setup Illustration" class="max-w-full">
+                    <img src="{{ asset('images/home-001.webp') }}" alt="Setup Illustration" class="max-w-full">
                 </div>
             </div>
 
@@ -1264,7 +1264,7 @@
                     Started Now</button>
             </div>
             <div class="lg:w-1/2">
-                <img src="{{ asset('images/hero1.jpg') }}" alt="Get Started"
+                <img src="{{ asset('images/hero1.webp') }}" alt="Get Started"
                     class="rounded-lg shadow-xl max-w-full animate-float">
             </div>
         </div>
