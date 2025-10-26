@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="lg:w-1/2 animate__animated animate__fadeInRight animate__delay-1s">
-                    <img src="{{ asset('images/vps.png') }}" alt="Cloud Hosting Illustration"
+                    <img src="{{ asset('images/nodejs.webp') }}" alt="Cloud Hosting Illustration"
                         class="max-w-full animate-float">
                 </div>
             </div>

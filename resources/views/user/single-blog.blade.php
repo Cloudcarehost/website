@@ -231,7 +231,7 @@
     </div>
 
     <style>
-        .notebook {
+        /*.notebook {
             background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
             border-left: 6px solid #f3f4f6;
             position: relative;
@@ -243,12 +243,11 @@
             content: "";
             position: absolute;
             inset: 0;
-            /* modified: red lines, bolder */
             background-image: linear-gradient(to bottom, rgba(167, 164, 164, 0.15) 2px, transparent 2px);
             background-size: 100% 28px;
             pointer-events: none;
             mix-blend-mode: multiply;
-            opacity: 0.9; /* modified */
+            opacity: 0.9;
         }
 
         .notebook .prose {
@@ -296,7 +295,7 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             overflow: hidden;
-        }
+        }*/
 
         .transition-all {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -318,7 +317,7 @@
                 backdrop-filter: blur(4px);
             }
         }
-    </style>
+        </style>
 
     <script>
         // Feedback functionality (replace existing functions)
