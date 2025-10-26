@@ -103,7 +103,7 @@
                 </div>
 
                 <div class="lg:w-1/2 animate__animated animate__fadeInRight animate__delay-1s">
-                    <img src="{{ asset('images/shared.png') }}" alt="Cloud Hosting Illustration"
+                    <img src="{{ asset('images/shared.webp') }}" alt="Cloud Hosting Illustration"
                         class="max-w-full animate-float">
                 </div>
             </div>
@@ -530,7 +530,7 @@
 
                 <!-- Right Image -->
                 <div class="flex justify-center">
-                    <img src="{{ asset('images/shared1.png') }}" alt="Top Reasons to Host Your Website with Us"
+                    <img src="{{ asset('images/shared1.webp') }}" alt="Top Reasons to Host Your Website with Us"
                         class="max-w-md w-full">
                 </div>
 

@@ -1,7 +1,7 @@
 <x-user-layout>
     <!-- Hero Section -->
     <section class="relative h-screen bg-cover bg-center flex items-center"
-        style="background-image: url('{{ asset('images/hero-bg.png') }}')">
+        style="background-image: url('{{ asset('images/hero-bg.webp') }}')">
         <!-- Overlay -->
         
 
@@ -656,7 +656,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
-                    <img src="{{ asset('images/portfolio-1.jpg') }}" alt="E-Commerce Revamp" class="w-full h-48 object-cover">
+                    <img src="{{ asset('images/portfolio-1.webp') }}" alt="E-Commerce Revamp" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h4 class="font-bold text-xl mb-2">E-Commerce Revamp</h4>
                         <p class="text-gray-600 mb-4">Migrated a legacy store to a modern platform, improved load time by 60% and increased conversion.</p>
@@ -668,7 +668,7 @@
                 </div>
 
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
-                    <img src="{{ asset('images/portfolio-2.jpg') }}" alt="Mobile Field App" class="w-full h-48 object-cover">
+                    <img src="{{ asset('images/portfolio-2.webp') }}" alt="Mobile Field App" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h4 class="font-bold text-xl mb-2">Mobile Field App</h4>
                         <p class="text-gray-600 mb-4">Built an Android app for field technicians that reduced reporting time by 50%.</p>
@@ -680,7 +680,7 @@
                 </div>
 
                 <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
-                    <img src="{{ asset('images/portfolio-3.jpg') }}" alt="ERP Implementation" class="w-full h-48 object-cover">
+                    <img src="{{ asset('images/portfolio-3.webp') }}" alt="ERP Implementation" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h4 class="font-bold text-xl mb-2">ERP Implementation</h4>
                         <p class="text-gray-600 mb-4">Implemented ERP for a retailer, centralized inventory and reporting across stores.</p>

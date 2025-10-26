@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="lg:w-1/2 animate__animated animate__fadeInRight animate__delay-1s">
-                    <img src="{{ asset('images/vps.png') }}" alt="Cloud Hosting Illustration"
+                    <img src="{{ asset('images/vps.webp') }}" alt="Cloud Hosting Illustration"
                         class="max-w-full animate-float">
                 </div>
             </div>
@@ -409,7 +409,7 @@
 
                 <!-- Right Image -->
                 <div class="flex justify-center">
-                    <img src="{{ asset('images/vps1.png') }}"" alt="Web Hosting Illustration"
+                    <img src="{{ asset('images/vps1.webp') }}"" alt="Web Hosting Illustration"
                         class="max-w-md w-full">
                 </div>
             </div>
@@ -479,7 +479,7 @@
                         cutting-edge technology, we provide the stability and power your demanding workloads require.
                     </p>
 
-                    <img src="{{ asset('images/vps2.png') }}"
+                    <img src="{{ asset('images/vps2.webp') }}"
                         alt="Cloud Server Management Illustration" class="max-w-md w-full mx-auto">
 
                     <div class="space-y-6">

@@ -104,7 +104,7 @@
                 </div>
 
                 <div class="lg:w-1/2 animate__animated animate__fadeInRight animate__delay-1s">
-                    <img src="{{ asset('images/wordpress.png') }}" alt="Cloud Hosting Illustration"
+                    <img src="{{ asset('images/wordpress.webp') }}" alt="Cloud Hosting Illustration"
                         class="max-w-full animate-float">
                 </div>
             </div>
@@ -604,7 +604,7 @@
 
                 <!-- Right Image -->
                 <div class="flex justify-center">
-                    <img src="{{ asset('images/wordpress1.png') }}" alt="Web Hosting Illustration"
+                    <img src="{{ asset('images/wordpress1.webp') }}" alt="Web Hosting Illustration"
                         class="max-w-md w-full">
                 </div>
 

@@ -5,7 +5,7 @@
     @section('meta_author', 'Cloud Care Host')
     <!-- Hero Section with anchor link -->
     <section class="relative h-screen bg-cover bg-center flex items-center"
-        style="background-image: url('{{ asset('images/ssl.png') }}')">
+        style="background-image: url('{{ asset('images/ssl.webp') }}')">
         <!-- Overlay -->
         <div class="absolute inset-0 bg-opacity-40"></div>
 
@@ -126,7 +126,7 @@
 
             <!-- Right Image -->
             <div class="flex justify-center animate__animated animate__fadeInRight">
-                <img src="{{ asset('images/ssl-security.png') }}"
+                <img src="{{ asset('images/ssl-security.webp') }}"
                      alt="SSL Certificate Security"
                      class="max-w-full lg:max-w-md rounded-lg shadow-lg">
             </div>
