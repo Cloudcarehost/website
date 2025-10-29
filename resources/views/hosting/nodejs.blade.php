@@ -72,7 +72,7 @@
                     developers the freedom and support to focus on building, not troubleshooting.
                 </p>
 
-                <div class="flex justify-center mb-8">
+                <div id="plans" class="flex justify-center mb-8">
                     <div class="inline-flex items-center bg-gray-100 rounded-lg p-1 billing-toggle">
                         <button data-period="monthly"
                             class="px-4 py-2 rounded-md font-medium billing-btn bg-indigo-600 text-white">Monthly</button>
@@ -139,7 +139,7 @@
 
                                     <ul class="space-y-2 mb-6">
                                         @php
-                                            $features = json_decode($plan->features_json);
+    $features = json_decode($plan->features_json);
                                         @endphp
                                         @foreach($features as $feature)
                                             <li class="flex items-start">
@@ -324,9 +324,9 @@
                             your project live instantly. Enjoy blazing-fast performance, full control, and built-in
                             tools like PM2, SSL, and caching, all designed so you can focus on building, not
                             configuring.</p>
-                        <button
+                        <!-- <button
                             class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">Get
-                            Started Now</button>
+                            Started Now</button> -->
                     </div>
                     <div class="md:w-1/2 flex justify-center">
                         <div class="bg-blue-800 rounded-xl p-8 w-full max-w-md">
@@ -575,11 +575,12 @@
                                     </svg>
                                     <span class="text-gray-700">Extensive Node.js Knowledge Base</span>
                                 </div>
+                                <a href="#plans"
+                                    class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-lg mt-8 transition duration-300">Start
+                                    Building with CloudCareHost</a>
                             </div>
 
-                            <button
-                                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-lg mt-8 transition duration-300">Start
-                                Building with CloudCareHost Node.js Hosting</button>
+                            
                         </div>
                     </div>
                 </div>

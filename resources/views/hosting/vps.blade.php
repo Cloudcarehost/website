@@ -801,12 +801,12 @@
                 </div>
 
                 <!-- CTA Button -->
-                <div class="text-center mt-12">
+                <!-- <div class="text-center mt-12">
                     <a href="#"
                         class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-3 px-8 rounded-lg transition duration-300 transform hover:-translate-y-1">
                         Explore VPS Hosting Plans
                     </a>
-                </div>
+                </div> -->
             </div>
         </section>
 

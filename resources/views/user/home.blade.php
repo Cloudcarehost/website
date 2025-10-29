@@ -109,7 +109,7 @@
                 Our hosting is built to expand with you, every step of the way.
             </p>
 
-            <div class="flex justify-center mb-8">
+            <div id="plansData1" class="flex justify-center mb-8">
                 <div class="inline-flex items-center bg-gray-100 rounded-lg p-1 billing-toggle">
                     <button data-period="monthly"
                         class="px-4 py-2 rounded-md font-medium billing-btn bg-indigo-600 text-white">Monthly</button>
@@ -1262,9 +1262,9 @@
                 <h2 class="text-3xl md:text-4xl font-bold font-montserrat mb-6">Ready to Launch Your Website?</h2>
                 <p class="text-lg opacity-90 mb-8">Get started with Cloud Care Host today and get your website online in
                     minutes.</p>
-                <button
+                <a href="#plansData1"
                     class="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-medium transition-colors">Get
-                    Started Now</button>
+                    Started Now</a>
             </div>
             <div class="lg:w-1/2">
                 <img src="{{ asset('images/hero1.webp') }}" alt="Get Started"

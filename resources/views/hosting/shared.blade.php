@@ -195,7 +195,7 @@
                     Our hosting is built to expand with you, every step of the way.
                 </p>
 
-                <div class="flex justify-center mb-8">
+                <div id="plans" class="flex justify-center mb-8">
                     <div class="inline-flex items-center bg-gray-100 rounded-lg p-1 billing-toggle">
                         <button data-period="monthly"
                             class="px-4 py-2 rounded-md font-medium billing-btn bg-indigo-600 text-white">Monthly</button>
@@ -522,7 +522,7 @@
                         Boost your sales and internet presence, and improve your bottom line with web hosting features
                         designed for your web project.
                     </p> -->
-                    <a href="#"
+                    <a href="#plans"
                         class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-4 rounded-lg shadow-md transition">
                         Get Started Now
                     </a>

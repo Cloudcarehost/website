@@ -48,12 +48,15 @@
             <p class="text-xl mb-8 max-w-2xl mx-auto">Choose the perfect hosting solution for your needs and launch your
                 website today.</p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="{{ route('hosting.index') }}"
+                <!-- <a href="{{ route('hosting.index') }}"
                     class="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-medium transition-colors">View
-                    All Plans</a>
-                <a
+                    All Plans</a> -->
+                <a href="{{ route('contact') }}"
+                    class="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-medium transition-colors">
+                    Contact Sales</a>
+                <!-- <a
                     class="border-2 border-white text-white hover:bg-white hover:text-indigo-600 px-8 py-3 rounded-lg font-medium transition-colors">Contact
-                    Sales</a>
+                    Sales</a> -->
                 <!-- contact us la call karaycha ethun -->
             </div>
         </div>

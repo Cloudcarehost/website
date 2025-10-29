@@ -78,12 +78,14 @@
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                             SSL Certificates
                         </a></li>
-                    <li><a href="#" class="hover:text-white transition-colors flex items-center group">
+                    <li><a href="{{ route('articles') }}"
+                            class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                             Website Migration
                         </a></li>
-                    <li><a href="#" class="hover:text-white transition-colors flex items-center group">
+                    <li><a href="{{ route('articles') }}"
+                            class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                             Backups & Security
@@ -101,15 +103,16 @@
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                             About CloudCareHost
                         </a></li>
-                    <li><a href="#" class="hover:text-white transition-colors flex items-center group">
+                    <!-- <li><a href="#" class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                             Careers
-                        </a></li>
-                    <li><a href="#" class="hover:text-white transition-colors flex items-center group">
+                        </a></li> -->
+                    <li><a href="{{route('articles')}}"
+                            class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
-                            Blog
+                            Blogs
                         </a></li>
                     <li><a href="{{ route('contact') }}"
                             class="hover:text-white transition-colors flex items-center group">
@@ -125,17 +128,20 @@
                 <h3 class="text-lg font-bold font-montserrat text-white mb-4 pb-2 border-b border-gray-700">Support</h3>
                 <div class="grid grid-cols-1 gap-8">
                     <ul class="space-y-3">
-                        <li><a href="#" class="hover:text-white transition-colors flex items-center group">
+                        <li><a href="{{ route('knowledge-base') }}"
+                                class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 Knowledge Base
                             </a></li>
-                        <li><a href="#" class="hover:text-white transition-colors flex items-center group">
+                        <li><a href="{{ route('articles') }}"
+                                class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 Tutorials
                             </a></li>
-                        <li><a href="#" class="hover:text-white transition-colors flex items-center group">
+                        <li><a href="{{ route('articles') }}"
+                                class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 System Status
@@ -219,8 +225,8 @@
                         class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
                     <a href="{{ route('privacy.policy') }}"
                         class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
-                    <a href="{{ route('sitemap') }}"
-                        class="text-gray-400 hover:text-white text-sm transition-colors">Sitemap</a>
+                    <!-- <a href="{{ route('sitemap') }}"
+                        class="text-gray-400 hover:text-white text-sm transition-colors">Sitemap</a> -->
                     <!--<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Acceptable Use
                         Policy</a>-->
                     <a href="{{route('refund-policy')}}"

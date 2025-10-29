@@ -55,7 +55,7 @@
 
                 </p>
 
-                <div class="flex justify-center mb-8">
+                <div id="plans" class="flex justify-center mb-8">
                     <div class="inline-flex items-center bg-gray-100 rounded-lg p-1 billing-toggle">
                         <button data-period="monthly"
                             class="px-4 py-2 rounded-md font-medium billing-btn bg-indigo-600 text-white">Monthly</button>
@@ -801,7 +801,7 @@
                         <h3 class="text-2xl font-bold text-white mb-4">Ready to Grow Your Store?</h3>
                         <p class="text-blue-100 mb-6">Join hundreds of store owners who trust CloudCareHost for
                             reliable, fast, and affordable WooCommerce hosting.</p>
-                        <a href="#"
+                        <a href="#plans"
                             class="inline-block bg-white text-blue-600 font-semibold px-6 py-3 rounded-lg hover:bg-blue-50 transition duration-300">
                             Start Your WooCommerce Journey Today
                         </a>
