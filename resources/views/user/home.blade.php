@@ -122,200 +122,203 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 @foreach($data as $plan)
-                    <div class="plan-card" data-plan="{{ $plan->slug2 }}">
-                        <div
-                            class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden transition-all hover:shadow-lg hover:border-indigo-300">
-                            <div class="p-6">
-                                <div class="flex justify-between items-start mb-4">
-                                    <h3 class="text-xl font-bold">{{ $plan->name }}</h3>
-                                    @if($loop->first)
-                                        <span
-                                            class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">Popular</span>
-                                    @elseif($loop->index == 1)
-                                        <span
-                                            class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">BEST
-                                            VALUE</span>
-                                    @endif
-                                </div>
+                                                    <div class="plan-card" data-plan="{{ $plan->slug2 }}">
+                                                        <div
+                                                            class="bg-white rounded-xl shadow-md border border-gray-200 overflow-hidden transition-all hover:shadow-lg hover:border-indigo-300">
+                                                            <div class="p-6">
+                                                                <div class="flex justify-between items-start mb-4">
+                                                                    <h3 class="text-xl font-bold">{{ $plan->name }}</h3>
+                                                                    @if($loop->first)
+                                                                        <span
+                                                                            class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">Popular</span>
+                                                                    @elseif($loop->index == 1)
+                                                                        <span
+                                                                            class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">BEST
+                                                                            VALUE</span>
+                                                                    @endif
+                                                                </div>
 
-                                <!-- Discount Badge - Only show for non-monthly periods -->
-                                <div
-                                    class="bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-3 discount-badge hidden">
-                                    Save <span class="discount-percent">{{ $plan->usd_discounted_annually }}</span>%
-                                </div>
+                                                                <!-- Discount Badge - Only show for non-monthly periods -->
+                                                                <div
+                                                                    class="bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-3 discount-badge hidden">
+                                                                    Save <span class="discount-percent">{{ $plan->usd_discounted_annually }}</span>%
+                                                                </div>
 
-                                <div class="mb-6">
-                                    <div class="text-3xl font-bold mb-1">
-                                        <span class="plan-price" data-monthly="{{ $plan->usd_monthly }}"
-                                            data-annually="{{ $plan->usd_annually }}"
-                                            data-biennially="{{ $plan->usd_biennially }}"
-                                            data-triennially="{{ $plan->usd_triennially }}">${{ $plan->usd_monthly }}</span>
-                                        <span class="text-sm font-normal text-gray-500">/mo</span>
-                                    </div>
-                                    <p class="text-sm text-gray-500 plan-total" data-monthly="Billed monthly"
-                                        data-annually="${{ $plan->usd_annually }} billed yearly"
-                                        data-biennially="${{ $plan->usd_biennially }} billed every 2 years"
-                                        data-triennially="${{ $plan->usd_triennially }} billed every 3 years">
-                                        Billed monthly
-                                    </p>
-                                    <div class="text-xs text-gray-400 line-through mt-1 original-price" data-monthly=""
-                                        data-annually="Originally ${{ number_format($plan->usd_monthly * 12, 2) }}"
-                                        data-biennially="Originally ${{ number_format($plan->usd_monthly * 24, 2) }}"
-                                        data-triennially="Originally ${{ number_format($plan->usd_monthly * 36, 2) }}">
-                                    </div>
-                                </div>
+                                                                <div class="mb-6">
+                                                                    <div class="text-3xl font-bold mb-1">
+                                                                        <span class="plan-price" data-monthly="{{ $plan->usd_monthly }}"
+                                                                            data-annually="{{ $plan->usd_annually }}"
+                                                                            data-biennially="{{ $plan->usd_biennially }}"
+                                                                            data-triennially="{{ $plan->usd_triennially }}"
+                                                                            data-curr="{{ $plan->usd_prefix }}">{{ $plan->usd_prefix }}{{ $plan->usd_monthly }}</span>
+                                                                        <span class="text-sm font-normal text-gray-500">/mo</span>
+                                                                    </div>
+                                                                    <p class="text-sm text-gray-500 plan-total" data-monthly="Billed monthly"
+                                                                        data-annually="${{ $plan->usd_annually }} billed yearly"
+                                                                        data-biennially="${{ $plan->usd_biennially }} billed every 2 years"
+                                                                        data-triennially="${{ $plan->usd_triennially }} billed every 3 years">
+                                                                        Billed monthly
+                                                                    </p>
+                                                                    <div class="text-xs text-gray-400 line-through mt-1 original-price" data-monthly=""
+                                                                        data-annually="Originally ${{ number_format($plan->usd_monthly * 12, 2) }}"
+                                                                        data-biennially="Originally ${{ number_format($plan->usd_monthly * 24, 2) }}"
+                                                                        data-triennially="Originally ${{ number_format($plan->usd_monthly * 36, 2) }}">
+                                                                    </div>
+                                                                </div>
 
-                                <ul class="space-y-2 mb-6">
-                                    @php
-                                        $features = json_decode($plan->features_json);
-                                    @endphp
-                                    @foreach(array_slice($features, 0, 9) as $feature)
-                                        <li class="flex items-start">
-                                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2 text-sm"></i>
-                                            <span>{{ $feature }}</span>
-                                        </li>
-                                    @endforeach
-                                </ul>
+                                                                <ul class="space-y-2 mb-6">
+                                                                    @php
+                    $features = json_decode($plan->features_json);
+                                                                    @endphp
+                                                                    @foreach(array_slice($features, 0, 9) as $feature)
+                                                                        <li class="flex items-start">
+                                                                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2 text-sm"></i>
+                                                                            <span>{{ $feature }}</span>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
 
-                                <a href="{{ $plan->product_url }}"
-                                    class="block w-full bg-indigo-600 hover:bg-indigo-700 text-white text-center py-2 px-4 rounded-lg font-medium transition-colors">
-                                    Get Started
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+                                                                <a href="{{ $plan->product_url }}{{ $plan->url_curr_id }}"
+                                                                    class="block w-full bg-indigo-600 hover:bg-indigo-700 text-white text-center py-2 px-4 rounded-lg font-medium transition-colors">
+                                                                    Get Started
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                 @endforeach
             </div>
         </div>
     </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const billingButtons = document.querySelectorAll('.billing-btn');
-            const defaultPeriod = 'monthly';
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const billingButtons = document.querySelectorAll('.billing-btn');
+                const defaultPeriod = 'monthly';
 
-            // Function to safely get element or return null
-            function safeQuerySelector(selector, parent = document) {
-                try {
-                    return parent.querySelector(selector);
-                } catch (e) {
-                    console.error('Error selecting element:', e);
-                    return null;
+                // Function to safely get element or return null
+                function safeQuerySelector(selector, parent = document) {
+                    try {
+                        return parent.querySelector(selector);
+                    } catch (e) {
+                        console.error('Error selecting element:', e);
+                        return null;
+                    }
                 }
-            }
 
-            // Function to update all plan prices
-            function updatePrices(period) {
-                // Update button styles
-                billingButtons.forEach(btn => {
-                    if (btn && btn.dataset.period === period) {
-                        btn.classList.remove('bg-gray-200', 'text-gray-700');
-                        btn.classList.add('bg-indigo-600', 'text-white');
-                    } else if (btn) {
-                        btn.classList.remove('bg-indigo-600', 'text-white');
-                        btn.classList.add('bg-gray-200', 'text-gray-700');
-                    }
-                });
+                // Function to update all plan prices
+                function updatePrices(period) {
+                    // Update button styles
+                    billingButtons.forEach(btn => {
+                        if (btn && btn.dataset.period === period) {
+                            btn.classList.remove('bg-gray-200', 'text-gray-700');
+                            btn.classList.add('bg-indigo-600', 'text-white');
+                        } else if (btn) {
+                            btn.classList.remove('bg-indigo-600', 'text-white');
+                            btn.classList.add('bg-gray-200', 'text-gray-700');
+                        }
+                    });
 
-                // Update plan prices - safely handle cases where elements might not exist
-                const planCards = document.querySelectorAll('.plan-card');
+                    // Update plan prices - safely handle cases where elements might not exist
+                    const planCards = document.querySelectorAll('.plan-card');
 
-                planCards.forEach(card => {
-                    if (!card) return;
+                    planCards.forEach(card => {
+                        if (!card) return;
 
-                    const priceElement = safeQuerySelector('.plan-price', card);
-                    const totalElement = safeQuerySelector('.plan-total', card);
-                    const originalPriceElement = safeQuerySelector('.original-price', card);
-                    const discountBadge = safeQuerySelector('.discount-badge', card);
+                        const priceElement = safeQuerySelector('.plan-price', card);
+                        const totalElement = safeQuerySelector('.plan-total', card);
+                        const originalPriceElement = safeQuerySelector('.original-price', card);
+                        const discountBadge = safeQuerySelector('.discount-badge', card);
 
-                    // Check if all required elements exist
-                    if (!priceElement || !totalElement || !originalPriceElement || !discountBadge) {
-                        console.warn('Missing pricing elements in plan card');
-                        return;
-                    }
-
-                    // Get the price data from data attributes
-                    const monthlyPrice = parseFloat(priceElement.dataset.monthly);
-                    const periodPrice = parseFloat(priceElement.dataset[period]);
-
-                    // Validate prices
-                    if (isNaN(monthlyPrice) || isNaN(periodPrice)) {
-                        console.error('Invalid price data for period:', period);
-                        return;
-                    }
-
-                    // Calculate the equivalent monthly price for display
-                    let months = 1;
-                    if (period === 'annually') months = 12;
-                    if (period === 'biennially') months = 24;
-                    if (period === 'triennially') months = 36;
-
-                    const equivalentMonthlyPrice = (periodPrice / months).toFixed(2);
-
-                    // Update the displayed price
-                    priceElement.textContent = `$${equivalentMonthlyPrice}`;
-
-                    // Update the billing description
-                    if (totalElement.dataset[period]) {
-                        totalElement.textContent = totalElement.dataset[period];
-                    }
-
-                    // Update the original price if applicable
-                    if (originalPriceElement.dataset[period]) {
-                        originalPriceElement.textContent = originalPriceElement.dataset[period];
-                    } else {
-                        originalPriceElement.textContent = '';
-                    }
-
-                    // Show/hide discount badge for non-monthly periods
-                    if (period === 'monthly') {
-                        discountBadge.classList.add('hidden');
-                    } else {
-                        // Calculate the actual discount percentage
-                        const fullPrice = monthlyPrice * months;
-                        const discountPercent = Math.round((1 - (periodPrice / fullPrice)) * 100);
-
-                        const discountPercentElement = safeQuerySelector('.discount-percent', discountBadge);
-                        if (discountPercentElement) {
-                            discountPercentElement.textContent = discountPercent;
+                        // Check if all required elements exist
+                        if (!priceElement || !totalElement || !originalPriceElement || !discountBadge) {
+                            console.warn('Missing pricing elements in plan card');
+                            return;
                         }
 
-                        discountBadge.classList.remove('hidden');
+                        // Get the price data from data attributes
+                        
+                        const curr = priceElement.dataset.curr;
+                        const monthlyPrice = parseFloat(priceElement.dataset.monthly);
+                        const periodPrice = parseFloat(priceElement.dataset[period]);
+                        console.log("Hitesh",curr);
+                        // Validate prices
+                        if (isNaN(monthlyPrice) || isNaN(periodPrice)) {
+                            console.error('Invalid price data for period:', period);
+                            return;
+                        }
+
+                        // Calculate the equivalent monthly price for display
+                        let months = 1;
+                        if (period === 'annually') months = 12;
+                        if (period === 'biennially') months = 24;
+                        if (period === 'triennially') months = 36;
+
+                        const equivalentMonthlyPrice = (periodPrice / months).toFixed(2);
+
+                        // Update the displayed price
+                        priceElement.textContent = `${curr}${equivalentMonthlyPrice}`;
+
+                        // Update the billing description
+                        if (totalElement.dataset[period]) {
+                            totalElement.textContent = totalElement.dataset[period];
+                        }
+
+                        // Update the original price if applicable
+                        if (originalPriceElement.dataset[period]) {
+                            originalPriceElement.textContent = originalPriceElement.dataset[period];
+                        } else {
+                            originalPriceElement.textContent = '';
+                        }
+
+                        // Show/hide discount badge for non-monthly periods
+                        if (period === 'monthly') {
+                            discountBadge.classList.add('hidden');
+                        } else {
+                            // Calculate the actual discount percentage
+                            const fullPrice = monthlyPrice * months;
+                            const discountPercent = Math.round((1 - (periodPrice / fullPrice)) * 100);
+
+                            const discountPercentElement = safeQuerySelector('.discount-percent', discountBadge);
+                            if (discountPercentElement) {
+                                discountPercentElement.textContent = discountPercent;
+                            }
+
+                            discountBadge.classList.remove('hidden');
+                        }
+                    });
+                }
+
+                // Set up click events for billing period buttons
+                billingButtons.forEach(button => {
+                    if (button) {
+                        button.addEventListener('click', function () {
+                            const period = this.dataset.period;
+                            updatePrices(period);
+                        });
                     }
                 });
-            }
 
-            // Set up click events for billing period buttons
-            billingButtons.forEach(button => {
-                if (button) {
-                    button.addEventListener('click', function () {
-                        const period = this.dataset.period;
-                        updatePrices(period);
-                    });
+                // Initialize with default period only if we have billing buttons
+                if (billingButtons.length > 0) {
+                    updatePrices(defaultPeriod);
                 }
             });
 
-            // Initialize with default period only if we have billing buttons
-            if (billingButtons.length > 0) {
-                updatePrices(defaultPeriod);
-            }
-        });
-
-        // Handle currency API errors gracefully
-        if (typeof loadCurrencies === 'function') {
-            // Wrap the currency loading in a try-catch
-            try {
-                loadCurrencies();
-            } catch (e) {
-                console.error('Error loading currencies:', e);
-                // You might want to hide currency switcher or show a message
-                const currencySwitcher = document.querySelector('.currency-switcher');
-                if (currencySwitcher) {
-                    currencySwitcher.style.display = 'none';
+            // Handle currency API errors gracefully
+            if (typeof loadCurrencies === 'function') {
+                // Wrap the currency loading in a try-catch
+                try {
+                    loadCurrencies();
+                } catch (e) {
+                    console.error('Error loading currencies:', e);
+                    // You might want to hide currency switcher or show a message
+                    const currencySwitcher = document.querySelector('.currency-switcher');
+                    if (currencySwitcher) {
+                        currencySwitcher.style.display = 'none';
+                    }
                 }
             }
-        }
-    </script>
+        </script>
     <style>
         .discount-badge.hidden {
             display: none !important;
@@ -1227,11 +1230,11 @@
 
                                 <h3 class="text-lg font-semibold mb-2">
                                     @php
-                                        $path = $blog->type === 'blog'
-                                            ? 'single-articles/' . $blog->slug
-                                            : ($blog->type === 'kb'
-                                                ? 'knowledge-base/' . $blog->slug
-                                                : '#');
+        $path = $blog->type === 'blog'
+            ? 'single-articles/' . $blog->slug
+            : ($blog->type === 'kb'
+                ? 'knowledge-base/' . $blog->slug
+                : '#');
                                     @endphp
                                     <a href="{{ url($path) }}" class="hover:text-blue-600">
                                         {{ Str::limit($blog->title, 70) }}
