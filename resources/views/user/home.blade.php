@@ -40,9 +40,9 @@
                         pricing</span>
                 </div>
 
-                <a href="https://clients.cloudcarehost.com/index.php?rp=/store/shared-hosting/shared-starter"
+                <a href="#plansData"
                     class="block w-47 bg-indigo-500 hover:bg-indigo-600 text-white text-center py-2 px-4 rounded-lg font-medium transition-colors">
-                    Get Started
+                    View Hosting Plans
                 </a>
             </div>
 
@@ -168,7 +168,7 @@
 
                                 <ul class="space-y-2 mb-6">
                                     @php
-                                        $features = json_decode($plan->features_json);
+    $features = json_decode($plan->features_json);
                                     @endphp
                                     @foreach(array_slice($features, 0, 9) as $feature)
                                         <li class="flex items-start">
