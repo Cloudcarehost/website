@@ -534,12 +534,12 @@
                 </div>
 
                 <!-- CTA Button -->
-                <div class="text-center mt-12">
+                <!-- <div class="text-center mt-12">
                     <a href="#"
                         class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
                         Explore Dedicated Server Plans
                     </a>
-                </div>
+                </div> -->
             </div>
         </section>
 
@@ -627,7 +627,7 @@
                 </div>
 
                 <!-- CTA Button -->
-                <div class="text-center mt-12">
+                <!-- <div class="text-center mt-12">
                     <a href="#"
                         class="bg-blue-600 hover:bg-blue-700 text-white font-medium px-8 py-3 rounded-lg transition inline-flex items-center">
                         Explore Dedicated Server Plans
@@ -638,7 +638,7 @@
                                 clip-rule="evenodd" />
                         </svg>
                     </a>
-                </div>
+                </div> -->
             </div>
         </section>
 

@@ -59,7 +59,7 @@
                 </p>
 
 
-                <div class="flex justify-center mb-8">
+                <div id="plans" class="flex justify-center mb-8">
                     <div class="inline-flex items-center bg-gray-100 rounded-lg p-1 billing-toggle">
                         <button data-period="monthly"
                             class="px-4 py-2 rounded-md font-medium billing-btn bg-indigo-600 text-white">Monthly</button>
@@ -126,7 +126,7 @@
 
                                     <ul class="space-y-2 mb-6">
                                         @php
-                                            $features = json_decode($plan->features_json);
+    $features = json_decode($plan->features_json);
                                         @endphp
                                         @foreach($features as $feature)
                                             <li class="flex items-start">
@@ -689,7 +689,7 @@
                             <p class="text-gray-600 mb-8">Explore expert guides, updated tutorials, and helpful tips to
                                 make the
                                 most of your reseller hosting journey.</p>
-                            <a href="#"
+                            <a href="#plans"
                                 class="block text-center bg-gray-800 hover:bg-black text-white px-6 py-3 rounded-lg font-semibold transition"
                                 style="background: #1f2937;">
                                 Explore Resources
