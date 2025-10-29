@@ -149,7 +149,8 @@
                                         <span class="plan-price" data-monthly="{{ $plan->usd_monthly }}"
                                             data-annually="{{ $plan->usd_annually }}"
                                             data-biennially="{{ $plan->usd_biennially }}"
-                                            data-triennially="{{ $plan->usd_triennially }}">${{ $plan->usd_monthly }}</span>
+                                            data-triennially="{{ $plan->usd_triennially }}"
+                                            data-curr="{{ $plan->usd_prefix }}">{{ $plan->usd_prefix }}{{ $plan->usd_monthly }}</span>
                                         <span class="text-sm font-normal text-gray-500">/mo</span>
                                     </div>
                                     <p class="text-sm text-gray-500 plan-total" data-monthly="Billed monthly"
@@ -177,7 +178,7 @@
                                     @endforeach
                                 </ul>
 
-                                <a href="{{ $plan->product_url }}"
+                                <a href="{{ $plan->product_url }}{{ $plan->url_curr_id }}"
                                     class="block w-full bg-indigo-600 hover:bg-indigo-700 text-white text-center py-2 px-4 rounded-lg font-medium transition-colors">
                                     Get Started
                                 </a>
@@ -235,9 +236,11 @@
                     }
 
                     // Get the price data from data attributes
+                    
+                    const curr = priceElement.dataset.curr;
                     const monthlyPrice = parseFloat(priceElement.dataset.monthly);
                     const periodPrice = parseFloat(priceElement.dataset[period]);
-
+                    console.log("Hitesh",curr);
                     // Validate prices
                     if (isNaN(monthlyPrice) || isNaN(periodPrice)) {
                         console.error('Invalid price data for period:', period);
@@ -253,7 +256,7 @@
                     const equivalentMonthlyPrice = (periodPrice / months).toFixed(2);
 
                     // Update the displayed price
-                    priceElement.textContent = `$${equivalentMonthlyPrice}`;
+                    priceElement.textContent = `${curr}${equivalentMonthlyPrice}`;
 
                     // Update the billing description
                     if (totalElement.dataset[period]) {
@@ -1227,11 +1230,11 @@
 
                                 <h3 class="text-lg font-semibold mb-2">
                                     @php
-                                        $path = $blog->type === 'blog'
-                                            ? 'single-articles/' . $blog->slug
-                                            : ($blog->type === 'kb'
-                                                ? 'knowledge-base/' . $blog->slug
-                                                : '#');
+        $path = $blog->type === 'blog'
+            ? 'single-articles/' . $blog->slug
+            : ($blog->type === 'kb'
+                ? 'knowledge-base/' . $blog->slug
+                : '#');
                                     @endphp
                                     <a href="{{ url($path) }}" class="hover:text-blue-600">
                                         {{ Str::limit($blog->title, 70) }}

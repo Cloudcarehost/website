@@ -2,7 +2,7 @@
     <div class="container max-w-screen-xl mx-auto mx-auto mx-auto px-4">
         <nav class="flex justify-between items-center py-5">
             <!-- Logo -->
-            <a href="{{ url('/') }}" class="flex items-center">
+            <a href="#" onclick="homeRedirectWithCurrency()" class="flex items-center">
                 <!-- Logo Icon -->
                 <div
                     class="w-12 h-12 bg-gradient-to-tr from-indigo-600 via-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mr-3 shadow-lg shadow-indigo-300/40">
@@ -587,6 +587,10 @@
 
 </script>
 <script>
+    function homeRedirectWithCurrency() {
+        const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+        window.location.href = `{{ route('user.home') }}?currency=${selectedCurrency}`;
+    }
     function hostingSharedRedirectWithCurrency() {
         const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
         window.location.href = `{{ route('hosting.shared') }}?currency=${selectedCurrency}`;
