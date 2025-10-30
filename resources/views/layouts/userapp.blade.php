@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ url()->current() }}">
     <title>@yield('title', 'Cloud Care Host')</title>
     <meta name="description"
         content="@yield('meta_description', 'Cloud Care Host provides fast, secure, and affordable web hosting services with free SSL, 99.9% uptime guarantee, and easy domain registration. Start your online journey today with Cloud Care Host.')">
