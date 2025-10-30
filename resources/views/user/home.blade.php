@@ -1,6 +1,6 @@
 <x-user-layout>
     @section('title', 'Web Hosting & Domain Services | Fast, Secure & Reliable - CloudCareHost')
-    @section('meta_description', 'CloudCareHost offers fast and secure web hosting, VPS, dedicated servers, domain registration, and SSL certificates — all with 24/7 expert support. Get everything you need to launch and grow your website today.')
+    @section('meta_description', 'Fast and secure hosting from CloudCareHost. Get shared, VPS, and dedicated servers, domain registration, SSL certificates, and 24/7 support.')
     @section('meta_keywords', 'web hosting, cloud hosting, vps hosting, high availability vps, dedicated server hosting, reseller hosting, wordpress hosting, buy domain name, secure ssl certificates, best hosting provider')
     @section('meta_author', 'Cloud Care Host')
     <!-- Hero Section -->
@@ -40,14 +40,14 @@
                         pricing</span>
                 </div>
 
-                <a href="https://clients.cloudcarehost.com/index.php?rp=/store/shared-hosting/shared-starter"
+                <a href="#plansData"
                     class="block w-47 bg-indigo-500 hover:bg-indigo-600 text-white text-center py-2 px-4 rounded-lg font-medium transition-colors">
-                    Get Started
+                    View Hosting Plans
                 </a>
             </div>
 
             <div class="lg:w-1/2 animate__animated animate__fadeInRight animate__delay-1s">
-                <img src="{{ asset('images/hero01.png') }}" alt="Cloud Hosting Illustration"
+                <img src="{{ asset('images/hero01.webp') }}" alt="Cloud Hosting Illustration"
                     class="max-w-full animate-float">
             </div>
         </div>
@@ -109,7 +109,7 @@
                 Our hosting is built to expand with you, every step of the way.
             </p>
 
-            <div class="flex justify-center mb-8">
+            <div id="plansData1" class="flex justify-center mb-8">
                 <div class="inline-flex items-center bg-gray-100 rounded-lg p-1 billing-toggle">
                     <button data-period="monthly"
                         class="px-4 py-2 rounded-md font-medium billing-btn bg-indigo-600 text-white">Monthly</button>
@@ -149,7 +149,8 @@
                                         <span class="plan-price" data-monthly="{{ $plan->usd_monthly }}"
                                             data-annually="{{ $plan->usd_annually }}"
                                             data-biennially="{{ $plan->usd_biennially }}"
-                                            data-triennially="{{ $plan->usd_triennially }}">${{ $plan->usd_monthly }}</span>
+                                            data-triennially="{{ $plan->usd_triennially }}"
+                                            data-curr="{{ $plan->usd_prefix }}">{{ $plan->usd_prefix }}{{ $plan->usd_monthly }}</span>
                                         <span class="text-sm font-normal text-gray-500">/mo</span>
                                     </div>
                                     <p class="text-sm text-gray-500 plan-total" data-monthly="Billed monthly"
@@ -167,7 +168,7 @@
 
                                 <ul class="space-y-2 mb-6">
                                     @php
-                                        $features = json_decode($plan->features_json);
+    $features = json_decode($plan->features_json);
                                     @endphp
                                     @foreach(array_slice($features, 0, 9) as $feature)
                                         <li class="flex items-start">
@@ -177,7 +178,7 @@
                                     @endforeach
                                 </ul>
 
-                                <a href="{{ $plan->product_url }}"
+                                <a href="{{ $plan->product_url }}{{ $plan->url_curr_id }}"
                                     class="block w-full bg-indigo-600 hover:bg-indigo-700 text-white text-center py-2 px-4 rounded-lg font-medium transition-colors">
                                     Get Started
                                 </a>
@@ -235,9 +236,11 @@
                     }
 
                     // Get the price data from data attributes
+                    
+                    const curr = priceElement.dataset.curr;
                     const monthlyPrice = parseFloat(priceElement.dataset.monthly);
                     const periodPrice = parseFloat(priceElement.dataset[period]);
-
+                    console.log("Hitesh",curr);
                     // Validate prices
                     if (isNaN(monthlyPrice) || isNaN(periodPrice)) {
                         console.error('Invalid price data for period:', period);
@@ -253,7 +256,7 @@
                     const equivalentMonthlyPrice = (periodPrice / months).toFixed(2);
 
                     // Update the displayed price
-                    priceElement.textContent = `$${equivalentMonthlyPrice}`;
+                    priceElement.textContent = `${curr}${equivalentMonthlyPrice}`;
 
                     // Update the billing description
                     if (totalElement.dataset[period]) {
@@ -443,14 +446,14 @@
                     <a href="#" class="text-indigo-600 font-semibold">Learn More</a>
                 </div>
                 <div class="flex justify-center">
-                    <img src="{{ asset('images/home-001.png') }}" alt="Setup Illustration" class="max-w-full">
+                    <img src="{{ asset('images/home-001.webp') }}" alt="Setup Illustration" class="max-w-full">
                 </div>
             </div>
 
             <!-- Faster Website Section -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-20">
                 <div class="flex justify-center order-1 md:order-none">
-                    <img src="{{ asset('images/home-001.png') }}" alt="Speed Illustration" class="max-w-full">
+                    <img src="{{ asset('images/home-001.webp') }}" alt="Speed Illustration" class="max-w-full">
                 </div>
                 <div>
                     <h2 class="text-2xl md:text-3xl font-bold mb-4">Your Website 20x Faster</h2>
@@ -477,13 +480,539 @@
                     <a href="#" class="text-indigo-600 font-semibold">Learn More</a>
                 </div>
                 <div class="flex justify-center">
-                    <img src="{{ asset('images/home-001.png') }}" alt="Setup Illustration" class="max-w-full">
+                    <img src="{{ asset('images/home-001.webp') }}" alt="Setup Illustration" class="max-w-full">
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- Development Solutions Section -->
+    <section class="py-20 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+        <div class="container max-w-6xl mx-auto px-6">
+
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Full-Stack <span class="text-indigo-600">Development Solutions</span>
+                </h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">
+                    From stunning websites to powerful enterprise software, our development team builds digital solutions
+                    that drive growth, efficiency, and customer engagement. Whether you’re a startup or an enterprise,
+                    we turn your ideas into scalable reality.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-transform duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-indigo-100 text-indigo-600 flex items-center justify-center rounded-lg mb-4">
+                        <i class="fas fa-globe text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Web Development</h3>
+                    <p class="text-gray-600 mb-4">Custom websites, WordPress, and e-commerce platforms designed for speed, SEO, and scalability.</p>
+                    <a href="{{ route('development') }}" class="text-indigo-600 font-semibold hover:underline">
+                        Learn More →
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-transform duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 flex items-center justify-center rounded-lg mb-4">
+                        <i class="fas fa-mobile-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Mobile App Development</h3>
+                    <p class="text-gray-600 mb-4">Native Android, iOS, and cross-platform apps that offer seamless user experiences and performance.</p>
+                    <a href="{{ route('development') }}" class="text-indigo-600 font-semibold hover:underline">
+                        Learn More →
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-transform duration-300 hover:-translate-y-1">
+                    <div class="w-12 h-12 bg-pink-100 text-pink-600 flex items-center justify-center rounded-lg mb-4">
+                        <i class="fas fa-building text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Enterprise Solutions</h3>
+                    <p class="text-gray-600 mb-4">ERP, CRM, and custom business applications tailored to streamline your operations and data flow.</p>
+                    <a href="{{ route('development') }}" class="text-indigo-600 font-semibold hover:underline">
+                        Learn More →
+                    </a>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-2xl p-8 md:p-12 mb-12 mt-10">
+                <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Our Development Process</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-indigo-600 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-3">
+                            1
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Discovery & Planning</h4>
+                        <p class="text-gray-600 text-sm">Understanding your requirements and creating a detailed project roadmap</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-3">
+                            2
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Design & Prototyping</h4>
+                        <p class="text-gray-600 text-sm">Creating wireframes, mockups, and interactive prototypes</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-3">
+                            3
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Development & Testing</h4>
+                        <p class="text-gray-600 text-sm">Building with clean code and rigorous quality assurance</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg mx-auto mb-3">
+                            4
+                        </div>
+                        <h4 class="font-semibold text-gray-800 mb-2">Deployment & Support</h4>
+                        <p class="text-gray-600 text-sm">Launching on our optimized hosting with ongoing maintenance</p>
+                    </div>
+                </div>
+            </div>
+
+
+        <div class="mb-16">
+            <h3 class="text-2xl font-bold text-gray-800 mb-8 text-center">Our Technology Stack</h3>
+
+            <div class="tech-scroll-container">
+                <div class="tech-scroll">
+                    <!-- Laravel -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-laravel text-red-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Laravel</span>
+                    </div>
+                    <!-- React -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-react text-blue-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">React</span>
+                    </div>
+                    <!-- Vue.js -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-vuejs text-green-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Vue.js</span>
+                    </div>
+                    <!-- Node.js -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-node-js text-green-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Node.js</span>
+                    </div>
+                    <!-- Python -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-python text-yellow-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Python</span>
+                    </div>
+                    <!-- WordPress -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-wordpress text-blue-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">WordPress</span>
+                    </div>
+                    <!-- Angular -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-angular text-red-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Angular</span>
+                    </div>
+                    <!-- Flutter -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-mobile text-blue-400 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Flutter</span>
+                    </div>
+                    <!-- Swift -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-swift text-orange-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Swift</span>
+                    </div>
+                    <!-- Kotlin -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-code text-purple-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Kotlin</span>
+                    </div>
+                    <!-- Docker -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-docker text-blue-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Docker</span>
+                    </div>
+                    <!-- AWS -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-aws text-orange-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">AWS</span>
+                    </div>
+                    <!-- MongoDB -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-database text-green-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">MongoDB</span>
+                    </div>
+                    <!-- MySQL -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-database text-blue-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">MySQL</span>
+                    </div>
+                    <!-- TypeScript -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-code text-blue-700 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">TypeScript</span>
+                    </div>
+                    <!-- GraphQL -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-project-diagram text-pink-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">GraphQL</span>
+                    </div>
+                    <!-- Redis -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-bolt text-red-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Redis</span>
+                    </div>
+                    <!-- Git -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-git-alt text-orange-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Git</span>
+                    </div>
+                    <!-- JavaScript -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-js-square text-yellow-400 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">JavaScript</span>
+                    </div>
+                    <!-- PHP -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-php text-purple-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">PHP</span>
+                    </div>
+                    <!-- HTML5 -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-html5 text-orange-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">HTML5</span>
+                    </div>
+                    <!-- CSS3 -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-css3-alt text-blue-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">CSS3</span>
+                    </div>
+                    <!-- Tailwind CSS -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-wind text-teal-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Tailwind</span>
+                    </div>
+                    <!-- Bootstrap -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-bootstrap text-purple-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Bootstrap</span>
+                    </div>
+                    <!-- Google Cloud -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-google text-blue-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">GCP</span>
+                    </div>
+                    <!-- Azure -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-microsoft text-blue-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Azure</span>
+                    </div>
+                    
+                    <!-- Duplicate set for seamless looping -->
+                    <!-- Laravel -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-laravel text-red-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Laravel</span>
+                    </div>
+                    <!-- React -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-react text-blue-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">React</span>
+                    </div>
+                    <!-- Vue.js -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-vuejs text-green-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Vue.js</span>
+                    </div>
+                    <!-- Node.js -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-node-js text-green-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Node.js</span>
+                    </div>
+                    <!-- Python -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-python text-yellow-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Python</span>
+                    </div>
+                    <!-- WordPress -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-wordpress text-blue-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">WordPress</span>
+                    </div>
+                    <!-- Angular -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-angular text-red-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Angular</span>
+                    </div>
+                    <!-- Flutter -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-mobile text-blue-400 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Flutter</span>
+                    </div>
+                    <!-- Swift -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-swift text-orange-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Swift</span>
+                    </div>
+                    <!-- Kotlin -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-code text-purple-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Kotlin</span>
+                    </div>
+                    <!-- Docker -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-docker text-blue-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Docker</span>
+                    </div>
+                    <!-- AWS -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-aws text-orange-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">AWS</span>
+                    </div>
+                    <!-- MongoDB -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-database text-green-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">MongoDB</span>
+                    </div>
+                    <!-- MySQL -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-database text-blue-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">MySQL</span>
+                    </div>
+                    <!-- TypeScript -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-code text-blue-700 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">TypeScript</span>
+                    </div>
+                    <!-- GraphQL -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-project-diagram text-pink-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">GraphQL</span>
+                    </div>
+                    <!-- Redis -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-bolt text-red-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Redis</span>
+                    </div>
+                    <!-- Git -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-git-alt text-orange-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Git</span>
+                    </div>
+                    <!-- JavaScript -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-js-square text-yellow-400 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">JavaScript</span>
+                    </div>
+                    <!-- PHP -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-php text-purple-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">PHP</span>
+                    </div>
+                    <!-- HTML5 -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-html5 text-orange-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">HTML5</span>
+                    </div>
+                    <!-- CSS3 -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-css3-alt text-blue-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">CSS3</span>
+                    </div>
+                    <!-- Tailwind CSS -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fas fa-wind text-teal-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Tailwind</span>
+                    </div>
+                    <!-- Bootstrap -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-bootstrap text-purple-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Bootstrap</span>
+                    </div>
+                    <!-- Google Cloud -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-google text-blue-500 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">GCP</span>
+                    </div>
+                    <!-- Azure -->
+                    <div class="tech-item">
+                        <div class="tech-icon">
+                            <i class="fab fa-microsoft text-blue-600 text-2xl"></i>
+                        </div>
+                        <span class="tech-name">Azure</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <div class="text-center mt-16">
+                <a href="{{ route('development') }}"
+                class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-colors">
+                    Explore All Development Solutions
+                </a>
+            </div>
+        </div>
+    </section>
+    <style>
+        .tech-scroll-container {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            margin: 2rem 0;
+        }
+
+        .tech-scroll {
+            display: flex;
+            width: max-content;
+            animation: scroll 40s linear infinite;
+        }
+
+        .tech-scroll:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .tech-item {
+            text-align: center;
+            flex-shrink: 0;
+            width: 100px;
+            margin: 0 1.5rem;
+        }
+
+        .tech-icon {
+            width: 70px;
+            height: 70px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover .tech-icon {
+            transform: scale(1.1);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .tech-name {
+            font-size: 0.875rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+    </style>
     <!-- Section -->
     <section class="bg-gray-50 py-20">
         <div class="container max-w-screen-xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -620,7 +1149,7 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="container bg-white p-20 py-20">
+    <section class=" bg-white p-20 py-20">
         <div class="bg-white rounded-xl shadow-md p-8 py-12">
             <h2 class="text-3xl font-bold font-montserrat mb-8 text-center">Frequently Asked Questions</h2>
 
@@ -701,11 +1230,11 @@
 
                                 <h3 class="text-lg font-semibold mb-2">
                                     @php
-                                        $path = $blog->type === 'blog'
-                                            ? 'single-articles/' . $blog->slug
-                                            : ($blog->type === 'kb'
-                                                ? 'knowledge-base/' . $blog->slug
-                                                : '#');
+        $path = $blog->type === 'blog'
+            ? 'single-articles/' . $blog->slug
+            : ($blog->type === 'kb'
+                ? 'knowledge-base/' . $blog->slug
+                : '#');
                                     @endphp
                                     <a href="{{ url($path) }}" class="hover:text-blue-600">
                                         {{ Str::limit($blog->title, 70) }}
@@ -733,12 +1262,12 @@
                 <h2 class="text-3xl md:text-4xl font-bold font-montserrat mb-6">Ready to Launch Your Website?</h2>
                 <p class="text-lg opacity-90 mb-8">Get started with Cloud Care Host today and get your website online in
                     minutes.</p>
-                <button
+                <a href="#plansData1"
                     class="bg-white text-indigo-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-medium transition-colors">Get
-                    Started Now</button>
+                    Started Now</a>
             </div>
             <div class="lg:w-1/2">
-                <img src="{{ asset('images/hero1.jpg') }}" alt="Get Started"
+                <img src="{{ asset('images/hero1.webp') }}" alt="Get Started"
                     class="rounded-lg shadow-xl max-w-full animate-float">
             </div>
         </div>

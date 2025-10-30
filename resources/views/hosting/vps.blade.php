@@ -1,7 +1,7 @@
 <x-hosting-layout title="High Availability Cloud Provider"
     description="Step into the online world with hosting optimized for performance and user-friendliness.">
-        @section('title', ' High Availability VPS Hosting | Fast, Secure & Scalable - CloudCareHost')
-    @section('meta_description', 'Experience High Availability VPS hosting with full root access, SSD storage, free DDoS protection, automated backups, and 24/7 expert support. Scalable plans built for developers, startups, and growing businesses.')
+        @section('title', 'High Availability VPS Hosting | Fast & Secure - CloudCareHost')
+    @section('meta_description', 'Boost performance with High Availability VPS hosting. SSDs, root access, DDoS protection, backups, and 24/7 expert support included.')
     @section('meta_keywords', 'vps hosting, high availability vps, best vps hosting, affordable vps server, managed vps hosting, vps with root access, vps hosting for developers, secure vps hosting, scalable vps hosting, web hosting company, hosting services, secure hosting, hosting in India')
     @section('meta_author', 'Cloud Care Host')
     
@@ -53,7 +53,7 @@
                 </div>
 
                 <div class="lg:w-1/2 animate__animated animate__fadeInRight animate__delay-1s">
-                    <img src="{{ asset('images/vps.png') }}" alt="Cloud Hosting Illustration"
+                    <img src="{{ asset('images/vps.webp') }}" alt="Cloud Hosting Illustration"
                         class="max-w-full animate-float">
                 </div>
             </div>
@@ -114,7 +114,7 @@
                                     <!-- Discount Badge - Only show for non-monthly periods -->
                                     <div
                                         class="bg-red-500 text-white text-sm font-bold px-3 py-1 rounded-full inline-block mb-3 discount-badge hidden">
-                                        Save <span class="discount-percent">{{ $plan->usd_discounted_annually }}</span>%
+                                        Save <span class="discount-percent">{{ max(0, $data[0]->usd_discounted_annually) }}</span>%
                                     </div>
 
                                     <div class="mb-6">
@@ -123,27 +123,28 @@
                                                 data-quarterly="{{ $plan->usd_quarterly }}"
                                                 data-semiannually="{{ $plan->usd_semiannually }}"
                                                 data-annually="{{ $plan->usd_annually }}"
-                                                data-biennially="{{ $plan->usd_biennially }}">${{ $plan->usd_monthly }}</span>
+                                                data-biennially="{{ $plan->usd_biennially }}"
+                                                data-curr="{{ $plan->usd_prefix }}">{{ $plan->usd_prefix }}{{ $plan->usd_monthly }}</span>
                                             <span class="text-sm font-normal text-gray-500">/mo</span>
                                         </div>
                                         <p class="text-sm text-gray-500 plan-total" data-monthly="Billed monthly"
-                                            data-quarterly="${{ $plan->usd_quarterly }} billed quarterly"
-                                            data-semiannually="${{ $plan->usd_semiannually }} billed semi-annually"
-                                            data-annually="${{ $plan->usd_annually }} billed yearly"
-                                            data-biennially="${{ $plan->usd_biennially }} billed every 2 years">
+                                            data-quarterly="{{ $plan->usd_prefix }}{{ $plan->usd_quarterly }} billed quarterly"
+                                            data-semiannually="{{ $plan->usd_prefix }}{{ $plan->usd_semiannually }} billed semi-annually"
+                                            data-annually="{{ $plan->usd_prefix }}{{ $plan->usd_annually }} billed yearly"
+                                            data-biennially="{{ $plan->usd_prefix }}{{ $plan->usd_biennially }} billed every 2 years">
                                             Billed monthly
                                         </p>
                                         <div class="text-xs text-gray-400 line-through mt-1 original-price" data-monthly=""
-                                            data-quarterly="Originally ${{ number_format($plan->usd_monthly * 3, 2) }}"
-                                            data-semiannually="Originally ${{ number_format($plan->usd_monthly * 6, 2) }}"
-                                            data-annually="Originally ${{ number_format($plan->usd_monthly * 12, 2) }}"
-                                            data-biennially="Originally ${{ number_format($plan->usd_monthly * 24, 2) }}">
+                                            data-quarterly="Originally {{ $plan->usd_prefix }}{{ number_format($plan->usd_monthly * 3, 2) }}"
+                                            data-semiannually="Originally {{ $plan->usd_prefix }}{{ number_format($plan->usd_monthly * 6, 2) }}"
+                                            data-annually="Originally {{ $plan->usd_prefix }}{{ number_format($plan->usd_monthly * 12, 2) }}"
+                                            data-biennially="Originally {{ $plan->usd_prefix }}{{ number_format($plan->usd_monthly * 24, 2) }}">
                                         </div>
                                     </div>
 
                                     <ul class="space-y-2 mb-6">
                                         @php
-                                            $features = json_decode($plan->features_json);
+    $features = json_decode($plan->features_json);
                                         @endphp
                                         @foreach($features as $feature)
                                             <li class="flex items-start">
@@ -162,19 +163,19 @@
                                     <div class="mt-4 text-xs text-gray-500">
                                         <div class="flex justify-between py-1 border-b border-gray-100">
                                             <span>Quarterly</span>
-                                            <span class="font-medium">${{ $plan->usd_quarterly }} <span
+                                            <span class="font-medium">{{ $plan->usd_prefix }}{{ $plan->usd_quarterly }} <span
                                                     class="text-red-500">({{ $plan->usd_discounted_quaterly }}%
                                                     OFF)</span></span>
                                         </div>
                                         <div class="flex justify-between py-1 border-b border-gray-100">
                                             <span>Semi-Annually</span>
-                                            <span class="font-medium">${{ $plan->usd_semiannually }} <span
+                                            <span class="font-medium">{{ $plan->usd_prefix }}{{ $plan->usd_semiannually }} <span
                                                     class="text-red-500">({{ $plan->usd_discounted_semiannually }}%
                                                     OFF)</span></span>
                                         </div>
                                         <div class="flex justify-between py-1">
                                             <span>2 Years</span>
-                                            <span class="font-medium">${{ $plan->usd_biennially }} <span
+                                            <span class="font-medium">{{ $plan->usd_prefix }}{{ $plan->usd_biennially }} <span
                                                     class="text-red-500">({{ $plan->usd_discounted_biennially }}%
                                                     OFF)</span></span>
                                         </div>
@@ -233,9 +234,11 @@
                         }
 
                         // Get the price data from data attributes
+
+                        const curr = priceElement.dataset.curr;
                         const monthlyPrice = parseFloat(priceElement.dataset.monthly);
                         const periodPrice = parseFloat(priceElement.dataset[period]);
-
+                        console.log("Hitesh", curr);
                         // Validate prices
                         if (isNaN(monthlyPrice) || isNaN(periodPrice)) {
                             console.error('Invalid price data for period:', period);
@@ -244,15 +247,14 @@
 
                         // Calculate the equivalent monthly price for display
                         let months = 1;
-                        if (period === 'quarterly') months = 3;
-                        if (period === 'semiannually') months = 6;
                         if (period === 'annually') months = 12;
                         if (period === 'biennially') months = 24;
+                        if (period === 'triennially') months = 36;
 
                         const equivalentMonthlyPrice = (periodPrice / months).toFixed(2);
 
                         // Update the displayed price
-                        priceElement.textContent = `$${equivalentMonthlyPrice}`;
+                        priceElement.textContent = `${curr}${equivalentMonthlyPrice}`;
 
                         // Update the billing description
                         if (totalElement.dataset[period]) {
@@ -272,7 +274,7 @@
                         } else {
                             // Calculate the actual discount percentage
                             const fullPrice = monthlyPrice * months;
-                            const discountPercent = Math.round((1 - (periodPrice / fullPrice)) * 100);
+                            const discountPercent = Math.round(Math.max(0, (1 - (periodPrice / fullPrice)) * 100));
 
                             const discountPercentElement = safeQuerySelector('.discount-percent', discountBadge);
                             if (discountPercentElement) {
@@ -299,6 +301,21 @@
                     updatePrices(defaultPeriod);
                 }
             });
+
+            // Handle currency API errors gracefully
+            if (typeof loadCurrencies === 'function') {
+                // Wrap the currency loading in a try-catch
+                try {
+                    loadCurrencies();
+                } catch (e) {
+                    console.error('Error loading currencies:', e);
+                    // You might want to hide currency switcher or show a message
+                    const currencySwitcher = document.querySelector('.currency-switcher');
+                    if (currencySwitcher) {
+                        currencySwitcher.style.display = 'none';
+                    }
+                }
+            }
         </script>
         <style>
             .discount-badge.hidden {
@@ -409,7 +426,7 @@
 
                 <!-- Right Image -->
                 <div class="flex justify-center">
-                    <img src="{{ asset('images/vps1.png') }}"" alt="Web Hosting Illustration"
+                    <img src="{{ asset('images/vps1.webp') }}"" alt="Web Hosting Illustration"
                         class="max-w-md w-full">
                 </div>
             </div>
@@ -479,7 +496,7 @@
                         cutting-edge technology, we provide the stability and power your demanding workloads require.
                     </p>
 
-                    <img src="{{ asset('images/vps2.png') }}"
+                    <img src="{{ asset('images/vps2.webp') }}"
                         alt="Cloud Server Management Illustration" class="max-w-md w-full mx-auto">
 
                     <div class="space-y-6">
@@ -784,12 +801,12 @@
                 </div>
 
                 <!-- CTA Button -->
-                <div class="text-center mt-12">
+                <!-- <div class="text-center mt-12">
                     <a href="#"
                         class="inline-block bg-indigo-500 hover:bg-indigo-600 text-white font-medium py-3 px-8 rounded-lg transition duration-300 transform hover:-translate-y-1">
                         Explore VPS Hosting Plans
                     </a>
-                </div>
+                </div> -->
             </div>
         </section>
 
@@ -1123,11 +1140,11 @@
 
                                     <h3 class="text-lg font-semibold mb-2">
                                         @php
-                                            $path = $blog->type === 'blog'
-                                                ? 'single-articles/' . $blog->slug
-                                                : ($blog->type === 'kb'
-                                                    ? 'knowledge-base/' . $blog->slug
-                                                    : '#');
+        $path = $blog->type === 'blog'
+            ? 'single-articles/' . $blog->slug
+            : ($blog->type === 'kb'
+                ? 'knowledge-base/' . $blog->slug
+                : '#');
                                         @endphp
                                         <a href="{{ url($path) }}" class="hover:text-blue-600">
                                             {{ Str::limit($blog->title, 70) }}

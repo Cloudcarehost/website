@@ -3,18 +3,18 @@
     <div class="container max-w-screen-xl mx-auto px-4 py-12 md:py-16">
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-16 gap-8 md:gap-8">
             <!-- Hosting Solutions Column -->
-                        <div class="col-span-2 md:col-span-5">
+            <div class="col-span-2 md:col-span-5">
                 <h3 class="text-lg font-bold font-montserrat text-white mb-4 pb-2 border-b border-gray-700">Hosting
                     Solutions</h3>
                 <div class="grid grid-cols-2 gap-4">
                     <ul class="space-y-3">
-                        <li><a href="{{ route('hosting.shared') }}"
+                        <li><a href="#" onclick="hostingSharedRedirectWithCurrency()"
                                 class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 Shared Hosting
                             </a></li>
-                        <li><a href="{{ route('hosting.wordpress') }}"
+                        <li><a href="#" onclick="hostingWordpressRedirectWithCurrency()"
                                 class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
@@ -26,27 +26,33 @@
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 Cloud Hosting
                             </a></li> -->
-                        <li><a href="{{ route('hosting.vps') }}"
+                        <li><a href="#" onclick="hostingVPSRedirectWithCurrency()"
                                 class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 VPS Hosting
                             </a></li>
+                        <li><a href="#" onclick="hostingNodejsRedirectWithCurrency()"
+                                class="hover:text-white transition-colors flex items-center group">
+                                <span
+                                    class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
+                                Nodejs Hosting
+                            </a></li>
                     </ul>
                     <ul class="space-y-3">
-                        <li><a href="{{ route('hosting.dedicated') }}"
+                        <li><a href="#" onclick="hostingDedicatedRedirectWithCurrency()"
                                 class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 Dedicated Server
                             </a></li>
-                        <li><a href="{{ route('hosting.reseller') }}"
+                        <li><a href="#" onclick="hostingResellerRedirectWithCurrency()"
                                 class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 Reseller Hosting
                             </a></li>
-                        <a href="{{ route('hosting.woocommerce') }}"
+                        <a href="#" onclick="hostingWoocommerceRedirectWithCurrency()"
                             class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
@@ -61,22 +67,25 @@
                 <h3 class="text-lg font-bold font-montserrat text-white mb-4 pb-2 border-b border-gray-700">Services
                 </h3>
                 <ul class="space-y-3">
-                    <li><a href="{{route ('domain-name')}}" class="hover:text-white transition-colors flex items-center group">
+                    <li><a href="{{route('domain-name')}}"
+                            class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                             Domain Names
                         </a></li>
-                    <li><a href="{{route ('ssl')}}" class="hover:text-white transition-colors flex items-center group">
+                    <li><a href="{{route('ssl')}}" class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                             SSL Certificates
                         </a></li>
-                    <li><a href="#" class="hover:text-white transition-colors flex items-center group">
+                    <li><a href="{{ route('articles') }}"
+                            class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                             Website Migration
                         </a></li>
-                    <li><a href="#" class="hover:text-white transition-colors flex items-center group">
+                    <li><a href="{{ route('articles') }}"
+                            class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                             Backups & Security
@@ -88,20 +97,22 @@
             <div class="col-span-2 md:col-span-2">
                 <h3 class="text-lg font-bold font-montserrat text-white mb-4 pb-2 border-b border-gray-700">Company</h3>
                 <ul class="space-y-3">
-                    <li><a href="{{route('about-us')}}" class="hover:text-white transition-colors flex items-center group">
+                    <li><a href="{{route('about-us')}}"
+                            class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                             About CloudCareHost
                         </a></li>
-                    <li><a href="#" class="hover:text-white transition-colors flex items-center group">
+                    <!-- <li><a href="#" class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                             Careers
-                        </a></li>
-                    <li><a href="#" class="hover:text-white transition-colors flex items-center group">
+                        </a></li> -->
+                    <li><a href="{{route('articles')}}"
+                            class="hover:text-white transition-colors flex items-center group">
                             <span
                                 class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
-                            Blog
+                            Blogs
                         </a></li>
                     <li><a href="{{ route('contact') }}"
                             class="hover:text-white transition-colors flex items-center group">
@@ -117,17 +128,20 @@
                 <h3 class="text-lg font-bold font-montserrat text-white mb-4 pb-2 border-b border-gray-700">Support</h3>
                 <div class="grid grid-cols-1 gap-8">
                     <ul class="space-y-3">
-                        <li><a href="#" class="hover:text-white transition-colors flex items-center group">
+                        <li><a href="{{ route('knowledge-base') }}"
+                                class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 Knowledge Base
                             </a></li>
-                        <li><a href="#" class="hover:text-white transition-colors flex items-center group">
+                        <li><a href="{{ route('articles') }}"
+                                class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 Tutorials
                             </a></li>
-                        <li><a href="#" class="hover:text-white transition-colors flex items-center group">
+                        <li><a href="{{ route('articles') }}"
+                                class="hover:text-white transition-colors flex items-center group">
                                 <span
                                     class="w-1 h-1 bg-indigo-500 rounded-full mr-2 group-hover:mr-3 transition-all"></span>
                                 System Status
@@ -144,30 +158,48 @@
                     <ul class="space-y-3">
                         <li class="flex items-start">
                             <i class="fas fa-phone-alt text-indigo-400 mt-1 mr-3 w-4"></i>
-                            <span>+91 8788217891</span>
+                            <span id="phone" class="hover:underline cursor-pointer text-white">+91 8788217891</span>
                         </li>
                         <li class="flex items-start">
                             <i class="fas fa-envelope text-indigo-400 mt-1 mr-3 w-4"></i>
-                            <span>support@cloudcarehost.com</span>
+                            <span id="email"
+                                class="hover:underline cursor-pointer text-white">support@cloudcarehost.com</span>
                         </li>
                     </ul>
+
+                    <script>
+                        // Select elements by ID for better reliability
+                        const phoneElement = document.getElementById('phone');
+                        const emailElement = document.getElementById('email');
+
+                        // Phone click → open dialer
+                        phoneElement.addEventListener('click', () => {
+                            window.location.href = 'tel:+918788217891';
+                        });
+
+                        // Email click → open default mail client
+                        emailElement.addEventListener('click', () => {
+                            window.location.href = 'mailto:support@cloudcarehost.com';
+                        });
+                    </script>
+
 
                     <div class="mt-4">
                         <h4 class="text-md font-semibold text-white mb-2">Follow Us</h4>
                         <div class="flex gap-3">
-                            <a href="#"
+                            <a href="https://www.facebook.com/share/1AztuATB6S/"
                                 class="w-9 h-9 bg-gray-800 hover:bg-indigo-600 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a href="#"
+                            <!-- <a href="#"
                                 class="w-9 h-9 bg-gray-800 hover:bg-indigo-600 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1">
                                 <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#"
+                            </a> -->
+                            <a href="https://www.instagram.com/cloudcarehost?igsh=bDNxdXEzaWlrMTc1&utm_source=qr"
                                 class="w-9 h-9 bg-gray-800 hover:bg-indigo-600 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="#"
+                            <a href="https://www.linkedin.com/company/cloud-care-host/"
                                 class="w-9 h-9 bg-gray-800 hover:bg-indigo-600 rounded-full flex items-center justify-center text-white transition-all transform hover:-translate-y-1">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
@@ -193,11 +225,12 @@
                         class="text-gray-400 hover:text-white text-sm transition-colors">Terms of Service</a>
                     <a href="{{ route('privacy.policy') }}"
                         class="text-gray-400 hover:text-white text-sm transition-colors">Privacy Policy</a>
-                    <a href="{{ route('sitemap') }}"
-                        class="text-gray-400 hover:text-white text-sm transition-colors">Sitemap</a>
+                    <!-- <a href="{{ route('sitemap') }}"
+                        class="text-gray-400 hover:text-white text-sm transition-colors">Sitemap</a> -->
                     <!--<a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Acceptable Use
                         Policy</a>-->
-                    <a href="{{route('refund-policy')}}" class="text-gray-400 hover:text-white text-sm transition-colors">Refund Policy</a>
+                    <a href="{{route('refund-policy')}}"
+                        class="text-gray-400 hover:text-white text-sm transition-colors">Refund Policy</a>
                 </div>
 
                 <!-- Payment Methods -->
@@ -211,4 +244,35 @@
             </div>
         </div>
     </div>
+    <script>
+        function hostingSharedRedirectWithCurrency() {
+            const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            window.location.href = `{{ route('hosting.shared') }}?currency=${selectedCurrency}`;
+        }
+        function hostingWordpressRedirectWithCurrency() {
+            const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            window.location.href = `{{ route('hosting.wordpress') }}?currency=${selectedCurrency}`;
+        }
+        function hostingVPSRedirectWithCurrency() {
+            const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            window.location.href = `{{ route('hosting.vps') }}?currency=${selectedCurrency}`;
+        }
+        function hostingDedicatedRedirectWithCurrency() {
+            const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            window.location.href = `{{ route('hosting.dedicated') }}?currency=${selectedCurrency}`;
+        }
+        function hostingResellerRedirectWithCurrency() {
+            const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            window.location.href = `{{ route('hosting.reseller') }}?currency=${selectedCurrency}`;
+        }
+        function hostingWoocommerceRedirectWithCurrency() {
+            const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            window.location.href = `{{ route('hosting.woocommerce') }}?currency=${selectedCurrency}`;
+        }
+        function hostingNodejsRedirectWithCurrency() {
+            const selectedCurrency = localStorage.getItem('selectedCurrency') || 'USD';
+            window.location.href = `{{ route('hosting.nodejs') }}?currency=${selectedCurrency}`;
+        }
+
+    </script>
 </footer>

@@ -26,8 +26,9 @@ class BlogController extends Controller
         $kbs   = (clone $baseQuery)->where('type', 'kb')->latest()->paginate(10, ['*'], 'kbs_page');
 
         $categories = Category::all();
+        $allCategories = Category::withCount('blogs')->latest()->paginate(10, ['*'], 'categories_page'); // This is paginated
 
-        return view('dashboard', compact('blogs', 'kbs', 'categories'));
+    return view('dashboard', compact('blogs', 'kbs', 'categories','allCategories'));
     }
 
     /**
@@ -225,5 +226,25 @@ class BlogController extends Controller
             ->get();
 
         return view('user.single-blog', compact('blog', 'relatedBlogs'));
+    }
+
+     public function showDevelopment()
+    {
+        $categorySlug = 'development';
+
+        $category = Category::where('slug', $categorySlug)->first();
+        
+        if (! $category) {
+            $blogs = collect();
+            return view('user.development', compact('blogs'));
+        }
+
+        $blogs = Blog::where('type', 'blog')
+            ->where('category_id', $category->id)
+            ->whereNotNull('published_at')
+            ->limit(3)
+            ->get();
+
+        return view('user.development', compact('blogs'));
     }
 }

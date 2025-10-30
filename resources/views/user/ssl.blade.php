@@ -1,11 +1,11 @@
 <x-user-layout>
     @section('title', 'Buy SSL Certificate | Secure Your Website with HTTPS - CloudCareHost')
-    @section('meta_description', 'Protect your site with SSL certificates from CloudCareHost. Enable HTTPS, boost SEO, and build trust with 256-bit encryption and a visible padlock for your domain.')
+    @section('meta_description', 'Protect your website with SSL certificates. Enable HTTPS, boost SEO rankings, and earn visitor trust with 256-bit encryption and a secure padlock.')
     @section('meta_keywords', 'buy ssl certificate, website ssl security, ssl for website, https ssl certificate, affordable ssl certificates, wildcard ssl, trusted ssl provider')
     @section('meta_author', 'Cloud Care Host')
     <!-- Hero Section with anchor link -->
     <section class="relative h-screen bg-cover bg-center flex items-center"
-        style="background-image: url('{{ asset('images/ssl.png') }}')">
+        style="background-image: url('{{ asset('images/ssl.webp') }}')">
         <!-- Overlay -->
         <div class="absolute inset-0 bg-opacity-40"></div>
 
@@ -126,7 +126,7 @@
 
             <!-- Right Image -->
             <div class="flex justify-center animate__animated animate__fadeInRight">
-                <img src="{{ asset('images/ssl-security.png') }}"
+                <img src="{{ asset('images/ssl-security.webp') }}"
                      alt="SSL Certificate Security"
                      class="max-w-full lg:max-w-md rounded-lg shadow-lg">
             </div>

@@ -1,10 +1,10 @@
 <x-user-layout>
-    @section('title', 'Buy Domain Name | Find & Register Your Perfect Domain - CloudCareHost')
-    @section('meta_description', 'Search, register, and secure your domain name instantly with CloudCareHost. Get free DNS management, SSL options, and 24/7 support. Start building your online identity today.')
+    @section('title', 'Buy Domain Name | Find & Register Your Domain - CloudCareHost')
+    @section('meta_description', 'Register your domain with CloudCareHost. Enjoy free DNS, SSL options, and 24/7 support while building your trusted online presence.')
     @section('meta_keywords', 'buy domain, domain registration, cheap domain names, best domain provider, register domain online, domain search tool, affordable domains, secure domain registration, domain with free dns')
     @section('meta_author', 'Cloud Care Host')
     <section class="relative h-screen bg-cover bg-center flex items-center justify-center"
-    style="background-image: url('{{ asset('images/domain-bg.png') }}')">
+    style="background-image: url('{{ asset('images/domain-bg.webp') }}')">
     <!-- Overlay for readability -->
     <div class="absolute inset-0 bg-opacity-40"></div>
 

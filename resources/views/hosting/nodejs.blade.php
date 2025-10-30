@@ -56,7 +56,7 @@
                 </div>
 
                 <div class="lg:w-1/2 animate__animated animate__fadeInRight animate__delay-1s">
-                    <img src="{{ asset('images/vps.png') }}" alt="Cloud Hosting Illustration"
+                    <img src="{{ asset('images/nodejs.webp') }}" alt="Cloud Hosting Illustration"
                         class="max-w-full animate-float">
                 </div>
             </div>
@@ -72,7 +72,7 @@
                     developers the freedom and support to focus on building, not troubleshooting.
                 </p>
 
-                <div class="flex justify-center mb-8">
+                <div id="plans" class="flex justify-center mb-8">
                     <div class="inline-flex items-center bg-gray-100 rounded-lg p-1 billing-toggle">
                         <button data-period="monthly"
                             class="px-4 py-2 rounded-md font-medium billing-btn bg-indigo-600 text-white">Monthly</button>
@@ -120,25 +120,26 @@
                                             <span class="plan-price" data-monthly="{{ $plan->usd_monthly }}"
                                                 data-annually="{{ $plan->usd_annually }}"
                                                 data-biennially="{{ $plan->usd_biennially }}"
-                                                data-triennially="{{ $plan->usd_triennially }}">${{ $plan->usd_monthly }}</span>
+                                                data-triennially="{{ $plan->usd_triennially }}"
+                                                data-curr="{{ $plan->usd_prefix }}">{{ $plan->usd_prefix }}{{ $plan->usd_monthly }}</span>
                                             <span class="text-sm font-normal text-gray-500">/mo</span>
                                         </div>
                                         <p class="text-sm text-gray-500 plan-total" data-monthly="Billed monthly"
-                                            data-annually="${{ $plan->usd_annually }} billed yearly"
-                                            data-biennially="${{ $plan->usd_biennially }} billed every 2 years"
-                                            data-triennially="${{ $plan->usd_triennially }} billed every 3 years">
+                                            data-annually="{{ $plan->usd_prefix }}{{ $plan->usd_annually }} billed yearly"
+                                            data-biennially="{{ $plan->usd_prefix }}{{ $plan->usd_biennially }} billed every 2 years"
+                                            data-triennially="{{ $plan->usd_prefix }}{{ $plan->usd_triennially }} billed every 3 years">
                                             Billed monthly
                                         </p>
                                         <div class="text-xs text-gray-400 line-through mt-1 original-price" data-monthly=""
-                                            data-annually="Originally ${{ number_format($plan->usd_monthly * 12, 2) }}"
-                                            data-biennially="Originally ${{ number_format($plan->usd_monthly * 24, 2) }}"
-                                            data-triennially="Originally ${{ number_format($plan->usd_monthly * 36, 2) }}">
+                                            data-annually="Originally {{ $plan->usd_prefix }}{{ number_format($plan->usd_monthly * 12, 2) }}"
+                                            data-biennially="Originally {{ $plan->usd_prefix }}{{ number_format($plan->usd_monthly * 24, 2) }}"
+                                            data-triennially="Originally {{ $plan->usd_prefix }}{{ number_format($plan->usd_monthly * 36, 2) }}">
                                         </div>
                                     </div>
 
                                     <ul class="space-y-2 mb-6">
                                         @php
-                                            $features = json_decode($plan->features_json);
+    $features = json_decode($plan->features_json);
                                         @endphp
                                         @foreach($features as $feature)
                                             <li class="flex items-start">
@@ -157,13 +158,13 @@
                                     <div class="mt-4 text-xs text-gray-500">
                                         <div class="flex justify-between py-1 border-b border-gray-100">
                                             <span>2 Years</span>
-                                            <span class="font-medium">${{ $plan->usd_biennially }} <span
+                                            <span class="font-medium">{{ $plan->usd_prefix }}{{ $plan->usd_biennially }} <span
                                                     class="text-red-500">({{ $plan->usd_discounted_biennially }}%
                                                     OFF)</span></span>
                                         </div>
                                         <div class="flex justify-between py-1">
                                             <span>3 Years</span>
-                                            <span class="font-medium">${{ $plan->usd_triennially }} <span
+                                            <span class="font-medium">{{ $plan->usd_prefix }}{{ $plan->usd_triennially }} <span
                                                     class="text-red-500">({{ $plan->usd_discounted_triennially }}%
                                                     OFF)</span></span>
                                         </div>
@@ -222,9 +223,11 @@
                         }
 
                         // Get the price data from data attributes
+
+                        const curr = priceElement.dataset.curr;
                         const monthlyPrice = parseFloat(priceElement.dataset.monthly);
                         const periodPrice = parseFloat(priceElement.dataset[period]);
-
+                        console.log("Hitesh", curr);
                         // Validate prices
                         if (isNaN(monthlyPrice) || isNaN(periodPrice)) {
                             console.error('Invalid price data for period:', period);
@@ -240,7 +243,7 @@
                         const equivalentMonthlyPrice = (periodPrice / months).toFixed(2);
 
                         // Update the displayed price
-                        priceElement.textContent = `$${equivalentMonthlyPrice}`;
+                        priceElement.textContent = `${curr}${equivalentMonthlyPrice}`;
 
                         // Update the billing description
                         if (totalElement.dataset[period]) {
@@ -321,9 +324,9 @@
                             your project live instantly. Enjoy blazing-fast performance, full control, and built-in
                             tools like PM2, SSL, and caching, all designed so you can focus on building, not
                             configuring.</p>
-                        <button
+                        <!-- <button
                             class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">Get
-                            Started Now</button>
+                            Started Now</button> -->
                     </div>
                     <div class="md:w-1/2 flex justify-center">
                         <div class="bg-blue-800 rounded-xl p-8 w-full max-w-md">
@@ -572,11 +575,12 @@
                                     </svg>
                                     <span class="text-gray-700">Extensive Node.js Knowledge Base</span>
                                 </div>
+                                <a href="#plans"
+                                    class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-lg mt-8 transition duration-300">Start
+                                    Building with CloudCareHost</a>
                             </div>
 
-                            <button
-                                class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 px-4 rounded-lg mt-8 transition duration-300">Start
-                                Building with CloudCareHost Node.js Hosting</button>
+                            
                         </div>
                     </div>
                 </div>
@@ -668,11 +672,11 @@
 
                                     <h3 class="text-lg font-semibold mb-2">
                                         @php
-                                            $path = $blog->type === 'blog'
-                                                ? 'single-articles/' . $blog->slug
-                                                : ($blog->type === 'kb'
-                                                    ? 'knowledge-base/' . $blog->slug
-                                                    : '#');
+        $path = $blog->type === 'blog'
+            ? 'single-articles/' . $blog->slug
+            : ($blog->type === 'kb'
+                ? 'knowledge-base/' . $blog->slug
+                : '#');
                                         @endphp
                                         <a href="{{ url($path) }}" class="hover:text-blue-600">
                                             {{ Str::limit($blog->title, 70) }}
