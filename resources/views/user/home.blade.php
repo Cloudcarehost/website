@@ -7,18 +7,16 @@
     <section class="bg-gradient-to-br from-gray-50 to-indigo-50 py-18 relative overflow-hidden">
         <div class="container max-w-screen-xl mx-auto mx-auto mx-auto px-4 flex flex-col lg:flex-row items-center">
             <div class="lg:w-1/2 mb-12 lg:mb-0 text-center lg:text-left animate__animated animate__fadeInDown">
-                <h1 class="text-2xl md:text-3xl font-montserrat leading-tight">
-                    <span
-                        class="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Powerful</span>
+                <h1 class="text-3xl md:text-5xl font-bold font-montserrat text-gray-900 mb-6 leading-tight">
+                      <span class="text-2xl md:text-3xl font-normal leading-tight">
+                        <span class="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Powerful</span>
                     +
-                    <span
-                        class="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Secure</span>
+                    <span class="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Secure</span>
                     +
-                    <span
-                        class="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Scalable</span>
-                </h1>
-                <h1 class="text-3xl md:text-5xl font-bold font-montserrat text-gray-900 mb-6 leading-tight">Fastest Web
-                    Hosting
+                    <span class="font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">Scalable</span>
+  </span>
+                <br />
+                    Fastest Web Hosting
                 </h1>
                 <p class="text-lg text-gray-600 mb-8 animate__animated animate__fadeInDown animate__delay-1s">We provide
                     reliable web hosting solutions tailored for developers, startups, and
