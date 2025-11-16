@@ -841,9 +841,9 @@
             </div>
 
             <div class="mt-12">
-                <button class="quote-btn btn-custom text-white px-8 py-4 rounded-lg font-semibold shadow-lg transition-colors" data-type="custom">
-                    Request a Custom Estimate
-                </button>
+                 <button class="quote-btn bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold shadow-lg transition-colors" data-type="custom">
+                Request a Custom Estimate
+            </button>
             </div>
         </div>
     </section>
