@@ -654,38 +654,59 @@
             <h2 class="text-3xl md:text-4xl font-bold font-montserrat text-center mb-4">Selected Work</h2>
             <p class="text-gray-500 text-lg text-center max-w-2xl mx-auto mb-12">Real projects that delivered measurable results</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
-                    <img src="{{ asset('images/portfolio-1.webp') }}" alt="E-Commerce Revamp" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h4 class="font-bold text-xl mb-2">E-Commerce Revamp</h4>
-                        <p class="text-gray-600 mb-4">Migrated a legacy store to a modern platform, improved load time by 60% and increased conversion.</p>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-chart-line text-green-500 mr-2"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                    <div class="h-64 bg-gray-100 overflow-hidden flex items-center justify-center">
+                        <img src="{{ asset('images/portfolio-1.webp') }}" 
+                            alt="E-Commerce Revamp" 
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">E-Commerce Revamp</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Migrated a legacy store to a modern platform, improved load time by 60% and increased conversion.
+                        </p>
+                        <div class="flex items-center text-sm text-green-600 font-medium">
+                            <i class="fas fa-chart-line mr-2"></i>
                             <span>45% increase in sales</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
-                    <img src="{{ asset('images/portfolio-2.webp') }}" alt="Mobile Field App" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h4 class="font-bold text-xl mb-2">Mobile Field App</h4>
-                        <p class="text-gray-600 mb-4">Built an Android app for field technicians that reduced reporting time by 50%.</p>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-clock text-blue-500 mr-2"></i>
+                <!-- Card 2 -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                    <div class="h-64 bg-gray-100 overflow-hidden flex items-center justify-center">
+                        <img src="{{ asset('images/portfolio-2.webp') }}" 
+                            alt="Mobile Field App" 
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Mobile Field App</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Built an Android app for field technicians that reduced reporting time by 50%.
+                        </p>
+                        <div class="flex items-center text-sm text-blue-600 font-medium">
+                            <i class="fas fa-clock mr-2"></i>
                             <span>50% faster reporting</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
-                    <img src="{{ asset('images/portfolio-3.webp') }}" alt="ERP Implementation" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h4 class="font-bold text-xl mb-2">ERP Implementation</h4>
-                        <p class="text-gray-600 mb-4">Implemented ERP for a retailer, centralized inventory and reporting across stores.</p>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-cogs text-purple-500 mr-2"></i>
+                <!-- Card 3 -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                    <div class="h-64 bg-gray-100 overflow-hidden flex items-center justify-center">
+                        <img src="{{ asset('images/portfolio-3.webp') }}" 
+                            alt="ERP Implementation" 
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">ERP Implementation</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Implemented ERP for a retailer, centralized inventory and reporting across stores.
+                        </p>
+                        <div class="flex items-center text-sm text-purple-600 font-medium">
+                            <i class="fas fa-cogs mr-2"></i>
                             <span>Streamlined operations</span>
                         </div>
                     </div>
@@ -693,6 +714,7 @@
             </div>
         </div>
     </section>
+    
 
     <!-- Testimonials Section -->
     {{-- <section class="py-20 bg-gray-50">
