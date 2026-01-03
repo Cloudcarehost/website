@@ -813,4 +813,77 @@
                 });
             });
         </script>
+        @push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "ItemList",
+  "name": "Shared Hosting Plans",
+  "itemListElement": [
+@foreach($data as $index => $plan)
+{
+  "@@type": "Product",
+  "position": {{ $index + 1 }},
+  "name": "{{ $plan->name }}",
+  "description": "Shared hosting with cPanel, SSL and SSD storage.",
+  "url": "{{ $plan->product_url }}",
+  "image": "{{ asset('images/shared.webp') }}",
+  "sku": "{{ $plan->slug2 }}",
+  "brand": { "@@type": "Brand", "name": "CloudCareHost" },
+  "offers": {
+    "@@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "{{ $plan->usd_monthly }}",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ $plan->product_url }}"
+  }
+}{{ !$loop->last ? ',' : '' }}
+@endforeach
+  ]
+}
+</script>
+@endpush
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "What is shared hosting?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Shared hosting allows multiple websites to use the same server resources, making it the most affordable hosting solution for beginners and small businesses."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Is shared hosting good for beginners?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. Shared hosting is easy to use, budget-friendly and perfect for new websites and blogs."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Do you provide cPanel access?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. All shared hosting plans include full cPanel access to manage websites, emails, and databases."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Can I upgrade my hosting plan later?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. You can upgrade from shared hosting to VPS or dedicated servers anytime without downtime."
+      }
+    }
+  ]
+}
+</script>
+@endpush
+
 </x-hosting-layout>

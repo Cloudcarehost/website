@@ -951,4 +951,77 @@
                 });
             });
         </script>
+        @push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "ItemList",
+  "name": "WooCommerce Hosting Plans",
+  "itemListElement": [
+@foreach($data as $index => $plan)
+{
+  "@@type": "Product",
+  "position": {{ $index + 1 }},
+  "name": "{{ $plan->name }}",
+  "description": "WooCommerce hosting optimized for online stores, security and speed.",
+  "url": "{{ $plan->product_url }}",
+  "image": "{{ asset('images/woocommerce.webp') }}",
+  "sku": "{{ $plan->slug2 }}",
+  "brand": { "@@type": "Brand", "name": "CloudCareHost" },
+  "offers": {
+    "@@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "{{ $plan->usd_monthly }}",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ $plan->product_url }}"
+  }
+}{{ !$loop->last ? ',' : '' }}
+@endforeach
+  ]
+}
+</script>
+@endpush
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "What is WooCommerce hosting?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "WooCommerce hosting is optimized specifically for WordPress eCommerce stores to improve performance, security, and checkout speed."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Is WooCommerce pre-installed?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. WooCommerce can be installed with one click, and you can request free installation support from our team."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Is this hosting PCI compliant?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. Our WooCommerce hosting environment supports PCI compliance to keep transactions secure."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Can I migrate my existing WooCommerce store?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. We offer free migration for existing WooCommerce stores with zero downtime."
+      }
+    }
+  ]
+}
+</script>
+@endpush
+
 </x-hosting-layout>

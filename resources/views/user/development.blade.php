@@ -1152,5 +1152,93 @@
     });
     </script>
 
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "Service",
+  "name": "Software Development & IT Services",
+  "url": "{{ url()->current() }}",
+  "provider": {
+    "@@type": "Organization",
+    "name": "CloudCareHost"
+  },
+  "areaServed": "Worldwide",
+  "description": "All-in-one software development including websites, mobile apps, enterprise software, SaaS products and support.",
+  "hasOfferCatalog": {
+    "@@type": "OfferCatalog",
+    "name": "Development Services",
+    "itemListElement": [
+      { "@@type": "Service", "name": "Web Development" },
+      { "@@type": "Service", "name": "Mobile App Development" },
+      { "@@type": "Service", "name": "Enterprise Software Development" },
+      { "@@type": "Service", "name": "SaaS Application Development" },
+      { "@@type": "Service", "name": "ERP & CRM Solutions" },
+      { "@@type": "Service", "name": "Custom Software Development" },
+      { "@@type": "Service", "name": "UI/UX Design" },
+      { "@@type": "Service", "name": "API Development & Integration" },
+      { "@@type": "Service", "name": "Maintenance & Support" }
+    ]
+  }
+}
+</script>
+@endpush
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "AggregateOffer",
+  "url": "{{ url()->current() }}",
+  "priceCurrency": "USD",
+  "offers": [
+    {
+      "@@type": "Offer",
+      "name": "Website Development",
+      "price": "60",
+      "priceCurrency": "USD"
+    },
+    {
+      "@@type": "Offer",
+      "name": "Mobile App Development",
+      "lowPrice": "1800",
+      "highPrice": "40000",
+      "priceCurrency": "USD"
+    },
+    {
+      "@@type": "Offer",
+      "name": "Enterprise Software Development",
+      "price": "40000",
+      "priceCurrency": "USD"
+    }
+  ]
+}
+</script>
+@endpush
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "ItemList",
+  "name": "Case Studies",
+  "itemListElement": [
+    {
+      "@@type": "CreativeWork",
+      "name": "E-Commerce Revamp",
+      "description": "Migrated legacy store to modern stack and increased conversions."
+    },
+    {
+      "@@type": "CreativeWork",
+      "name": "Mobile Field App",
+      "description": "Android app for field technicians reducing report time."
+    },
+    {
+      "@@type": "CreativeWork",
+      "name": "ERP Implementation",
+      "description": "Centralized inventory and reporting across stores."
+    }
+  ]
+}
+</script>
+@endpush
 
 </x-user-layout>

@@ -1179,4 +1179,76 @@
                 });
             });
         </script>
+        @push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "ItemList",
+  "name": "High Availability VPS Hosting Plans",
+  "itemListElement": [
+@foreach($data as $index => $plan)
+{
+  "@@type": "Product",
+  "position": {{ $index + 1 }},
+  "name": "{{ $plan->name }}",
+  "description": "High availability VPS hosting with SSD storage and guaranteed resources.",
+  "url": "{{ $plan->product_url }}",
+  "image": "{{ asset('images/vps.webp') }}",
+  "sku": "{{ $plan->slug2 }}",
+  "brand": { "@@type": "Brand", "name": "CloudCareHost" },
+  "offers": {
+    "@@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "{{ $plan->usd_monthly }}",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ $plan->product_url }}"
+  }
+}{{ !$loop->last ? ',' : '' }}
+@endforeach
+  ]
+}
+</script>
+@endpush
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "What is High Availability VPS hosting?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "High Availability VPS hosting ensures that your virtual server remains online even if the underlying hardware fails by automatically switching to another healthy node."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Do I get full root access with VPS hosting?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. All VPS hosting plans include full root access so you can completely control your server configuration."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Can I upgrade my VPS resources later?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. You can upgrade CPU, RAM and storage instantly without downtime through our control panel."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Is DDoS protection included?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. All High Availability VPS plans include enterprise-grade DDoS protection to keep your applications online."
+      }
+    }
+  ]
+}
+</script>
+@endpush
 </x-hosting-layout>
