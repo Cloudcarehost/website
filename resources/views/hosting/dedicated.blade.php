@@ -5,6 +5,7 @@
     @section('meta_keywords', 'dedicated server hosting, dedicated servers for business, best dedicated hosting, affordable dedicated servers, secure dedicated hosting, managed dedicated servers')
     @section('meta_author', 'Cloud Care Host')
 
+
     <div class="mb-12">
 
         <!-- Hero Section -->
@@ -763,4 +764,84 @@
                 });
             });
         </script>
+
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "ItemList",
+  "name": "Dedicated Server Hosting Plans",
+  "itemListElement": [
+@foreach($data as $index => $plan)
+{
+  "@@type": "Product",
+  "position": {{ $index+1 }},
+  "name": "{{ $plan->name }}",
+  "url": "{{ $plan->product_url }}",
+  "image": "{{ asset('images/dedicated.webp') }}",
+  "description": "High-performance dedicated server hosting plan with full root access and enterprise-grade hardware.",
+  "sku": "{{ $plan->slug2 }}",
+  "brand": {
+    "@@type": "Brand",
+    "name": "CloudCareHost"
+  },
+  "offers": {
+    "@@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "{{ $plan->usd_monthly }}",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ $plan->product_url }}",
+    "priceValidUntil": "2035-12-31",
+    "businessFunction": "https://schema.org/ProvideService"
+  }
+}{{ !$loop->last ? ',' : '' }}
+@endforeach
+  ]
+}
+</script>
+@endpush
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "Who should use a dedicated server?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Dedicated servers are ideal for businesses or developers who need high performance applications, full root access, reliable hosting for large websites or eCommerce stores, and enhanced security for sensitive data."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Where are your datacenters located?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "We offer global datacenter locations so you can host your server close to your audience for faster performance and lower latency."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "How long does it take to set up a dedicated server?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Most dedicated servers are deployed within a few hours depending on the configuration selected."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Can I install a control panel on my dedicated server?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. Our dedicated servers support cPanel, Plesk, CyberPanel, HestiaCP, CloudPanel and ISPManager. If you purchase a license from us we will install it for free."
+      }
+    }
+  ]
+}
+</script>
+@endpush
+
+
 </x-hosting-layout>

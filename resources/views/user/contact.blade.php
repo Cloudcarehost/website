@@ -558,4 +558,67 @@
             transform: scale(1);
         }
     </style>
+    @push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "LocalBusiness",
+  "name": "CloudCareHost Technologies",
+  "url": "{{ url()->current() }}",
+  "image": "{{ asset('images/logo.png') }}",
+  "telephone": "+91 8788217891",
+  "email": "info@cloudcarehost.com",
+  "address": {
+    "@@type": "PostalAddress",
+    "streetAddress": "Plot No H 16, MIDC Rd, Near Ambad Gaon",
+    "addressLocality": "Nashik",
+    "addressRegion": "Maharashtra",
+    "postalCode": "422010",
+    "addressCountry": "IN"
+  },
+  "openingHoursSpecification": [{
+    "@@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "09:00",
+    "closes": "18:00"
+  }],
+  "sameAs": []
+}
+</script>
+@endpush
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "How can I contact CloudCareHost support?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "You can contact us via support ticket, phone, email, or the contact form on this page. Our team replies within 24 hours."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "What is your support phone number?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "You can call us at +91 8788217891 for sales or support inquiries."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Where is CloudCareHost located?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "We are located at Plot No H 16, MIDC Road, Nashik, Maharashtra 422010, India."
+      }
+    }
+  ]
+}
+</script>
+@endpush
+
 </x-user-layout>

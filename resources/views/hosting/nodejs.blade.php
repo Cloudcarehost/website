@@ -711,4 +711,78 @@
                 });
             });
         </script>
+
+        @push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "ItemList",
+  "name": "Node.js Hosting Plans",
+  "itemListElement": [
+@foreach($data as $index => $plan)
+{
+  "@@type": "Product",
+  "position": {{ $index + 1 }},
+  "name": "{{ $plan->name }}",
+  "description": "Node.js hosting with SSH access, Git support and scalable performance.",
+  "url": "{{ $plan->product_url }}",
+  "image": "{{ asset('images/nodejs.webp') }}",
+  "sku": "{{ $plan->slug2 }}",
+  "brand": { "@@type": "Brand", "name": "CloudCareHost" },
+  "offers": {
+    "@@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "{{ $plan->usd_monthly }}",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ $plan->product_url }}"
+  }
+}{{ !$loop->last ? ',' : '' }}
+@endforeach
+  ]
+}
+</script>
+@endpush
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "What is Node.js hosting?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Node.js hosting allows you to deploy and run JavaScript applications on a server environment optimized for asynchronous event-driven applications."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Can I run multiple Node.js applications?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. You can run multiple Node.js apps and manage them via Node version selector, terminal and process manager."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Do you support the latest Node.js versions?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. We support multiple Node.js versions including 16.x, 18.x, 20.x, 22.x and newer releases."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Is SSH access available?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. All Node.js hosting plans come with full SSH access for developers."
+      }
+    }
+  ]
+}
+</script>
+@endpush
+
 </x-hosting-layout>

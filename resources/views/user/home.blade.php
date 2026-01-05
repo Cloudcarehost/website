@@ -1286,4 +1286,114 @@
             });
         });
     </script>
+    @push('schema')
+    <script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "WebSite",
+  "url": "{{ url('/') }}",
+  "name": "CloudCareHost",
+  "potentialAction": {
+    "@@type": "SearchAction",
+    "target": "{{ url('/') }}/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "Organization",
+  "name": "CloudCareHost",
+  "url": "{{ url('/') }}",
+  "logo": "{{ asset('images/logo.png') }}",
+  "description": "CloudCareHost is a next-generation hosting provider delivering fast, secure and affordable hosting solutions worldwide.",
+  "address": {
+    "@@type": "PostalAddress",
+    "streetAddress": "Plot No H 16, MIDC Rd, Near Ambad Gaon",
+    "addressLocality": "Nashik",
+    "addressRegion": "Maharashtra",
+    "postalCode": "422010",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@@type": "ContactPoint",
+    "telephone": "+91 8788217891",
+    "contactType": "customer support",
+    "availableLanguage": ["English", "Hindi"]
+  },
+  "sameAs": [
+    "https://www.facebook.com/people/Cloudcarehost/61582345975481/?rdid=fdB1s43WYREAAgv2&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BYMmk2GUJ%2F",
+    "https://www.instagram.com/cloudcarehost/",
+    "https://www.linkedin.com/company/cloud-care-host/"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "Product",
+  "name": "Shared Web Hosting",
+  "image": "{{ asset('images/hero01.webp') }}",
+  "description": "Fast and secure shared hosting with SSD storage, free SSL, cPanel, daily backups, and 24/7 expert support.",
+  "brand": {
+    "@@type": "Brand",
+    "name": "CloudCareHost"
+  },
+  "sku": "CCH-SHARED",
+  "category": "Web Hosting",
+  "offers": {
+    "@@type": "AggregateOffer",
+    "offerCount": "{{ count($data) }}",
+    "priceCurrency": "USD",
+    "lowPrice": "{{ $data->min('usd_monthly') }}",
+    "highPrice": "{{ $data->max('usd_monthly') }}",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ url()->current() }}"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "What is shared hosting?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Shared hosting is a type of web hosting where multiple websites share the same server resources. It's the most affordable hosting option and is perfect for small websites, blogs, and personal projects that don't require dedicated resources."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Can I upgrade my plan later?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes, you can upgrade your shared hosting plan at any time without downtime. Our support team can help you migrate to a higher plan or even to a VPS or dedicated server when your website grows."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Do you offer a money-back guarantee?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes, we offer a 30-day money-back guarantee on all shared hosting plans. If you're not satisfied with our service, you can cancel within the first 30 days for a full refund."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "What control panel do you use?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "We use cPanel, the industry-standard hosting control panel that makes managing your website, emails, databases, and files simple and intuitive."
+      }
+    }
+  ]
+}
+</script>
+
+@endpush
 </x-user-layout>

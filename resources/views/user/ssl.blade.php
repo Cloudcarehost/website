@@ -244,5 +244,82 @@
             transition: transform 0.3s ease;
         }
     </style>
+    @push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "Product",
+  "name": "SSL Certificates",
+  "description": "Buy SSL certificates to secure your website with HTTPS encryption, boost SEO rankings, and build user trust.",
+  "image": "{{ asset('images/ssl.webp') }}",
+  "brand": {
+    "@@type": "Brand",
+    "name": "CloudCareHost"
+  },
+  "sku": "CCH-SSL",
+  "category": "Security > SSL Certificates",
+  "offers": {
+    "@@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "{{ $data->min('usd_annually') }}",
+    "highPrice": "{{ $data->max('usd_annually') }}",
+    "offerCount": "{{ count($data) }}",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ url()->current() }}"
+  }
+}
+</script>
+@endpush
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "Why Do I Need an SSL Certificate?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "An SSL certificate secures the connection between a user's browser and your website, ensuring that the data exchanged remains private and integral. It also helps build trust with visitors by displaying a padlock icon and https in the browser's address bar."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "What types of SSL certificates are available with CloudCareHost?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "CloudCareHost provides different types of SSL certificates including Domain Validation SSL, Organization Validation SSL, and Extended Validation SSL that delivers the highest trust level."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Which SSL certificate do I need?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "The best SSL certificate depends on your website needs. For basic security, use a DV SSL certificate. For eCommerce or websites handling sensitive data, an OV or EV SSL certificate is recommended."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "How Long Does an SSL Certificate Last?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "SSL certificates are typically valid for one to two years depending on the type and issuer. After expiration, it must be renewed to maintain secure encrypted connections."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Do SSL Certificates Affect Website Speed?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "SSL certificates do not significantly slow down websites. Modern servers handle encryption efficiently, and HTTPS may even improve SEO and overall website performance."
+      }
+    }
+  ]
+}
+</script>
+@endpush
+
 </x-user-layout>
 

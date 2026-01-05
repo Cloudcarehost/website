@@ -1002,4 +1002,82 @@
                 });
             });
         </script>
+
+        @push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "ItemList",
+  "name": "Managed WordPress Hosting Plans",
+  "itemListElement": [
+@foreach($data as $index => $plan)
+{
+  "@@type": "Product",
+  "position": {{ $index + 1 }},
+  "name": "{{ $plan->name }}",
+  "description": "Managed WordPress hosting with high speed, SSD storage, backups and security.",
+  "url": "{{ $plan->product_url }}",
+  "image": "{{ asset('images/wordpress.webp') }}",
+  "sku": "{{ $plan->slug2 }}",
+  "brand": {
+    "@@type": "Brand",
+    "name": "CloudCareHost"
+  },
+  "offers": {
+    "@@type": "Offer",
+    "url": "{{ $plan->product_url }}",
+    "priceCurrency": "USD",
+    "price": "{{ $plan->usd_monthly }}",
+    "availability": "https://schema.org/InStock",
+    "businessFunction": "https://schema.org/ProvideService"
+  }
+}{{ !$loop->last ? ',' : '' }}
+@endforeach
+  ]
+}
+</script>
+@endpush
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "What is Managed WordPress Hosting?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Managed WordPress hosting is optimized specifically for WordPress websites and includes performance tuning, automatic updates, enhanced security, and expert support."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Is Managed WordPress Hosting good for beginners?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. It removes the technical work like updates, security, and backups so beginners can focus on content and growth."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Will you migrate my WordPress website for free?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. Our team will migrate your existing WordPress website to CloudCareHost at no additional cost with zero downtime."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Do I get a free SSL certificate?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. All Managed WordPress hosting plans include free SSL certificates for secure browsing and SEO benefits."
+      }
+    }
+  ]
+}
+</script>
+@endpush
+
 </x-hosting-layout>

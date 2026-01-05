@@ -654,38 +654,59 @@
             <h2 class="text-3xl md:text-4xl font-bold font-montserrat text-center mb-4">Selected Work</h2>
             <p class="text-gray-500 text-lg text-center max-w-2xl mx-auto mb-12">Real projects that delivered measurable results</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
-                    <img src="{{ asset('images/portfolio-1.webp') }}" alt="E-Commerce Revamp" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h4 class="font-bold text-xl mb-2">E-Commerce Revamp</h4>
-                        <p class="text-gray-600 mb-4">Migrated a legacy store to a modern platform, improved load time by 60% and increased conversion.</p>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-chart-line text-green-500 mr-2"></i>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                    <div class="h-64 bg-gray-100 overflow-hidden flex items-center justify-center">
+                        <img src="{{ asset('images/portfolio-1.webp') }}" 
+                            alt="E-Commerce Revamp" 
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">E-Commerce Revamp</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Migrated a legacy store to a modern platform, improved load time by 60% and increased conversion.
+                        </p>
+                        <div class="flex items-center text-sm text-green-600 font-medium">
+                            <i class="fas fa-chart-line mr-2"></i>
                             <span>45% increase in sales</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
-                    <img src="{{ asset('images/portfolio-2.webp') }}" alt="Mobile Field App" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h4 class="font-bold text-xl mb-2">Mobile Field App</h4>
-                        <p class="text-gray-600 mb-4">Built an Android app for field technicians that reduced reporting time by 50%.</p>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-clock text-blue-500 mr-2"></i>
+                <!-- Card 2 -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                    <div class="h-64 bg-gray-100 overflow-hidden flex items-center justify-center">
+                        <img src="{{ asset('images/portfolio-2.webp') }}" 
+                            alt="Mobile Field App" 
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Mobile Field App</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Built an Android app for field technicians that reduced reporting time by 50%.
+                        </p>
+                        <div class="flex items-center text-sm text-blue-600 font-medium">
+                            <i class="fas fa-clock mr-2"></i>
                             <span>50% faster reporting</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-xl shadow-lg overflow-hidden transition-all hover:shadow-xl">
-                    <img src="{{ asset('images/portfolio-3.webp') }}" alt="ERP Implementation" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <h4 class="font-bold text-xl mb-2">ERP Implementation</h4>
-                        <p class="text-gray-600 mb-4">Implemented ERP for a retailer, centralized inventory and reporting across stores.</p>
-                        <div class="flex items-center text-sm text-gray-500">
-                            <i class="fas fa-cogs text-purple-500 mr-2"></i>
+                <!-- Card 3 -->
+                <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+                    <div class="h-64 bg-gray-100 overflow-hidden flex items-center justify-center">
+                        <img src="{{ asset('images/portfolio-3.webp') }}" 
+                            alt="ERP Implementation" 
+                            class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">ERP Implementation</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed">
+                            Implemented ERP for a retailer, centralized inventory and reporting across stores.
+                        </p>
+                        <div class="flex items-center text-sm text-purple-600 font-medium">
+                            <i class="fas fa-cogs mr-2"></i>
                             <span>Streamlined operations</span>
                         </div>
                     </div>
@@ -693,6 +714,7 @@
             </div>
         </div>
     </section>
+    
 
     <!-- Testimonials Section -->
     {{-- <section class="py-20 bg-gray-50">
@@ -819,9 +841,9 @@
             </div>
 
             <div class="mt-12">
-                <button class="quote-btn btn-custom text-white px-8 py-4 rounded-lg font-semibold shadow-lg transition-colors" data-type="custom">
-                    Request a Custom Estimate
-                </button>
+                 <button class="quote-btn bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-4 rounded-lg font-semibold shadow-lg transition-colors" data-type="custom">
+                Request a Custom Estimate
+            </button>
             </div>
         </div>
     </section>
@@ -1130,5 +1152,93 @@
     });
     </script>
 
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "Service",
+  "name": "Software Development & IT Services",
+  "url": "{{ url()->current() }}",
+  "provider": {
+    "@@type": "Organization",
+    "name": "CloudCareHost"
+  },
+  "areaServed": "Worldwide",
+  "description": "All-in-one software development including websites, mobile apps, enterprise software, SaaS products and support.",
+  "hasOfferCatalog": {
+    "@@type": "OfferCatalog",
+    "name": "Development Services",
+    "itemListElement": [
+      { "@@type": "Service", "name": "Web Development" },
+      { "@@type": "Service", "name": "Mobile App Development" },
+      { "@@type": "Service", "name": "Enterprise Software Development" },
+      { "@@type": "Service", "name": "SaaS Application Development" },
+      { "@@type": "Service", "name": "ERP & CRM Solutions" },
+      { "@@type": "Service", "name": "Custom Software Development" },
+      { "@@type": "Service", "name": "UI/UX Design" },
+      { "@@type": "Service", "name": "API Development & Integration" },
+      { "@@type": "Service", "name": "Maintenance & Support" }
+    ]
+  }
+}
+</script>
+@endpush
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "AggregateOffer",
+  "url": "{{ url()->current() }}",
+  "priceCurrency": "USD",
+  "offers": [
+    {
+      "@@type": "Offer",
+      "name": "Website Development",
+      "price": "60",
+      "priceCurrency": "USD"
+    },
+    {
+      "@@type": "Offer",
+      "name": "Mobile App Development",
+      "lowPrice": "1800",
+      "highPrice": "40000",
+      "priceCurrency": "USD"
+    },
+    {
+      "@@type": "Offer",
+      "name": "Enterprise Software Development",
+      "price": "40000",
+      "priceCurrency": "USD"
+    }
+  ]
+}
+</script>
+@endpush
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "ItemList",
+  "name": "Case Studies",
+  "itemListElement": [
+    {
+      "@@type": "CreativeWork",
+      "name": "E-Commerce Revamp",
+      "description": "Migrated legacy store to modern stack and increased conversions."
+    },
+    {
+      "@@type": "CreativeWork",
+      "name": "Mobile Field App",
+      "description": "Android app for field technicians reducing report time."
+    },
+    {
+      "@@type": "CreativeWork",
+      "name": "ERP Implementation",
+      "description": "Centralized inventory and reporting across stores."
+    }
+  ]
+}
+</script>
+@endpush
 
 </x-user-layout>

@@ -382,4 +382,36 @@
             });
         });
     </script>
+    @push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "Organization",
+  "name": "CloudCareHost",
+  "url": "{{ url('/') }}",
+  "logo": "{{ asset('images/logo.png') }}",
+  "description": "CloudCareHost is a next-generation hosting provider delivering fast, secure and affordable hosting solutions worldwide.",
+  "address": {
+    "@@type": "PostalAddress",
+    "streetAddress": "Plot No H 16, MIDC Rd, Near Ambad Gaon",
+    "addressLocality": "Nashik",
+    "addressRegion": "Maharashtra",
+    "postalCode": "422010",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@@type": "ContactPoint",
+    "telephone": "+91 8788217891",
+    "contactType": "customer support",
+    "availableLanguage": ["English", "Hindi"]
+  },
+  "sameAs": [
+    "https://www.facebook.com/people/Cloudcarehost/61582345975481/?rdid=fdB1s43WYREAAgv2&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F1BYMmk2GUJ%2F",
+    "https://www.instagram.com/cloudcarehost/",
+    "https://www.linkedin.com/company/cloud-care-host/"
+  ]
+}
+</script>
+@endpush
+
 </x-user-layout>

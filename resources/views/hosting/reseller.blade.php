@@ -866,4 +866,90 @@
                 });
             });
         </script>
+        @push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "Product",
+  "name": "Reseller Hosting",
+  "description": "White-label reseller hosting with WHM, cPanel, SSD/NVMe storage, free SSL, and 24/7 support by CloudCareHost.",
+  "url": "{{ url()->current() }}",
+  "image": "{{ asset('images/reseller.webp') }}",
+  "brand": {
+    "@@type": "Brand",
+    "name": "CloudCareHost"
+  },
+  "sku": "CCH-RESELLER",
+  "category": "Web Hosting",
+  "offers": [
+    @foreach($data as $plan)
+    {
+      "@@type": "Offer",
+      "name": "{{ $plan->name }}",
+      "priceCurrency": "USD",
+      "price": "{{ $plan->usd_monthly }}",
+      "availability": "https://schema.org/InStock",
+      "url": "{{ $plan->product_url }}",
+      "itemCondition": "https://schema.org/NewCondition",
+      "eligibleQuantity": {
+        "@@type": "QuantitativeValue",
+        "value": 1
+      }
+    }@if(!$loop->last),@endif
+    @endforeach
+  ]
+}
+</script>
+@endpush
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "What is reseller hosting?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Reseller hosting allows you to create and sell your own hosting plans under your own brand using our servers and WHM/cPanel resources."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Will my clients see CloudCareHost branding?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "No. All reseller hosting packages are fully white-label so your customers only see your brand name, not ours."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Do I need technical knowledge to start a hosting business?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "No advanced knowledge is required. We manage server maintenance and provide support so you can focus on sales and customers."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Is WHM and cPanel included?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. All reseller plans include WebHost Manager (WHM) for admin control and individual cPanel accounts for your customers."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Can I upgrade my reseller hosting plan later?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes. You can upgrade your reseller hosting plan anytime without downtime or data loss as your customer base grows."
+      }
+    }
+  ]
+}
+</script>
+@endpush
+
 </x-hosting-layout>

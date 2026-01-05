@@ -366,6 +366,70 @@
         </div>
     </div>
 </section>
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "Product",
+  "name": "Domain Registration",
+  "brand": {
+    "@@type": "Brand",
+    "name": "CloudCareHost"
+  },
+  "description": "Register domains instantly with CloudCareHost. Free DNS, WHOIS privacy options, and 24/7 support.",
+  "url": "{{ url()->current() }}",
+  "category": "Domain services",
+  "offers": {
+    "@@type": "AggregateOffer",
+    "priceCurrency": "USD",
+    "lowPrice": "1.00",
+    "offerCount": "{{ count($tldPricing) }}"
+  }
+}
+</script>
+@endpush
+@push('schema')
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@@type": "Question",
+      "name": "How do I choose the best domain name?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Choose a short, memorable name that represents your brand. Use common extensions such as .com where possible."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "How do I register a domain?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Search for your domain using our tool, select an available option, and complete checkout. Setup is instant."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "Can I transfer my domain to CloudCareHost?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "Yes, you can transfer your domain by unlocking it and providing the authorization code from your current registrar."
+      }
+    },
+    {
+      "@@type": "Question",
+      "name": "What is WHOIS privacy?",
+      "acceptedAnswer": {
+        "@@type": "Answer",
+        "text": "WHOIS privacy hides your personal contact information from public domain lookup to reduce spam and protect privacy."
+      }
+    }
+  ]
+}
+</script>
+@endpush
 
 </x-user-layout>
 <script>
